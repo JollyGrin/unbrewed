@@ -6,6 +6,9 @@ export default class index extends Component {
     return (
       <div>
         <h1>unbrewed.xyz</h1>
+        <span>
+          <a href='https://github.com/JollyGrin/unbrewed'>git</a>
+        </span>
 
         <hr />
 
