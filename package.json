@@ -1,0 +1,23 @@
+{
+  "name": "unmatchedplay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss static/css/styles.css",
+    "css:watch": "npm run css:build -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^9.3.2",
+    "node-sass": "^4.13.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "socket.io-client": "^2.3.0"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "name": "",
+  "appearance": {
+    "isPNP": false,
+    "borderColour": "#408080",
+    "highlightColour": "#408080",
+    "patternName": "None"
+  },
+  "hero": {
+    "name": "The Mandalorian",
+    "isRanged": true,
+    "hp": 14,
+    "move": 2,
+    "specialAbility": "When The Mandalorian defends, add +1 defense for each BESKAR ARMOR card in your discard pile. \nIf any BESKAR ARMOR cards are in your starting hand, shuffle and redraw your starting hand until it is free of BESKAR ARMOR cards."
+  },
+  "sidekick": {
+    "name": "The Child",
+    "isRanged": true,
+    "hp": 5,
+    "quantity": 1,
+    "quote": "I work best alone"
+  },
+  "cards": [
+    {
+      "quantity": 2,
+      "title": "I CAN BRING YOU IN WARM...",
+      "type": "attack",
+      "value": 2,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If you won the combat, you may draw 4 cards from the deck, keep 2, return the other 2 to the deck, and reshuffle the deck.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 2,
+      "title": "... oR I CAN BRING YOU IN COLD",
+      "type": "attack",
+      "value": 5,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If you defeat an opposing fighter with this card, you may draw 2 cards from the deck.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 1,
+      "title": "THIS IS THE WAY",
+      "type": "attack",
+      "value": 3,
+      "boost": 4,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": "If The Child is still alive, the attack value of this card is 7.",
+      "afterText": null,
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 2,
+      "title": "BESKAR ARMOR",
+      "type": "defence",
+      "value": 3,
+      "boost": 0,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If The Child is still alive, draw 1 card.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 4,
+      "title": "QUICK DRAW",
+      "type": "attack",
+      "value": 2,
+      "boost": 3,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If The Child is still alive, gain 1 action.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 1,
+      "title": "PULSE SHOCK (MELEE ONLY)",
+      "type": "attack",
+      "value": 3,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "The player controlling the opposing fighter loses 1 action.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 1,
+      "title": "WHISTLING BIRDS",
+      "type": "scheme",
+      "value": 1,
+      "boost": 2,
+      "basicText": "The Mandalorian does 2 damage to all heroes he can attack and 3 damage to all sidekicks he can attack.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 1,
+      "title": "CABLE SHOT",
+      "type": "scheme",
+      "value": 1,
+      "boost": 2,
+      "basicText": "Choose a character the Mandalorian can attack. Move that character adjacent to Mando. That character takes 2 damage.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 1,
+      "title": "RISING PHOENIX",
+      "type": "scheme",
+      "value": 1,
+      "boost": 0,
+      "basicText": "If The Child is still alive, draw 1 card. Then place The Mandalorian in any open space. If The Child was adjacent to Mando before playing this card, you may also place The Child in any open space adjacent to Mando's new space.",
+      "imageUrl": " https://starwarsblog.starwars.com/wp-content/uploads/2019/12/the-mandalorian-announce-tall.jpg",
+      "characterName": "THE MANDALORIAN"
+    },
+    {
+      "quantity": 3,
+      "title": "FORCE POWERS",
+      "type": "versatile",
+      "value": 2,
+      "boost": 4,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": "Choose one of the fighters in the combat and move them up to 3 spaces.",
+      "afterText": "Choose 1 of the following 2 effects: \n- The Mandalorian recovers 3 HP\n- The Child recovers 3 HP.",
+      "imageUrl": " https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2019/11/the_mandalorian_still_embed.jpg",
+      "characterName": "THE CHILD"
+    },
+    {
+      "quantity": 3,
+      "title": "FEINT",
+      "type": "versatile",
+      "value": 2,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": "Cancel all effects on your opponent's card.",
+      "duringText": null,
+      "afterText": null,
+      "imageUrl": " https://media.comicbook.com/2019/11/star-wars-the-mandalorian-chapter-4-baby-yoda-scenes-fan-reactio-1198039-1280x0.jpeg",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "REGROUP",
+      "type": "versatile",
+      "value": 1,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "imageUrl": " https://media.comicbook.com/2019/11/star-wars-the-mandalorian-chapter-4-baby-yoda-scenes-fan-reactio-1198039-1280x0.jpeg",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "DASH",
+      "type": "versatile",
+      "value": 3,
+      "boost": 1,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Move your fighter up to 3 spaces.",
+      "imageUrl": " https://media.comicbook.com/2019/11/star-wars-the-mandalorian-chapter-4-baby-yoda-scenes-fan-reactio-1198039-1280x0.jpeg",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "SNIPE",
+      "type": "versatile",
+      "value": 3,
+      "boost": 1,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Draw 1 card.",
+      "imageUrl": " https://media.comicbook.com/2019/11/star-wars-the-mandalorian-chapter-4-baby-yoda-scenes-fan-reactio-1198039-1280x0.jpeg",
+      "characterName": "ANY"
+    }
+  ]
+}
