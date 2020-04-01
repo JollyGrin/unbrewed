@@ -76,13 +76,16 @@ export default class playtest extends Component {
     this.setState({ pool: this.state.pool })
   }
 
-  drawCard = event => {
-    if (event) {
-      event.preventDefault()
-    }
+  drawCard = () => {
+    console.log(this.state.pool.deck.length)
 
-    this.state.pool.draw()
-    this.setState({ pool: this.state.pool })
+    if (!this.state.pool.deck.length <= 0) {
+      console.log('hit!')
+      this.state.pool.draw()
+      this.setState({ pool: this.state.pool })
+    } else {
+      alert('Your deck is empty')
+    }
   }
 
   discardCard = cardIndex => {
