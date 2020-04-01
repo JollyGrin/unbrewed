@@ -1,0 +1,39 @@
+@font-face {
+  font-family: BebasNeueRegular;
+  src: url("../../static/fonts/BebasNeueRegular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: Roboto Condensed;
+  src: url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap"); }
+
+@font-face {
+  font-family: League Gothic;
+  src: url("../../static/fonts/LeagueGothic-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: Archivo Narrow;
+  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: Archivo Narrow;
+  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: Archivo Narrow;
+  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: Archivo Narrow;
+  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
+  font-weight: bold;
+  font-style: italic; }
