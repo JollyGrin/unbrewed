@@ -18,7 +18,11 @@ export default class PlayTestModalCard extends Component {
   render () {
     const styles = {
       bgImg: {
-        backgroundImage: `url(${this.props.card.imageUrl})`
+        backgroundImage: `url(${
+          this.props.card.imageUrl
+            ? this.props.card.imageUrl
+            : 'https://picsum.photos/200/300'
+        })`
       }
     }
     return (

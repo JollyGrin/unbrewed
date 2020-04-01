@@ -10,10 +10,23 @@ import Modal from '../components/playtest/Modal'
 export default class playtest extends Component {
   constructor (props) {
     super(props)
+    this.loadDeckInput = React.createRef()
     this.state = {
       pool: {}
     }
     this.modal = false
+  }
+
+  loadNewDeck = () => {
+    const newInput = JSON.parse(this.loadDeckInput.current.value)
+
+    const formattedDeck = makeDeck(newInput)
+    // Shuffle Deck
+    const shuffledDeck = shuffleDeck(formattedDeck)
+    // load a new Deck Pool
+    let pool = new DeckPool(shuffledDeck)
+    // set the state with new Pool
+    this.setState({ pool: pool })
   }
 
   modalComponent = {
@@ -150,7 +163,24 @@ export default class playtest extends Component {
           Deck -{' '}
           {this.state.pool.deck ? this.state.pool.deck.length : 'not loaded'}
         </h1>
+
+        <hr />
+
+        <center>
+          <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
+          <br />
+          <a className='button' onClick={this.loadNewDeck}>
+            Load Deck
+          </a>
+        </center>
+
         <style jsx>{`
+          .loadDeck {
+            width: 70vw;
+            height: 10rem;
+            font-size: 0.6rem !important;
+          }
+
           .container {
             display: flex;
           }
