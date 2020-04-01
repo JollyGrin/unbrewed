@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-export default class PlayTestCard extends Component {
+export default class PlayTestModalCard extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -10,14 +10,6 @@ export default class PlayTestCard extends Component {
 
   displayText = () => {
     const { basicText, immediateText, duringText, afterText } = this.props.card
-  }
-
-  moveHandToDiscard = () => {
-    this.props.discardCard(this.props.handIndex)
-  }
-
-  commitCard = () => {
-    this.props.commitCard(this.props.handIndex)
   }
 
   componentDidMount () {
@@ -31,19 +23,10 @@ export default class PlayTestCard extends Component {
     }
     return (
       <Fragment>
-        <div className='nav'>
-          <a onClick={() => this.commitCard()}>
-            <i className='fas fa-angle-up'></i>
-          </a>
-          <a></a>
-          <a onClick={() => this.moveHandToDiscard()}>
-            <i className='fas fa-angle-down'></i>
-          </a>
-        </div>
         <div className={`base ${this.props.card.type}`}>
           <div className='content'>
             <span className='help'>{this.props.card.characterName}</span>
-            <h1>{this.props.card.title.substring(0, 16)}</h1>
+            <h1>{this.props.card.title.substring(0, 18)}</h1>
             <br />
             <div className='flexbox'>
               <div className='value'>
@@ -115,12 +98,6 @@ export default class PlayTestCard extends Component {
             opacity: 1;
           }
 
-          .help {
-            position: absolute;
-            top: 1.5rem;
-            font-size: 0.7rem;
-          }
-
           .value {
             font-size: 2rem;
             margin-top: 3rem;
@@ -134,6 +111,7 @@ export default class PlayTestCard extends Component {
           .base {
             font-family: BebasNeueRegular;
             height: 17rem;
+            width: 12rem;
             margin: 0.1rem;
             border-radius: 0.5rem;
           }
@@ -142,9 +120,14 @@ export default class PlayTestCard extends Component {
           }
 
           h1 {
-            position: absolute;
-            top: 1rem;
             font-size: 1.4rem;
+            margin-bottom: -3rem;
+            position: relative;
+            top: -1rem;
+          }
+
+          .help {
+            font-size: 0.7rem;
           }
 
           .image-container {

@@ -13,6 +13,8 @@ export default class Hand extends Component {
             card={card}
             handIndex={index}
             discardCard={this.props.discardCard}
+            commitCard={this.props.commitCard}
+            modal={this.props.modal}
           />
         </div>
       ))

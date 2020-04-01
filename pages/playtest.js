@@ -5,6 +5,7 @@ import ThrallDeck from '../lib/thrall.json'
 import Layout from '../components/playtest/Layout'
 import Hand from '../components/playtest/Hand'
 import Discard from '../components/playtest/Discard'
+import Modal from '../components/playtest/Modal'
 
 export default class playtest extends Component {
   constructor (props) {
@@ -12,6 +13,54 @@ export default class playtest extends Component {
     this.state = {
       pool: {}
     }
+    this.modal = false
+  }
+
+  modalComponent = {
+    close: () => {
+      this.modal = false
+    },
+    open: () => {
+      this.modal = true
+    },
+    load: () => {
+      if (this.modal) {
+        console.log('true!!!')
+        return (
+          <Modal
+            modal={this.modalComponent}
+            card={this.state.pool.commit.main}
+            actions={this.commitActions}
+          />
+        )
+      } else {
+        return
+      }
+    }
+  }
+
+  commitActions = {
+    commit: cardIndex => {
+      this.state.pool.commitCard(cardIndex)
+      this.modal = true
+      this.setState({ pool: this.state.pool })
+    },
+    cancel: () => {
+      this.state.pool.cancelCommit()
+      this.modal = false
+      this.setState({ pool: this.state.pool })
+    },
+    discard: () => {
+      this.state.pool.discardCommit()
+      this.modal = false
+      this.setState({ pool: this.state.pool })
+    }
+  }
+
+  commitCard = cardIndex => {
+    this.state.pool.commitCard(cardIndex)
+    this.modal = true
+    this.setState({ pool: this.state.pool })
   }
 
   drawCard = event => {
@@ -42,8 +91,6 @@ export default class playtest extends Component {
     let pool = new DeckPool(shuffledDeck)
     // set the state with new Pool
     this.setState({ pool: pool })
-
-    // this.drawCard()
   }
 
   componentDidMount () {
@@ -51,8 +98,19 @@ export default class playtest extends Component {
   }
 
   render () {
+    const styles = {
+      modalDisplay: {
+        // display: block; /* Hidden by default */
+        display: `${this.modal ? 'block' : 'none'}`
+      }
+    }
+
     return (
       <Layout>
+        <div id='myModal' className='modal' style={styles.modalDisplay}>
+          <div className='modal-content'>{this.modalComponent.load()}</div>
+        </div>
+
         <h1>Play Test</h1>
         <hr />
         <div className='container'>
@@ -70,7 +128,12 @@ export default class playtest extends Component {
             </a>
           </div>
         </div>
-        <Hand hand={this.state.pool.hand} discardCard={this.discardCard} />
+        <Hand
+          hand={this.state.pool.hand}
+          discardCard={this.discardCard}
+          modal={this.modalComponent}
+          commitCard={this.commitActions.commit}
+        />
         <hr />
         <h1>
           Discard -{' '}
@@ -117,6 +180,31 @@ export default class playtest extends Component {
             -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
             box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
             transition: all 0.4s ease 0s;
+          }
+
+          /* The Modal (background) */
+          .modal {
+            // display: block; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+          }
+
+          /* Modal Content/Box */
+          .modal-content {
+            background-color: #2c3e50;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 2rem;
+            width: 87%; /* Could be more or less, depending on screen size */
+            box-shadow: 1rem 1rem 1rem #000;
           }
         `}</style>
       </Layout>
