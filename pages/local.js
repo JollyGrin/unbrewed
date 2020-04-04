@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import DeckPool from '../lib/classes/DeckPool'
 import { makeDeck, shuffleDeck } from '../lib/deckActions'
-import ThrallDeck from '../lib/thrall.json'
+import ThrallDeck from '../lib/decks/thrall.json'
 import Card from '../components/Card'
 
 export default class local extends Component {
@@ -17,17 +17,8 @@ export default class local extends Component {
   decklist = React.createRef()
   loadDeckInput = React.createRef()
 
-  loadNewDeck = () => {
-    const newInput = JSON.parse(this.loadDeckInput.current.value)
-
-    const formattedDeck = makeDeck(newInput)
-    // Shuffle Deck
-    const shuffledDeck = shuffleDeck(formattedDeck)
-    // load a new Deck Pool
-    let pool = new DeckPool(shuffledDeck)
-    // set the state with new Pool
-    this.setState({ pool: pool })
-  }
+  
+  
 
   toggleDeck = () => {
     this.decklist.current.classList.toggle('hide')

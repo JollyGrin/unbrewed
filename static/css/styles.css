@@ -37,3 +37,9 @@
   src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
   font-weight: bold;
   font-style: italic; }
+
+@font-face {
+  font-family: 'Rubik', sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+  font-weight: normal;
+  font-style: normal; }
