@@ -17,6 +17,7 @@ export default class HomeLayout extends Component {
             type='text/css'
             href='../../static/css/styles.css'
           />
+          <link rel='shortcut icon' href='/static/favicon.ico' />
         </Head>
 
         {this.props.children}

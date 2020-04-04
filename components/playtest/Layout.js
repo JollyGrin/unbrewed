@@ -28,6 +28,7 @@ export default class Layout extends Component {
             type='text/css'
             href='../../static/css/styles.css'
           />
+          <link rel='shortcut icon' href='/static/favicon.ico' />
         </Head>
         <section>{this.props.children}</section>
         <style jsx>{`

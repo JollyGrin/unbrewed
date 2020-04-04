@@ -26,10 +26,7 @@ export default class HeroHeader extends Component {
             <h1>{this.props.hero.name}</h1>
             <h3>{this.isRanged(this.props.hero)}</h3>
           </div>
-          <div className='item-hero-desc'>
-            <p>{this.props.hero.specialAbility}</p>
-          </div>
-          <div className='item-hero'>
+          <div className='item-sidekick'>
             <h1>{this.props.sidekick.name}</h1>
             <h3>{this.isRanged(this.props.sidekick)}</h3>
           </div>
@@ -41,7 +38,11 @@ export default class HeroHeader extends Component {
             </div>
           </div>
         </div>
-
+        <div className='section'>
+          <div className='item'>
+            <p>{this.props.hero.specialAbility}</p>
+          </div>
+        </div>
         <style jsx>{`
           .section {
             font-family: 'Rubik';
@@ -53,6 +54,11 @@ export default class HeroHeader extends Component {
             display: flex;
             flex-direction: column;
           }
+          .item-sidekick {
+            align-self: auto;
+            margin: 1rem;
+          }
+
           .item-hero {
             align-self: auto;
             margin: 1rem;
