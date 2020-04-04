@@ -20,6 +20,7 @@ export default class playtest extends Component {
       pool: {}
     }
     this.modal = false
+    this.handView = true
   }
 
   loadNewDeck = deck => {
@@ -59,6 +60,19 @@ export default class playtest extends Component {
       } else {
         return
       }
+    }
+  }
+
+  handComponent = {
+    close: e => {
+      e.preventDefault()
+      this.handView = false
+      this.setState({ pool: this.state.pool })
+    },
+    open: e => {
+      e.preventDefault()
+      this.handView = true
+      this.setState({ pool: this.state.pool })
     }
   }
 
@@ -127,6 +141,9 @@ export default class playtest extends Component {
       modalDisplay: {
         // display: block; /* Hidden by default */
         display: `${this.modal ? 'block' : 'none'}`
+      },
+      handDisplay: {
+        display: `${this.handView ? '' : 'none'}`
       }
     }
 
@@ -147,7 +164,21 @@ export default class playtest extends Component {
         <div className='container'>
           <div className='item'>
             <h1>
-              Hand -{' '}
+              <a
+                onClick={e => {
+                  this.handView
+                    ? this.handComponent.close(e)
+                    : this.handComponent.open(e)
+                }}
+              >
+                {this.handView ? (
+                  <i className='fa fa-eye'></i>
+                ) : (
+                  <i className='fa fa-eye-slash'></i>
+                )}{' '}
+                Hand
+              </a>{' '}
+              -{' '}
               {this.state.pool.hand
                 ? this.state.pool.hand.length
                 : 'not loaded'}
@@ -159,12 +190,14 @@ export default class playtest extends Component {
             </a>
           </div>
         </div>
-        <Hand
-          hand={this.state.pool.hand}
-          discardCard={this.discardCard}
-          modal={this.modalComponent}
-          commitCard={this.commitActions.commit}
-        />
+        <div className='show-hand' style={styles.handDisplay}>
+          <Hand
+            hand={this.state.pool.hand}
+            discardCard={this.discardCard}
+            modal={this.modalComponent}
+            commitCard={this.commitActions.commit}
+          />
+        </div>
         <hr />
         <h1>
           Discard -{' '}
@@ -197,6 +230,11 @@ export default class playtest extends Component {
             </a>
           </div>
           <div className='item'>
+            <a href='http://reddit.com/r/unbrewed'>
+              <h3>Submit your Deck on /r/Unbrewed to be displayed here!</h3>
+            </a>
+          </div>
+          {/* <div className='item'>
             <a onClick={() => this.loadNewDeck(MandDeck)} className='button'>
               Mandalorian
             </a>
@@ -210,10 +248,10 @@ export default class playtest extends Component {
             <a onClick={() => this.loadNewDeck(DannyDeck)} className='button'>
               Danny Phantom
             </a>
-          </div>
+          </div> */}
         </div>
         <style jsx>{`
-          h1 {
+          h1 h3 {
             font-family: 'Rubik';
           }
 
