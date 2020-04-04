@@ -4,6 +4,12 @@ Playtest your homebrewed unmatched heroes.
 
 This tool was created out of desperation by a fan who doesn't have a printer to playtest cards with roommates. Thus needed a way to load homebrew decks on a device and simulate drawing, discarding, and revealing.
 
+![](https://i.imgur.com/rMTrYOp.gif)
+
+# Demo
+
+Playtest your deck at [Unbrewed.xyz](https://unbrewed.xyz)
+
 # Fork & Host Locally
 
 1. `git clone https://github.com/JollyGrin/unbrewed.git`
