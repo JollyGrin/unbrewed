@@ -6,11 +6,15 @@ const Lobby = () => {
   const router = useRouter()
   const { lobby } = router.query
 
+  const playerInput = React.createRef()
+
   return (
     <>
       <h1>Lobby: {lobby}</h1>
       <span>
-        <a href='#'>Spectate</a> or <a href='#'>Load Deck</a>
+        <a href='#'>Spectate</a> or{' '}
+        <a href={`/online/${lobby}/${playerInput.current.value}`}>Load Deck</a>
+        <input ref={playerInput}></input>
       </span>
       <hr />
     </>
