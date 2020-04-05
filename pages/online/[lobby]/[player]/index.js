@@ -1,22 +1,33 @@
-import { useRouter } from 'next/router'
+import React, { Component } from 'react'
+import { withRouter } from 'next/router'
 import Link from 'next/link'
-// import Header from '../../../components/header'
+import OnlinePlayer from '../../../../components/online/OnlinePlayer'
 
-const Player = () => {
-  const router = useRouter()
-  const { lobby, player } = router.query
+class indexPlayer extends Component {
+  constructor (props) {
+    super(props)
+    this.wsClientSubscriptionId = null
+    this.state = {
+      messages: null
+    }
+  }
 
-  return (
-    <>
-      <h1>
-        Lobby: {lobby} - Player: {player}
-      </h1>
-      <span>
-        <a href='#'>Spectate</a> or <a href='#'>Load Deck</a>
-      </span>
-      <hr />
-    </>
-  )
+  settingState = router => {
+    console.log('router', router)
+  }
+
+  render () {
+    const { lobby, player } = this.props.router.query
+    console.log('ROUTER HOME', lobby, player)
+    return (
+      <div>
+        <a href='#' onClick={() => this.settingState(query)}>
+          Lobby
+        </a>
+        <OnlinePlayer lobby={lobby} player={player} />
+      </div>
+    )
+  }
 }
 
-export default Player
+export default withRouter(indexPlayer)
