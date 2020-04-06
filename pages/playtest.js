@@ -5,12 +5,13 @@ import Layout from '../components/playtest/Layout'
 import Hand from '../components/playtest/Hand'
 import Discard from '../components/playtest/Discard'
 import Modal from '../components/playtest/Modal'
+import HeroHeader from '../components/playtest/HeroHeader'
 
 import ThrallDeck from '../lib/decks/thrall.json'
 import MandDeck from '../lib/decks/mandalorian.json'
-import PokeDeck from '../lib/decks/pokemontrainer.json'
-import DannyDeck from '../lib/decks/dannyphantom.json'
-import HeroHeader from '../components/playtest/HeroHeader'
+import JamesDeck from '../lib/decks/jamesbond.json'
+import HarryDeck from '../lib/decks/harrypotter.json'
+import VoldDeck from '../lib/decks/voldemort.json'
 
 export default class playtest extends Component {
   constructor (props) {
@@ -24,13 +25,8 @@ export default class playtest extends Component {
   }
 
   loadNewDeck = deck => {
-    let newInput
-
-    if (deck) {
-      newInput = deck
-    } else {
-      newInput = JSON.parse(this.loadDeckInput.current.value)
-    }
+    
+    const newInput = JSON.parse(deck)
 
     const formattedDeck = makeDeck(newInput)
     // Shuffle Deck
@@ -218,7 +214,7 @@ export default class playtest extends Component {
         <center>
           <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
           <br />
-          <a className='button' onClick={this.loadNewDeck}>
+          <a className='button' onClick={() => this.loadNewDeck(this.loadDeckInput.current.value)}>
             Load Deck
           </a>
         </center>
@@ -230,26 +226,31 @@ export default class playtest extends Component {
             </a>
           </div>
           <div className='item'>
-            <a href='http://reddit.com/r/unbrewed'>
-              <h3>Submit your Deck on /r/Unbrewed to be displayed here!</h3>
+            <a onClick={() => this.loadNewDeck(JamesDeck)} className='button'>
+              James Bond
             </a>
           </div>
-          {/* <div className='item'>
+          <div className='item'>
             <a onClick={() => this.loadNewDeck(MandDeck)} className='button'>
               Mandalorian
             </a>
           </div>
           <div className='item'>
-            <a onClick={() => this.loadNewDeck(PokeDeck)} className='button'>
-              Pokemon Trainer
+            <a onClick={() => this.loadNewDeck(HarryDeck)} className='button'>
+              Harry Potter
             </a>
           </div>
           <div className='item'>
-            <a onClick={() => this.loadNewDeck(DannyDeck)} className='button'>
-              Danny Phantom
+            <a onClick={() => this.loadNewDeck(VoldDeck)} className='button'>
+              Voldemort
             </a>
-          </div> */}
+          </div>
         </div>
+        <center>
+          <a href='http://reddit.com/r/unbrewed'>
+            <h3>Submit your Deck on /r/Unbrewed to be displayed here!</h3>
+          </a>
+        </center>
         <style jsx>{`
           h1 h3 {
             font-family: 'Rubik';
