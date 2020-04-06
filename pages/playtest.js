@@ -26,7 +26,7 @@ export default class playtest extends Component {
 
   loadNewDeck = deck => {
     
-    const newInput = JSON.parse(deck)
+    const newInput = deck
 
     const formattedDeck = makeDeck(newInput)
     // Shuffle Deck
@@ -214,7 +214,7 @@ export default class playtest extends Component {
         <center>
           <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
           <br />
-          <a className='button' onClick={() => this.loadNewDeck(this.loadDeckInput.current.value)}>
+          <a className='button' onClick={() => this.loadNewDeck(JSON.parse(this.loadDeckInput.current.value))}>
             Load Deck
           </a>
         </center>
