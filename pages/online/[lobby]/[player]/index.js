@@ -2,29 +2,42 @@ import React, { Component } from 'react'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 import OnlinePlayer from '../../../../components/online/OnlinePlayer'
+import OnlineLayout from '../../../../components/online/OnlineLayout'
 
 class indexPlayer extends Component {
   constructor (props) {
     super(props)
-    this.wsClientSubscriptionId = null
-    this.state = {
-      messages: null
-    }
+    this.state = { socket: {}, playerState: {}, gameState: {} }
   }
 
-  settingState = router => {
-    console.log('router', router)
+  processState = ({
+    socket = this.state.socket,
+    playerState = this.state.playerState,
+    gameState = this.state.gameState
+  }) => {
+    // console.log('state update', socket, playerState, gameState)
+    this.setState({ socket, playerState, gameState })
+    console.log('process index - setting gamestate', playerState, gameState)
   }
+
+  componentDidMount () {}
 
   render () {
-    const { lobby, player } = this.props.router.query
+    const { lobby = '', player = '' } = this.props.router.query
     console.log('ROUTER HOME', lobby, player)
     return (
       <div>
-        <a href='#' onClick={() => this.settingState(query)}>
-          Lobby
-        </a>
-        <OnlinePlayer lobby={lobby} player={player} />
+        {!lobby ? (
+          ''
+        ) : (
+          <OnlineLayout lobby={lobby} player={player}>
+            <OnlinePlayer
+              lobby={lobby}
+              player={player}
+              processState={this.processState}
+            />
+          </OnlineLayout>
+        )}
       </div>
     )
   }
