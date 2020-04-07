@@ -6,6 +6,7 @@ import Hand from '../components/playtest/Hand'
 import Discard from '../components/playtest/Discard'
 import Modal from '../components/playtest/Modal'
 import HeroHeader from '../components/playtest/HeroHeader'
+import PlayTestDeck from '../components/playtest/PlayTestDeck'
 
 import ThrallDeck from '../lib/decks/thrall.json'
 import MandDeck from '../lib/decks/mandalorian.json'
@@ -22,10 +23,10 @@ export default class playtest extends Component {
     }
     this.modal = false
     this.handView = true
+    this.deckView = true
   }
 
   loadNewDeck = deck => {
-    
     const newInput = deck
 
     const formattedDeck = makeDeck(newInput)
@@ -68,6 +69,19 @@ export default class playtest extends Component {
     open: e => {
       e.preventDefault()
       this.handView = true
+      this.setState({ pool: this.state.pool })
+    }
+  }
+
+  deckComponent = {
+    close: e => {
+      e.preventDefault()
+      this.deckView = false
+      this.setState({ pool: this.state.pool })
+    },
+    open: e => {
+      e.preventDefault()
+      this.deckView = true
       this.setState({ pool: this.state.pool })
     }
   }
@@ -140,6 +154,9 @@ export default class playtest extends Component {
       },
       handDisplay: {
         display: `${this.handView ? '' : 'none'}`
+      },
+      deckDisplay: {
+        display: `${this.deckView ? '' : 'none'}`
       }
     }
 
@@ -207,14 +224,35 @@ export default class playtest extends Component {
         />
         <hr />
         <h1>
-          Deck -{' '}
-          {this.state.pool.deck ? this.state.pool.deck.length : 'not loaded'}
+          <a
+            onClick={e => {
+              this.deckView
+                ? this.deckComponent.close(e)
+                : this.deckComponent.open(e)
+            }}
+          >
+            {this.deckView ? (
+              <i className='fa fa-eye'></i>
+            ) : (
+              <i className='fa fa-eye-slash'></i>
+            )}{' '}
+            Deck
+          </a>{' '}
+          - {this.state.pool.deck ? this.state.pool.deck.length : 'not loaded'}
         </h1>
+        <div className='show-deck' style={styles.deckDisplay}>
+          <PlayTestDeck deck={this.state.pool.deck} />
+        </div>
         <hr />
         <center>
           <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
           <br />
-          <a className='button' onClick={() => this.loadNewDeck(JSON.parse(this.loadDeckInput.current.value))}>
+          <a
+            className='button'
+            onClick={() =>
+              this.loadNewDeck(JSON.parse(this.loadDeckInput.current.value))
+            }
+          >
             Load Deck
           </a>
         </center>

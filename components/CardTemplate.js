@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import CardTemplate from '../CardTemplate'
 
-export default class PlayTestCard extends Component {
+export default class CardTemplate extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -13,17 +12,6 @@ export default class PlayTestCard extends Component {
     const { basicText, immediateText, duringText, afterText } = this.props.card
   }
 
-  moveHandToDiscard = () => {
-    this.props.discardCard(this.props.handIndex)
-  }
-
-  commitCard = () => {
-    this.props.commitCard(this.props.handIndex)
-  }
-
-  componentDidMount () {
-    // console.log(this.props)
-  }
   render () {
     const styles = {
       bgImg: {
@@ -36,16 +24,50 @@ export default class PlayTestCard extends Component {
     }
     return (
       <Fragment>
-        <div className='nav'>
-          <a onClick={() => this.commitCard()}>
-            <i className='fas fa-angle-up'></i>
-          </a>
-          <a></a>
-          <a onClick={() => this.moveHandToDiscard()}>
-            <i className='fas fa-angle-down'></i>
-          </a>
+        <div className={`base ${this.props.card.type}`}>
+          <div className='content'>
+            <span className='help'>{this.props.card.characterName}</span>
+            <h1>{this.props.card.title.substring(0, 16)}</h1>
+            <br />
+            <div className='flexbox'>
+              <div className='value'>
+                {this.props.card.type !== 'scheme'
+                  ? this.props.card.value
+                  : 'ϟ'}
+              </div>
+              <div className='image-container' style={styles.bgImg}></div>
+            </div>
+            <span className='boost'>{this.props.card.boost}</span>
+            <div className='card-text'>
+              {this.props.card.basicText ? (
+                <span>{this.props.card.basicText}</span>
+              ) : (
+                ''
+              )}{' '}
+              {this.props.card.basicText ? <br /> : ''}
+              {this.props.card.immediateText ? 'Immediately' : ''}
+              {this.props.card.immediateText ? (
+                <span>{this.props.card.immediateText}</span>
+              ) : (
+                ''
+              )}{' '}
+              {this.props.card.immediateText ? <br /> : ''}
+              {this.props.card.duringText ? 'During' : ''}
+              {this.props.card.duringText ? (
+                <span>{this.props.card.duringText}</span>
+              ) : (
+                ''
+              )}
+              {this.props.card.duringText ? <br /> : ''}
+              {this.props.card.afterText ? 'After' : ''}
+              {this.props.card.afterText ? (
+                <span>{this.props.card.afterText}</span>
+              ) : (
+                ''
+              )}
+            </div>
+          </div>
         </div>
-        <CardTemplate card={this.props.card} />
 
         <style jsx>{`
           .card-text span {
