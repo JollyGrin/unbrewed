@@ -17,7 +17,7 @@ class indexPlayer extends Component {
   }) => {
     // console.log('state update', socket, playerState, gameState)
     this.setState({ socket, playerState, gameState })
-    console.log('process index - setting gamestate', playerState, gameState)
+    console.log('process index - setting gamestates', playerState, gameState)
   }
 
   componentDidMount () {}
