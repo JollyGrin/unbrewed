@@ -7,6 +7,10 @@ export default class PlayTestDeck extends Component {
     this.state = { deck: {} }
   }
 
+  drawDeck = cardIndex => {
+    this.props.drawDeck(cardIndex)
+  }
+
   renderDeck = () => {
     if (this.props.deck) {
       return this.props.deck.map((card, index) => (
@@ -14,16 +18,14 @@ export default class PlayTestDeck extends Component {
           <div className='dropdown'>
             <span>{card.title}</span>
             <div className='dropdown-content'>
-              <div className='nav'>
-                <a>
-                  <i className='fas fa-angle-up'></i>
-                </a>
-                <a></a>
-                <a onClick={() => console.log('hi')}>
-                  <i className='fas fa-angle-down'></i>
-                </a>
+              <div className='navDeck'>
+                <center>
+                  <a onClick={() => this.drawDeck(index)}>
+                    <i className='deckIcon fas fa-hands'></i>
+                  </a>
+                </center>
               </div>
-              <CardTemplate card={card} />
+              <CardTemplate className='cardTemplate' card={card} />
             </div>
           </div>
         </li>
@@ -53,14 +55,22 @@ export default class PlayTestDeck extends Component {
             font-family: Archivo Narrow;
           }
 
-          .nav {
+          .navDeck {
             display: flex;
-            opacity: 0.05;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
           }
 
-          .nav a {
+          .navDeck a {
             align-self: auto;
             margin: auto;
+          }
+
+          .navDeck a .deckIcon {
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            font-size: 2rem;
           }
         `}</style>
       </Fragment>

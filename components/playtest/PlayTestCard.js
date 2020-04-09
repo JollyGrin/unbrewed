@@ -21,6 +21,10 @@ export default class PlayTestCard extends Component {
     this.props.commitCard(this.props.handIndex)
   }
 
+  deckCard = () => {
+    this.props.deckCard(this.props.handIndex)
+  }
+
   componentDidMount () {
     // console.log(this.props)
   }
@@ -40,7 +44,9 @@ export default class PlayTestCard extends Component {
           <a onClick={() => this.commitCard()}>
             <i className='fas fa-angle-up'></i>
           </a>
-          <a></a>
+          <a onClick={() => this.deckCard()}>
+            <i className='fas fa-minus-circle'></i>
+          </a>
           <a onClick={() => this.moveHandToDiscard()}>
             <i className='fas fa-angle-down'></i>
           </a>

@@ -23,7 +23,7 @@ export default class playtest extends Component {
     }
     this.modal = false
     this.handView = true
-    this.deckView = true
+    this.deckView = false
   }
 
   loadNewDeck = deck => {
@@ -77,6 +77,7 @@ export default class playtest extends Component {
     close: e => {
       e.preventDefault()
       this.deckView = false
+      this.shuffleTheDeck()
       this.setState({ pool: this.state.pool })
     },
     open: e => {
@@ -126,6 +127,21 @@ export default class playtest extends Component {
 
   drawDiscard = cardIndex => {
     this.state.pool.drawDiscard(cardIndex)
+    this.setState({ pool: this.state.pool })
+  }
+
+  drawDeck = cardIndex => {
+    this.state.pool.drawDeck(cardIndex)
+    this.setState({ pool: this.state.pool })
+  }
+
+  deckCard = cardIndex => {
+    this.state.pool.deckCard(cardIndex)
+    this.setState({ pool: this.state.pool })
+  }
+
+  shuffleTheDeck = () => {
+    this.state.pool.shuffleDeck()
     this.setState({ pool: this.state.pool })
   }
 
@@ -209,6 +225,7 @@ export default class playtest extends Component {
             discardCard={this.discardCard}
             modal={this.modalComponent}
             commitCard={this.commitActions.commit}
+            deckCard={this.deckCard}
           />
         </div>
         <hr />
@@ -241,7 +258,7 @@ export default class playtest extends Component {
           - {this.state.pool.deck ? this.state.pool.deck.length : 'not loaded'}
         </h1>
         <div className='show-deck' style={styles.deckDisplay}>
-          <PlayTestDeck deck={this.state.pool.deck} />
+          <PlayTestDeck drawDeck={this.drawDeck} deck={this.state.pool.deck} />
         </div>
         <hr />
         <center>
