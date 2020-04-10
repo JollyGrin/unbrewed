@@ -4,34 +4,63 @@ import wsClient from '../../lib/ws/websocketClient'
 export default class OnlinePlayer extends Component {
   constructor (props) {
     super(props)
-    this.state = { websocket: {}, socket: {}, playerState: {}, gameState: {} }
+    this.state = { player: [] }
     this.connection = false
   }
 
   connectWS = () => {
     const { lobby, player } = this.props
-    console.log('router info', lobby, player)
     wsClient.connect(lobby, player)
-    const parsedWS = JSON.parse(JSON.stringify(wsClient))
     this.connection = true
-    this.setState({ websocket: parsedWS })
+
+    console.log('connected:', wsClient.gameState)
+
+    this.props.processState({
+      playerState: wsClient.playerState,
+      gameState: wsClient.gameState
+    })
   }
 
   sendMessage = () => {
+    console.log('message sent!')
     wsClient.sendData({
       msgtype: 'playerstate',
       content: { test: 'abc' },
       error: null
     })
+    console.log('sm:', wsClient)
   }
 
-  processState = ({
-    socket = this.state.socket,
-    playerState = this.state.playerState,
-    gameState = this.state.gameState
-  }) => {
-    console.log('state update', socket, playerState, gameState)
-    this.setState({ socket, playerState, gameState })
+  mapRender = {
+    playerNames: () => {
+      let playerArray = []
+      for (let player in this.props.state.gameState) {
+        if (player !== 'defaultname') {
+          playerArray.push(player)
+        }
+      }
+      console.log('playerArray', playerArray)
+      return playerArray.map((player, index) => (
+        <div key={index + Math.random()} className='player-item'>
+          {player}
+        </div>
+      ))
+    },
+    gameState: () => {
+      this.props.state.gameState
+      let gameStateArray = []
+      for (let player in this.props.state.gameState) {
+        if (player !== 'defaultname') {
+          gameStateArray.push(this.props.state.gameState[player])
+        }
+      }
+      console.log('gameStateArray', gameStateArray)
+      return gameStateArray.map((player, index) => (
+        <div key={index + Math.random()} className='player-item'>
+          {JSON.stringify(this.props.state.gameState[player])}
+        </div>
+      ))
+    }
   }
 
   render () {
@@ -51,17 +80,19 @@ export default class OnlinePlayer extends Component {
           </a>
         </div>
         <div className='playerNames' style={styles.fieldDisplay}>
-          <div className='container'>
-            <div className='item'>{this.props.lobby}</div>
-            <div className='item'>{this.props.player}</div>
-
-            {console.log('state in dom', this.state.websocket)}
-          </div>
+          <div className='container'>{this.mapRender.playerNames()}</div>
+          {this.mapRender.gameState()}
         </div>
 
-        <style jsx>{`
+        <style global jsx>{`
           .container {
             display: flex;
+          }
+
+          .container .player-item {
+            margin: 1rem;
+            font-family: BebasNeueRegular;
+            font-size: 1.2rem;
           }
 
           .item {

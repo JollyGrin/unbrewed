@@ -3,6 +3,7 @@ import { withRouter } from 'next/router'
 import Link from 'next/link'
 import OnlinePlayer from '../../../../components/online/OnlinePlayer'
 import OnlineLayout from '../../../../components/online/OnlineLayout'
+import Overview from '../../../../components/online/PlayerPool/Overview'
 
 class indexPlayer extends Component {
   constructor (props) {
@@ -17,28 +18,32 @@ class indexPlayer extends Component {
   }) => {
     // console.log('state update', socket, playerState, gameState)
     this.setState({ socket, playerState, gameState })
-    console.log('process index - setting gamestates', playerState, gameState)
   }
 
   componentDidMount () {}
 
   render () {
     const { lobby = '', player = '' } = this.props.router.query
-    console.log('ROUTER HOME', lobby, player)
     return (
-      <div>
-        {!lobby ? (
-          ''
-        ) : (
-          <OnlineLayout lobby={lobby} player={player}>
-            <OnlinePlayer
-              lobby={lobby}
-              player={player}
-              processState={this.processState}
-            />
-          </OnlineLayout>
-        )}
-      </div>
+      <>
+        <div className='OnlineDock'>
+          {!lobby ? (
+            ''
+          ) : (
+            <OnlineLayout lobby={lobby} player={player}>
+              <OnlinePlayer
+                lobby={lobby}
+                player={player}
+                processState={this.processState}
+                state={this.state}
+              />
+            </OnlineLayout>
+          )}
+        </div>
+        <br />
+        <hr />
+        <Overview />
+      </>
     )
   }
 }
