@@ -187,7 +187,7 @@ export default class playtest extends Component {
             sidekick={this.state.pool.sidekick}
           />
         ) : (
-          <h1>Load Deck</h1>
+          <h1>Loading Deck...</h1>
         )}
         <hr />
         <div className='container'>

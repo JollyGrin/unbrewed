@@ -1,0 +1,179 @@
+{
+  "name": "",
+  "appearance": {
+    "isPNP": false,
+    "borderColour": "#000000",
+    "highlightColour": "#800000",
+    "patternName": "Tiny Checkers"
+  },
+  "hero": {
+    "name": "HARRY POTTER",
+    "isRanged": true,
+    "hp": 13,
+    "move": 2,
+    "specialAbility": "At the end of your turn, if Harry Potter played 1 or more spell cards (not including POLYJUICE POTION), you may draw 1 card. If CLOTHES is in your starting hand, shuffle and redraw your starting hand until it is free of CLOTHES."
+  },
+  "sidekick": {
+    "name": "DOBBY",
+    "isRanged": true,
+    "hp": 6,
+    "quantity": 1,
+    "quote": "I work best alone"
+  },
+  "cards": [
+    {
+      "quantity": 3,
+      "title": "EXPELLIARMUS",
+      "type": "attack",
+      "value": 2,
+      "boost": 3,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Discard 1 card at random from the opponent's hand. If you won the combat, discard 2 cards at random from the opponent's hand.",
+      "imageUrl": " https://i.stack.imgur.com/FC8vZ.jpg",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 3,
+      "title": "PETRIFICUS TOTALUS",
+      "type": "attack",
+      "value": 4,
+      "boost": 1,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If you won the combat, the opposing fighter may only take one action next turn. The opponent may still take actions with other fighters as normal.",
+      "imageUrl": " https://blueprint-api-production.s3.amazonaws.com/uploads/story/thumbnail/10483/harry_potter_duel_thumb.jpg",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 2,
+      "title": "ACCIO",
+      "type": "scheme",
+      "value": 1,
+      "boost": 2,
+      "basicText": "You may choose any card in your discard pile and add it to your hand.",
+      "imageUrl": " https://i.insider.com/57b1f3e9dd089566768b4604?width=1100&format=jpeg&auto=webp",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 2,
+      "title": "LUMOS",
+      "type": "scheme",
+      "value": 1,
+      "boost": 2,
+      "basicText": "Choose 1 of the following 3 effects: \n- Look at the top 3 cards of your deck\n- Look at 2 cards from an opponent's hand \n- Look at the top 3 cards of an opponent's deck",
+      "imageUrl": " https://imgix.bustle.com/rehost/2016/11/1/a8fd7bac-625d-4ff1-909a-37524864253e.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 1,
+      "title": "EXPECTO PATRONUM",
+      "type": "versatile",
+      "value": 5,
+      "boost": 4,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "If you used this card to attack, gain 1 action. If you used this card to defend, Harry Potter recovers 3 HP.",
+      "imageUrl": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdU7wMRiWUfoJ-_L0JnErxPPo8tJzjKIP4AO5GTT1wJ1gO-f49",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 1,
+      "title": "POLYJUICE POTION",
+      "type": "scheme",
+      "value": 1,
+      "boost": 2,
+      "basicText": "Look at the top card of an opponent's deck and put it facedown in front of you. If it is an eligible ATTACK, VERSATILE, or SCHEME card, you may play the card as your own on this turn without it counting as an action. Ignore all non-applicable effects, and return the card to your opponent's discard pile after using it or ending your turn.",
+      "imageUrl": " https://i.pinimg.com/originals/74/27/39/7427392fade7c273c0b74feaaf4710de.jpg",
+      "characterName": "HARRY"
+    },
+    {
+      "quantity": 1,
+      "title": "CLOTHES",
+      "type": "scheme",
+      "value": 1,
+      "boost": 4,
+      "basicText": "Dobby recovers 3 HP. After playing this card, Dobby is \"FREE\" and remains so for the rest of the game.",
+      "imageUrl": " http://ramblingeveron.com/wp-content/uploads/2016/07/dobby-harry-potter-quiz-2017-800x445.jpg",
+      "characterName": "DOBBY"
+    },
+    {
+      "quantity": 2,
+      "title": "APPARATE",
+      "type": "scheme",
+      "value": 1,
+      "boost": 3,
+      "basicText": "Place Dobby in any open space on the board. If Harry Potter was adjacent to Dobby before Dobby apparated, you may also place Harry Potter in any open space adjacent to Dobby's new space.",
+      "imageUrl": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGIJrgHvAbVqzvCUjvEg7Ih6yRKTMs0jEs9qwf0mzIUbZVZh7c",
+      "characterName": "DOBBY"
+    },
+    {
+      "quantity": 3,
+      "title": "YOU SHALL NOT HARM HARRY POTTER!",
+      "type": "versatile",
+      "value": 3,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": "If Dobby is \"FREE\", double this card's value.",
+      "afterText": "If Harry Potter has less than 7 health, draw 1 card.",
+      "imageUrl": " https://cdn.shopify.com/s/files/1/2113/8949/products/HP223_SHOPIFY.jpg?v=1561510889",
+      "characterName": "DOBBY"
+    },
+    {
+      "quantity": 3,
+      "title": "FEINT",
+      "type": "versatile",
+      "value": 2,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": "Cancel all effects on your opponent's card.",
+      "duringText": null,
+      "afterText": null,
+      "imageUrl": " https://api.time.com/wp-content/uploads/2014/07/301386_full1.jpg?w=800&quality=85",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "REGROUP",
+      "type": "versatile",
+      "value": 1,
+      "boost": 2,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "imageUrl": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-MqCmXQAmLb6hhXemILAZJH-Yp2-Sc3q-07LX7Ko7YxSM6iWZQA&s",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "DASH",
+      "type": "versatile",
+      "value": 3,
+      "boost": 1,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Move your fighter up to 3 spaces.",
+      "imageUrl": " https://cdn.shopify.com/s/files/1/1645/0221/files/Harry-Potter-Broom410.jpg",
+      "characterName": "ANY"
+    },
+    {
+      "quantity": 3,
+      "title": "SNIPE",
+      "type": "versatile",
+      "value": 3,
+      "boost": 1,
+      "basicText": null,
+      "immediateText": null,
+      "duringText": null,
+      "afterText": "Draw 1 card.",
+      "imageUrl": " https://cdn.shopify.com/s/files/1/2113/8949/products/HP202_SHOPIFY.jpg?v=1561509842",
+      "characterName": "ANY"
+    }
+  ]
+}
