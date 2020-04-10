@@ -6,58 +6,38 @@ export default class OnlinePlayer extends Component {
     super(props)
     this.state = { player: [] }
     this.connection = false
+    this.textarea = React.createRef()
   }
 
   connectWS = () => {
     const { lobby, player } = this.props
-    wsClient.connect(lobby, player)
     this.connection = true
+    wsClient.connect(lobby, player, this.props.processState)
 
-    console.log('connected:', wsClient.gameState)
-
-    this.props.processState({
-      playerState: wsClient.playerState,
-      gameState: wsClient.gameState
-    })
+    console.log('connected:', wsClient)
   }
 
   sendMessage = () => {
     console.log('message sent!')
-    wsClient.sendData({
-      msgtype: 'playerstate',
-      content: { test: 'abc' },
-      error: null
-    })
+    wsClient.sendData(
+      {
+        msgtype: 'playerstate',
+        content: { test: this.textarea.current.value },
+        error: null
+      },
+      this.props.processState
+    )
     console.log('sm:', wsClient)
   }
 
   mapRender = {
     playerNames: () => {
-      let playerArray = []
-      for (let player in this.props.state.gameState) {
-        if (player !== 'defaultname') {
-          playerArray.push(player)
-        }
-      }
+      const playerArray = Object.entries(this.props.state.gameState)
+
       console.log('playerArray', playerArray)
       return playerArray.map((player, index) => (
         <div key={index + Math.random()} className='player-item'>
-          {player}
-        </div>
-      ))
-    },
-    gameState: () => {
-      this.props.state.gameState
-      let gameStateArray = []
-      for (let player in this.props.state.gameState) {
-        if (player !== 'defaultname') {
-          gameStateArray.push(this.props.state.gameState[player])
-        }
-      }
-      console.log('gameStateArray', gameStateArray)
-      return gameStateArray.map((player, index) => (
-        <div key={index + Math.random()} className='player-item'>
-          {JSON.stringify(this.props.state.gameState[player])}
+          {JSON.stringify(player)}
         </div>
       ))
     }
@@ -81,7 +61,13 @@ export default class OnlinePlayer extends Component {
         </div>
         <div className='playerNames' style={styles.fieldDisplay}>
           <div className='container'>{this.mapRender.playerNames()}</div>
-          {this.mapRender.gameState()}
+        </div>
+        <br />
+        <div className='input-box'>
+          <textarea ref={this.textarea}></textarea>
+          <a onClick={() => this.sendMessage()} className='button'>
+            Submit
+          </a>
         </div>
 
         <style global jsx>{`

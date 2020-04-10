@@ -16,7 +16,7 @@ class indexPlayer extends Component {
     playerState = this.state.playerState,
     gameState = this.state.gameState
   }) => {
-    // console.log('state update', socket, playerState, gameState)
+    console.log('state update', socket, playerState, gameState)
     this.setState({ socket, playerState, gameState })
   }
 
