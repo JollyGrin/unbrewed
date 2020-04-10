@@ -8,7 +8,11 @@ import Overview from '../../../../components/online/PlayerPool/Overview'
 class indexPlayer extends Component {
   constructor (props) {
     super(props)
-    this.state = { socket: {}, playerState: {}, gameState: {} }
+    this.state = {
+      socket: {},
+      playerState: {},
+      gameState: { gid: {}, players: {} }
+    }
   }
 
   processState = ({

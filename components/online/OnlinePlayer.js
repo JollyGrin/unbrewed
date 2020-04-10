@@ -32,7 +32,13 @@ export default class OnlinePlayer extends Component {
 
   mapRender = {
     playerNames: () => {
-      const playerArray = Object.entries(this.props.state.gameState)
+      // const { players } = this.props.state.gameState
+      console.log('players', this.props.state.gameState)
+      const playerArray = Object.entries(this.props.state.gameState.players)
+
+      // const playerArray = Object.keys(this.props.state.gameState.players)
+
+      console.log('playerArray', playerArray)
 
       console.log('playerArray', playerArray)
       return playerArray.map((player, index) => (
