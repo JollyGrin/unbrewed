@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import wsClient from '../../lib/ws/websocketClient'
+import PlayerBoxInfo from './PlayerBoxInfo'
 
 export default class OnlinePlayer extends Component {
   constructor (props) {
@@ -14,18 +15,35 @@ export default class OnlinePlayer extends Component {
     this.props.wsClient.connect(lobby, player, this.props.processState)
   }
 
+  // sendMessage = () => {
+  //   const testMSG = { test: this.textarea.current.value }
+  //   console.log('testMSG', testMSG)
+  //   this.props.wsClient.sendData(testMSG)
+  // }
+
+  conditionalRender = {
+    playerNames: (playerName, playerPool, index) => {
+      if (playerName !== 'defaultname') {
+        return (
+          <div key={index + Math.random()} className='player-item'>
+            <PlayerBoxInfo
+              player={playerName}
+              playerPool={playerPool}
+              playerIndex={index}
+            />
+          </div>
+        )
+      }
+    }
+  }
+
   mapRender = {
     playerNames: () => {
       const playerArray = Object.entries(this.props.state.gameState.players)
 
-      return playerArray.map((player, index) => (
-        <div key={index + Math.random()} className='player-item'>
-          {/* {JSON.stringify(player[0])} */}
-          {player[0] !== 'defaultname' ? player[0] : ''}
-          <br />
-          {player[0] !== 'defaultname' ? JSON.stringify(player[1]) : ''}
-        </div>
-      ))
+      return playerArray.map((player, index) => {
+        return this.conditionalRender.playerNames(player[0], player[1], index)
+      })
     }
   }
 
@@ -56,8 +74,6 @@ export default class OnlinePlayer extends Component {
 
           .container .player-item {
             margin: 1rem;
-            font-family: BebasNeueRegular;
-            font-size: 1.2rem;
           }
 
           .item {
