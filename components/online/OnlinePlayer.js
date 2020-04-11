@@ -6,44 +6,24 @@ export default class OnlinePlayer extends Component {
     super(props)
     this.state = { player: [] }
     this.connection = false
-    this.textarea = React.createRef()
   }
 
   connectWS = () => {
     const { lobby, player } = this.props
     this.connection = true
-    wsClient.connect(lobby, player, this.props.processState)
-
-    console.log('connected:', wsClient)
-  }
-
-  sendMessage = () => {
-    console.log('message sent!')
-    wsClient.sendData(
-      {
-        msgtype: 'playerstate',
-        content: { test: this.textarea.current.value },
-        error: null
-      },
-      this.props.processState
-    )
-    console.log('sm:', wsClient)
+    this.props.wsClient.connect(lobby, player, this.props.processState)
   }
 
   mapRender = {
     playerNames: () => {
-      // const { players } = this.props.state.gameState
-      console.log('players', this.props.state.gameState)
       const playerArray = Object.entries(this.props.state.gameState.players)
 
-      // const playerArray = Object.keys(this.props.state.gameState.players)
-
-      console.log('playerArray', playerArray)
-
-      console.log('playerArray', playerArray)
       return playerArray.map((player, index) => (
         <div key={index + Math.random()} className='player-item'>
-          {JSON.stringify(player)}
+          {/* {JSON.stringify(player[0])} */}
+          {player[0] !== 'defaultname' ? player[0] : ''}
+          <br />
+          {player[0] !== 'defaultname' ? JSON.stringify(player[1]) : ''}
         </div>
       ))
     }
@@ -67,13 +47,6 @@ export default class OnlinePlayer extends Component {
         </div>
         <div className='playerNames' style={styles.fieldDisplay}>
           <div className='container'>{this.mapRender.playerNames()}</div>
-        </div>
-        <br />
-        <div className='input-box'>
-          <textarea ref={this.textarea}></textarea>
-          <a onClick={() => this.sendMessage()} className='button'>
-            Submit
-          </a>
         </div>
 
         <style global jsx>{`

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import OnlinePlayer from '../../../../components/online/OnlinePlayer'
 import OnlineLayout from '../../../../components/online/OnlineLayout'
 import Overview from '../../../../components/online/PlayerPool/Overview'
+import wsClient from '../../../../lib/ws/websocketClient'
 
 class indexPlayer extends Component {
   constructor (props) {
@@ -24,6 +25,10 @@ class indexPlayer extends Component {
     this.setState({ socket, playerState, gameState })
   }
 
+  sendMessageTest = () => {
+    return 'sendmessage'
+  }
+
   componentDidMount () {}
 
   render () {
@@ -36,6 +41,7 @@ class indexPlayer extends Component {
           ) : (
             <OnlineLayout lobby={lobby} player={player}>
               <OnlinePlayer
+                wsClient={wsClient}
                 lobby={lobby}
                 player={player}
                 processState={this.processState}
@@ -46,7 +52,12 @@ class indexPlayer extends Component {
         </div>
         <br />
         <hr />
-        <Overview />
+        <Overview
+          lobby={lobby}
+          player={player}
+          wsClient={wsClient}
+          processState={this.processState}
+        />
       </>
     )
   }
