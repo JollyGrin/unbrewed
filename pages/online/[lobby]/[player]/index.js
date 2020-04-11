@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
+import OnlineHead from '../../../../components/online/OnlineHead'
 import OnlinePlayer from '../../../../components/online/OnlinePlayer'
 import OnlineLayout from '../../../../components/online/OnlineLayout'
 import Overview from '../../../../components/online/PlayerPool/Overview'
@@ -35,6 +36,7 @@ class indexPlayer extends Component {
     const { lobby = '', player = '' } = this.props.router.query
     return (
       <>
+        <OnlineHead lobby={lobby} player={player} />
         <div className='OnlineDock'>
           {!lobby ? (
             ''
