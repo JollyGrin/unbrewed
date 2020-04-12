@@ -25,9 +25,6 @@ export default class PlayTestCard extends Component {
     this.props.deckCard(this.props.handIndex)
   }
 
-  componentDidMount () {
-    // console.log(this.props)
-  }
   render () {
     const styles = {
       bgImg: {

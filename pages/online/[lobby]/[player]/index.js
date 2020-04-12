@@ -55,6 +55,7 @@ class indexPlayer extends Component {
         <br />
         <hr />
         <Overview
+          state={this.state}
           lobby={lobby}
           player={player}
           wsClient={wsClient}

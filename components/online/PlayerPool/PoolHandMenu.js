@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
+import PoolCardTemplate from './PoolCardTemplate'
 
-export default class PlayTestModalCard extends Component {
+export default class PoolHandMenu extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -10,6 +11,18 @@ export default class PlayTestModalCard extends Component {
 
   displayText = () => {
     const { basicText, immediateText, duringText, afterText } = this.props.card
+  }
+
+  moveHandToDiscard = () => {
+    this.props.discardCard(this.props.handIndex)
+  }
+
+  commitCard = () => {
+    this.props.commitCard(this.props.handIndex)
+  }
+
+  deckCard = () => {
+    this.props.deckCard(this.props.handIndex)
   }
 
   render () {
@@ -24,50 +37,18 @@ export default class PlayTestModalCard extends Component {
     }
     return (
       <Fragment>
-        <div className={`base ${this.props.card.type}`}>
-          <div className='content'>
-            <span className='help'>{this.props.card.characterName}</span>
-            <h1>{this.props.card.title.substring(0, 18)}</h1>
-            <br />
-            <div className='flexbox'>
-              <div className='value'>
-                {this.props.card.type !== 'scheme'
-                  ? this.props.card.value
-                  : 'ϟ'}
-              </div>
-              <div className='image-container' style={styles.bgImg}></div>
-            </div>
-            <span className='boost'>{this.props.card.boost}</span>
-            <div className='card-text'>
-              {this.props.card.basicText ? (
-                <span>{this.props.card.basicText}</span>
-              ) : (
-                ''
-              )}{' '}
-              {this.props.card.basicText ? <br /> : ''}
-              {this.props.card.immediateText ? 'Immediately' : ''}
-              {this.props.card.immediateText ? (
-                <span>{this.props.card.immediateText}</span>
-              ) : (
-                ''
-              )}{' '}
-              {this.props.card.immediateText ? <br /> : ''}
-              {this.props.card.duringText ? 'During' : ''}
-              {this.props.card.duringText ? (
-                <span>{this.props.card.duringText}</span>
-              ) : (
-                ''
-              )}
-              {this.props.card.duringText ? <br /> : ''}
-              {this.props.card.afterText ? 'After' : ''}
-              {this.props.card.afterText ? (
-                <span>{this.props.card.afterText}</span>
-              ) : (
-                ''
-              )}
-            </div>
-          </div>
+        <div className='nav'>
+          <a onClick={() => this.commitCard()}>
+            <i className='fas fa-angle-up'></i>
+          </a>
+          <a onClick={() => this.deckCard()}>
+            <i className='fas fa-minus-circle'></i>
+          </a>
+          <a onClick={() => this.moveHandToDiscard()}>
+            <i className='fas fa-angle-down'></i>
+          </a>
         </div>
+        <PoolCardTemplate card={this.props.card} />
 
         <style jsx>{`
           .card-text span {
@@ -99,6 +80,12 @@ export default class PlayTestModalCard extends Component {
             opacity: 1;
           }
 
+          .help {
+            position: absolute;
+            top: 1.5rem;
+            font-size: 0.7rem;
+          }
+
           .value {
             font-size: 2rem;
             margin-top: 3rem;
@@ -112,7 +99,6 @@ export default class PlayTestModalCard extends Component {
           .base {
             font-family: BebasNeueRegular;
             height: 17rem;
-            width: 12rem;
             margin: 0.1rem;
             border-radius: 0.5rem;
           }
@@ -121,14 +107,9 @@ export default class PlayTestModalCard extends Component {
           }
 
           h1 {
+            position: absolute;
+            top: 1rem;
             font-size: 1.4rem;
-            margin-bottom: -3rem;
-            position: relative;
-            top: -1rem;
-          }
-
-          .help {
-            font-size: 0.7rem;
           }
 
           .image-container {

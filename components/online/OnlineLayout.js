@@ -12,8 +12,8 @@ export default class OnlineLayout extends Component {
             {this.props.player}
           </h1>
         </section>
-        <section className='container'>
-          <div className='item'>{this.props.children}</div>
+        <section>
+          <div>{this.props.children}</div>
         </section>
 
         <style jsx>{`

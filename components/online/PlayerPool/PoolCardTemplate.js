@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-export default class PlayTestModalCard extends Component {
+export default class PoolCardTemplate extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -27,7 +27,7 @@ export default class PlayTestModalCard extends Component {
         <div className={`base ${this.props.card.type}`}>
           <div className='content'>
             <span className='help'>{this.props.card.characterName}</span>
-            <h1>{this.props.card.title.substring(0, 18)}</h1>
+            <h1>{this.props.card.title.substring(0, 16)}</h1>
             <br />
             <div className='flexbox'>
               <div className='value'>
@@ -112,7 +112,6 @@ export default class PlayTestModalCard extends Component {
           .base {
             font-family: BebasNeueRegular;
             height: 17rem;
-            width: 12rem;
             margin: 0.1rem;
             border-radius: 0.5rem;
           }
@@ -121,13 +120,13 @@ export default class PlayTestModalCard extends Component {
           }
 
           h1 {
+            position: inherit;
             font-size: 1.4rem;
-            margin-bottom: -3rem;
-            position: relative;
-            top: -1rem;
+            margin: 0 0 -2rem;
           }
 
           .help {
+            position: inherit;
             font-size: 0.7rem;
           }
 
