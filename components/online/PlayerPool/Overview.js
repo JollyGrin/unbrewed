@@ -97,6 +97,7 @@ export default class Overview extends Component {
               state={this.props.state}
               modal={this.domState.modal}
               card={this.state.pool.commit.main}
+              reveal={this.state.pool.commit.reveal}
               actions={this.commitActions}
             />
           )

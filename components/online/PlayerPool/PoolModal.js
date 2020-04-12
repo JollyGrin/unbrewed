@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PoolCardTemplate from './PoolCardTemplate'
+import PoolModalSlider from './PoolModalSlider'
 
 export default class PoolModal extends Component {
   constructor (props) {
@@ -12,23 +13,39 @@ export default class PoolModal extends Component {
     }
   }
 
-  toggleFlip = () => {
-    if (!this.state.flip) {
-      //   faceDown > faceUp
-      console.log(this.facedown)
-      this.faceDown.current.classList.add('hide')
-      this.faceUp.current.classList.remove('hide')
-      this.props.actions.reveal()
+  getCommits = () => {
+    if (this.props.state.gameState) {
+      const { players } = this.props.state.gameState
 
-      this.setState({ flip: true })
-    } else {
-      //   faceUp > faceDown
-      this.faceDown.current.classList.remove('hide')
-      this.faceUp.current.classList.add('hide')
-      this.props.actions.reveal()
+      const playersArray = Object.entries(players)
 
-      this.setState({ flip: false })
+      return playersArray.map((player, index) => {
+        console.log('player', player[1].commit)
+        if (player[1].commit && player[1].commit.main) {
+          return this.conditionalRender.cardDisplay(
+            player[1].commit.main,
+            player[1].commit.reveal
+          )
+        }
+      })
     }
+  }
+
+  conditionalRender = {
+    faceDownCard: () => <div className='base'></div>,
+    faceUpCard: card => <PoolCardTemplate card={card} />,
+    cardDisplay: (card, reveal) => {
+      console.log('card/reveal', card, reveal)
+      if (reveal) {
+        return this.conditionalRender.faceUpCard(card)
+      } else {
+        return this.conditionalRender.faceDownCard()
+      }
+    }
+  }
+
+  toggleFlip = () => {
+    this.props.actions.reveal()
   }
 
   render () {
@@ -39,16 +56,13 @@ export default class PoolModal extends Component {
         </div>
 
         <div className='modal-body'>
-          <div className='container'>
-            <div ref={this.displayCard} className='item'>
-              <div ref={this.faceUp} className='faceup hide'>
-                <PoolCardTemplate card={this.props.card} />
-              </div>
-              <div ref={this.faceDown} className='facedown'>
-                <div className='base'></div>
-              </div>
-            </div>
-          </div>
+          <PoolModalSlider>
+            {/* {this.conditionalRender.cardDisplay(
+              this.props.card,
+              this.props.reveal
+            )} */}
+            {this.getCommits()}
+          </PoolModalSlider>
         </div>
 
         <div className='modal-footer'>
@@ -74,13 +88,13 @@ export default class PoolModal extends Component {
           </div>
         </div>
 
-        <style jsx>{`
-          .hide {
-              display: none;
-          }
-          .show {
-              display: block;
-          }
+        <style global jsx>{`
+        //   .hide {
+        //       display: none;
+        //   }
+        //   .show {
+        //       display: block;
+        //   }
           
           /* Flexbox */
           .container {
@@ -169,7 +183,7 @@ export default class PoolModal extends Component {
           .base {
             font-family: BebasNeueRegular;
             height: 17rem;
-            width: 12rem;
+            width: 12rem !important;
             margin: 0.1rem;
             border-radius: 0.5rem;
             background: #f2f2f2;
