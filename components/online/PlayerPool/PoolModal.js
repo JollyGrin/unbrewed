@@ -48,15 +48,6 @@ export default class PoolModal extends Component {
                 <div className='base'></div>
               </div>
             </div>
-            {/* <div className='item'>
-              <div className='container-is-v'>
-                <div className='item'>
-                  <a className='button'>
-                    {''}Flip{''}
-                  </a>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
 
