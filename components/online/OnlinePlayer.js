@@ -520,7 +520,7 @@ export default class OnlinePlayer extends Component {
       <Fragment>
         <div className='connectionBox' style={styles.connectionDisplay}>
           <center>
-            <a onClick={() => this.connectWS()} className='button'>
+            <a onClick={this.connectWS} className='button'>
               Connect to Lobby
             </a>
           </center>
