@@ -425,7 +425,8 @@ export default class OnlinePlayer extends Component {
     ]
   }
 
-  connectWS = () => {
+  connectWS = e => {
+    e.preventDefault()
     const { lobby, player } = this.props
     this.connection = true
     this.props.wsClient.connect(lobby, player, this.props.processState)
@@ -520,7 +521,7 @@ export default class OnlinePlayer extends Component {
       <Fragment>
         <div className='connectionBox' style={styles.connectionDisplay}>
           <center>
-            <a onClick={this.connectWS} className='button'>
+            <a onClick={e => this.connectWS(e)} className='button'>
               Connect to Lobby
             </a>
           </center>
