@@ -19,7 +19,7 @@ export default class Overview extends Component {
     this.state = {
       pool: {}
     }
-
+    this.loadDeckInput = React.createRef()
     this.modal = false
     this.handView = true
     this.deckView = false
@@ -259,6 +259,14 @@ export default class Overview extends Component {
     }
   }
 
+  loadNewDeck = deck => {
+    const newInput = deck
+    const formattedDeck = makeDeck(newInput)
+    const shuffledDeck = shuffleDeck(formattedDeck)
+    let pool = new DeckPool(shuffledDeck, newInput.hero, newInput.sidekick)
+    this.setState({ pool: pool })
+  }
+
   onInit = () => {
     const formattedDeck = makeDeck(ThrallDeck)
     const shuffledDeck = shuffleDeck(formattedDeck)
@@ -309,6 +317,19 @@ export default class Overview extends Component {
           </h1>
         </a>
         {this.conditionalRender.deckDisplay()}
+        <hr />
+        <center>
+          <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
+          <br />
+          <a
+            className='button'
+            onClick={() =>
+              this.loadNewDeck(JSON.parse(this.loadDeckInput.current.value))
+            }
+          >
+            Load Deck
+          </a>
+        </center>
 
         <style global jsx>{`
           .container {
