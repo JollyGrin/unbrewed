@@ -64,7 +64,7 @@ export default class Overview extends Component {
             hand={this.state.pool.hand}
             discardCard={this.deckActions.discardCard}
             commitCard={this.commitActions.commit}
-            deckCard={this.deckCard}
+            deckCard={this.deckActions.deckCard}
           />
         )
       }
@@ -149,12 +149,13 @@ export default class Overview extends Component {
       close: e => {
         e.preventDefault()
         this.deckView = false
-        this.setState({ pool: this.state.pool })
+        this.deckActions.shuffleTheDeck()
+        this.processState()
       },
       open: e => {
         e.preventDefault()
         this.deckView = true
-        this.setState({ pool: this.state.pool })
+        this.processState()
       }
     }
   }
@@ -199,6 +200,14 @@ export default class Overview extends Component {
     },
     drawDeck: cardIndex => {
       this.state.pool.drawDeck(cardIndex)
+      this.processState()
+    },
+    deckCard: cardIndex => {
+      this.state.pool.deckCard(cardIndex)
+      this.processState()
+    },
+    shuffleTheDeck: () => {
+      this.state.pool.shuffleDeck()
       this.processState()
     }
   }
