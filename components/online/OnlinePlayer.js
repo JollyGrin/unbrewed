@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import wsClient from '../../lib/ws/websocketClient'
 import PlayerBoxInfo from './PlayerBoxInfo'
 import Slider from 'react-slick'
+import fetch from 'axios'
 
 export default class OnlinePlayer extends Component {
   constructor (props) {
@@ -472,6 +473,14 @@ export default class OnlinePlayer extends Component {
       //   )
       // })
     }
+  }
+
+  componentDidMount () {
+    fetch
+      .get(`https://a7ed8baa.ngrok.io/lobby/${this.props.lobby}`)
+      .then(res => {
+        console.log('initiated lobby to ' + this.props.lobby)
+      })
   }
 
   render () {

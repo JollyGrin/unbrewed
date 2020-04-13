@@ -16,8 +16,11 @@ class indexLobby extends Component {
     console.log('router', router)
     return (
       <div>
-        <p>Lobby</p>
-        <p>{JSON.stringify(router.query)}</p>
+        <h1>Lobby</h1>
+        {/* <p>{JSON.stringify(router.query)}</p> */}
+        <a href={`https://a7ed8baa.ngrok.io/lobby/${router.query.lobby}`}>
+          Connect to {router.query.lobby}
+        </a>
       </div>
     )
   }
