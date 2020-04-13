@@ -10,6 +10,8 @@ import ThrallDeck from '../../../lib/decks/thrall.json'
 import HeroHeader from '../../playtest/HeroHeader'
 import PoolHand from './PoolHand'
 import PoolModal from './PoolModal'
+import Discard from '../../playtest/Discard'
+import PlayTestDeck from '../../playtest/PlayTestDeck'
 
 export default class Overview extends Component {
   constructor (props) {
@@ -24,6 +26,15 @@ export default class Overview extends Component {
   }
 
   conditionalRender = {
+    modalDisplay: () => {
+      if (this.modal) {
+        return (
+          <div id='myModal' className='modal'>
+            <div className='modal-content'>{this.domState.modal.load()}</div>
+          </div>
+        )
+      }
+    },
     heroHeader: () => {
       if (this.state.pool.hero) {
         return (
@@ -58,12 +69,40 @@ export default class Overview extends Component {
         )
       }
     },
-    modalDisplay: () => {
-      if (this.modal) {
+    discardLength: () => {
+      if (this.state.pool.discard) {
+        return this.state.pool.discard.length
+      }
+    },
+    discardDisplay: () => {
+      if (this.state.pool.discard) {
         return (
-          <div id='myModal' className='modal'>
-            <div className='modal-content'>{this.domState.modal.load()}</div>
-          </div>
+          <Discard
+            discard={this.state.pool.discard}
+            drawDiscard={this.deckActions.drawDiscard}
+          />
+        )
+      }
+    },
+    deckEye: () => {
+      if (this.deckView) {
+        return <i className='fa fa-eye'></i>
+      } else {
+        return <i className='fa fa-eye-slash'></i>
+      }
+    },
+    deckLength: () => {
+      if (this.state.pool.deck) {
+        return this.state.pool.deck.length
+      }
+    },
+    deckDisplay: () => {
+      if (this.deckView) {
+        return (
+          <PlayTestDeck
+            drawDeck={this.deckActions.drawDeck}
+            deck={this.state.pool.deck}
+          />
         )
       }
     }
@@ -105,6 +144,18 @@ export default class Overview extends Component {
           return
         }
       }
+    },
+    deck: {
+      close: e => {
+        e.preventDefault()
+        this.deckView = false
+        this.setState({ pool: this.state.pool })
+      },
+      open: e => {
+        e.preventDefault()
+        this.deckView = true
+        this.setState({ pool: this.state.pool })
+      }
     }
   }
 
@@ -114,6 +165,13 @@ export default class Overview extends Component {
         this.domState.hand.close(e)
       } else {
         this.domState.hand.open(e)
+      }
+    },
+    displayDeck: e => {
+      if (this.deckView) {
+        this.domState.deck.close(e)
+      } else {
+        this.domState.deck.open(e)
       }
     }
   }
@@ -133,6 +191,14 @@ export default class Overview extends Component {
     },
     deckCard: cardIndex => {
       this.state.pool.deckCard(cardIndex)
+      this.processState()
+    },
+    drawDiscard: cardIndex => {
+      this.state.pool.drawDiscard(cardIndex)
+      this.processState()
+    },
+    drawDeck: cardIndex => {
+      this.state.pool.drawDeck(cardIndex)
       this.processState()
     }
   }
@@ -164,6 +230,35 @@ export default class Overview extends Component {
     this.setState({ pool: this.state.pool })
   }
 
+  loadState = () => {
+    const playerArray = Object.entries(this.props.state.gameState.players)
+
+    playerArray.forEach(player => {
+      console.log('player', player)
+      if (player[0] === this.props.player) {
+        this.loadGamestateDeck(player[1])
+      }
+    })
+  }
+
+  loadGamestateDeck = gameState => {
+    const pool = new DeckPool(
+      gameState.deck,
+      gameState.hero,
+      gameState.sidekick
+    )
+    pool.hand = gameState.hand
+    pool.discard = gameState.discard
+    pool.commit = gameState.commit
+
+    if (pool.commit.main) {
+      this.modal = true
+      this.setState({ pool: pool })
+    } else {
+      this.setState({ pool: pool })
+    }
+  }
+
   onInit = () => {
     const formattedDeck = makeDeck(ThrallDeck)
     const shuffledDeck = shuffleDeck(formattedDeck)
@@ -179,6 +274,11 @@ export default class Overview extends Component {
   render () {
     return (
       <PoolLayout>
+        <div id='reload-deck'>
+          <a onClick={() => this.loadState()}>
+            <i className='fas fa-sync-alt'></i>
+          </a>
+        </div>
         {this.conditionalRender.modalDisplay()}
         {this.conditionalRender.heroHeader()}
         <hr />
@@ -198,6 +298,17 @@ export default class Overview extends Component {
           </div>
         </div>
         <div className='show-hand'>{this.conditionalRender.handDisplay()}</div>
+        <hr />
+        <h1>Discard - {this.conditionalRender.discardLength()}</h1>
+        {this.conditionalRender.discardDisplay()}
+        <hr />
+        <a onClick={e => this.domActions.displayDeck(e)}>
+          <h1>
+            {this.conditionalRender.deckEye()} Deck -{' '}
+            {this.conditionalRender.deckLength()}
+          </h1>
+        </a>
+        {this.conditionalRender.deckDisplay()}
 
         <style global jsx>{`
           .container {
@@ -211,6 +322,13 @@ export default class Overview extends Component {
 
           h1 h3 {
             font-family: 'Rubik';
+          }
+
+          #reload-deck {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            opacity: 0.5;
           }
 
           /* The Modal (background) */

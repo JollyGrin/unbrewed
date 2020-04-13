@@ -32,8 +32,8 @@ export default class PoolModal extends Component {
   }
 
   conditionalRender = {
-    faceDownCard: () => <div className='base'></div>,
-    faceUpCard: card => <PoolCardTemplate card={card} />,
+    faceDownCard: () => <div key={Math.random()} className='base'></div>,
+    faceUpCard: card => <PoolCardTemplate key={Math.random()} card={card} />,
     cardDisplay: (card, reveal) => {
       console.log('card/reveal', card, reveal)
       if (reveal) {

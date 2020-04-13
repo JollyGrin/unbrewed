@@ -26,6 +26,10 @@ class indexPlayer extends Component {
     this.setState({ socket, playerState, gameState })
   }
 
+  connectionCheck = () => {
+    this.state.gameState.gid.length > 0 ? true : false
+  }
+
   sendMessageTest = () => {
     return 'sendmessage'
   }
