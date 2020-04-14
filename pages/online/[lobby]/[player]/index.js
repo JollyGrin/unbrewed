@@ -10,6 +10,7 @@ import wsClient from '../../../../lib/ws/websocketClient'
 class indexPlayer extends Component {
   constructor (props) {
     super(props)
+    this.connection = false;
     this.state = {
       socket: {},
       playerState: {},
@@ -26,15 +27,12 @@ class indexPlayer extends Component {
     this.setState({ socket, playerState, gameState })
   }
 
-  connectionCheck = () => {
-    this.state.gameState.gid.length > 0 ? true : false
-  }
+  
 
   sendMessageTest = () => {
     return 'sendmessage'
   }
 
-  componentDidMount () {}
 
   render () {
     const { lobby = '', player = '' } = this.props.router.query
@@ -58,6 +56,7 @@ class indexPlayer extends Component {
         </div>
         <br />
         <hr />
+        <div id='overview-div' >
         <Overview
           state={this.state}
           lobby={lobby}
@@ -65,6 +64,7 @@ class indexPlayer extends Component {
           wsClient={wsClient}
           processState={this.processState}
         />
+        </div>
       </>
     )
   }

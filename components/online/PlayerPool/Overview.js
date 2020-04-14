@@ -57,6 +57,23 @@ export default class Overview extends Component {
         return this.state.pool.hand.length
       }
     },
+    handDrawButton: () => {
+      if (this.connectionCheck()) {
+        return (
+          <div className='item'>
+            <a className='button' onClick={this.deckActions.drawCard}>
+              Draw 1 Card
+            </a>
+          </div>
+        )
+      } else {
+        return (
+          <div className="item">
+            <span>Connect to Lobby</span>
+          </div>
+        )
+      }
+    },
     handDisplay: () => {
       if (this.handView) {
         return (
@@ -179,11 +196,15 @@ export default class Overview extends Component {
 
   deckActions = {
     drawCard: () => {
-      if (!this.state.pool.deck.length <= 0) {
-        this.state.pool.draw()
-        this.processState()
+      if(this.connectionCheck()){
+        if (!this.state.pool.deck.length <= 0) {
+          this.state.pool.draw()
+          this.processState()
+        } else {
+          alert('Your deck is empty')
+        }
       } else {
-        alert('Your deck is empty')
+        alert('Connect to lobby before drawing')
       }
     },
     discardCard: cardIndex => {
@@ -232,6 +253,13 @@ export default class Overview extends Component {
       this.state.pool.revealCommit()
       this.processState()
     }
+  }
+
+  connectionCheck = () => {
+    console.log('giddddd', this.props.state.gameState.gid.length, this.props.state.gameState.gid)
+    if (this.props.state.gameState.gid.length > 0) {
+      return true
+    } else { false }
   }
 
   processState = () => {
@@ -313,6 +341,7 @@ export default class Overview extends Component {
               Draw 1 Card
             </a>
           </div>
+          {/* {this.conditionalRender.handDrawButton()} */}
         </div>
         <div className='show-hand'>{this.conditionalRender.handDisplay()}</div>
         <hr />
