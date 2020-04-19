@@ -68,7 +68,7 @@ export default class Overview extends Component {
         )
       } else {
         return (
-          <div className="item">
+          <div className='item'>
             <span>Connect to Lobby</span>
           </div>
         )
@@ -147,7 +147,6 @@ export default class Overview extends Component {
       },
       load: () => {
         if (this.modal) {
-          console.log('load modal')
           return (
             <PoolModal
               state={this.props.state}
@@ -196,7 +195,7 @@ export default class Overview extends Component {
 
   deckActions = {
     drawCard: () => {
-      if(this.connectionCheck()){
+      if (this.connectionCheck()) {
         if (!this.state.pool.deck.length <= 0) {
           this.state.pool.draw()
           this.processState()
@@ -256,10 +255,11 @@ export default class Overview extends Component {
   }
 
   connectionCheck = () => {
-    console.log('giddddd', this.props.state.gameState.gid.length, this.props.state.gameState.gid)
     if (this.props.state.gameState.gid.length > 0) {
       return true
-    } else { false }
+    } else {
+      false
+    }
   }
 
   processState = () => {
@@ -271,7 +271,6 @@ export default class Overview extends Component {
     const playerArray = Object.entries(this.props.state.gameState.players)
 
     playerArray.forEach(player => {
-      console.log('player', player)
       if (player[0] === this.props.player) {
         this.loadGamestateDeck(player[1])
       }

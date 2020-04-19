@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import Layout from '../../components/online/HowTo/IndexOnlineLayout'
+import HowToHero from '../../components/online/HowTo/HowToHero'
+import HowToBody from '../../components/online/HowTo/HowToBody'
+import HowToBoard from '../../components/online/HowTo/HowToBoard'
 
-export default class indexOnline extends Component {
+export default class newIndex extends Component {
   render () {
     return (
-      <div>
-        <h1>Unbrewed Lobbies</h1>
-      </div>
+      <Layout>
+        <HowToHero />
+        <HowToBody />
+        <HowToBoard />
+      </Layout>
     )
   }
 }

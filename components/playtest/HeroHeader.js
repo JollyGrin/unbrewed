@@ -8,6 +8,15 @@ export default class HeroHeader extends Component {
       return 'Melee'
     }
   }
+
+  sidekickRenderIcon = () => {
+    if (this.props.sidekick.quantity > 1) {
+      return <i className='fas fa-list-ol'></i>
+    } else {
+      return <i className='fas fa-heart'></i>
+    }
+  }
+
   render () {
     return (
       <Fragment>
@@ -33,7 +42,11 @@ export default class HeroHeader extends Component {
           <div className='item-icons'>
             <div className='column'>
               <div className='item-v'>
-                <i className='fas fa-heart'></i> {this.props.sidekick.hp}
+                {console.log(this.props.sidekick)}
+                {this.sidekickRenderIcon()}{' '}
+                {this.props.sidekick.quantity === 1
+                  ? this.props.sidekick.hp
+                  : this.props.sidekick.quantity}
               </div>
             </div>
           </div>

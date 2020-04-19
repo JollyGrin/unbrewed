@@ -13,7 +13,6 @@ class indexLobby extends Component {
 
   render () {
     const { router } = this.props
-    console.log('router', router)
     return (
       <div>
         <h1>Lobby</h1>

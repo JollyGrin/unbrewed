@@ -433,12 +433,6 @@ export default class OnlinePlayer extends Component {
     this.props.wsClient.connect(lobby, player, this.props.processState)
   }
 
-  // sendMessage = () => {
-  //   const testMSG = { test: this.textarea.current.value }
-  //   console.log('testMSG', testMSG)
-  //   this.props.wsClient.sendData(testMSG)
-  // }
-
   conditionalRender = {
     playerNames: (playerName, playerPool, index) => {
       // console.log('ppppp', playerName, playerPool)

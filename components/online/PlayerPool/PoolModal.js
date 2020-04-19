@@ -20,7 +20,6 @@ export default class PoolModal extends Component {
       const playersArray = Object.entries(players)
 
       return playersArray.map((player, index) => {
-        console.log('player', player[1].commit)
         if (player[1].commit && player[1].commit.main) {
           return this.conditionalRender.cardDisplay(
             player[1].commit.main,
@@ -35,7 +34,6 @@ export default class PoolModal extends Component {
     faceDownCard: () => <div key={Math.random()} className='base'></div>,
     faceUpCard: card => <PoolCardTemplate key={Math.random()} card={card} />,
     cardDisplay: (card, reveal) => {
-      console.log('card/reveal', card, reveal)
       if (reveal) {
         return this.conditionalRender.faceUpCard(card)
       } else {

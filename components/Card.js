@@ -18,10 +18,6 @@ export default class Card extends Component {
     }
   }
 
-  componentDidMount () {
-    // console.log(this.props.card)
-    // console.log(this.props.card.backgroundImage)
-  }
   render () {
     const styles = {
       textColor: {
