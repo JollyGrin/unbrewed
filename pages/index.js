@@ -23,7 +23,10 @@ export default class index extends Component {
                   <img src='../../static/media/logo.svg'></img>
                   <br />
                   <Link href='./playtest'>
-                    <a className='button'>Playtest your Homebrew</a>
+                    <a className='button'>Playtest your Deck</a>
+                  </Link>
+                  <Link href='./online'>
+                    <a className='button online-button'>Play Online</a>
                   </Link>
                 </center>
               </div>
@@ -158,6 +161,10 @@ export default class index extends Component {
             -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
             box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
             transition: all 0.4s ease 0s;
+          }
+
+          .online-button {
+            margin-left: 1rem;
           }
 
           input {
