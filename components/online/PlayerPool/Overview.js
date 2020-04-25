@@ -82,6 +82,7 @@ export default class Overview extends Component {
             discardCard={this.deckActions.discardCard}
             commitCard={this.commitActions.commit}
             deckCard={this.deckActions.deckCard}
+            deckCardBottom={this.deckActions.deckCardBottom}
           />
         )
       }
@@ -224,6 +225,10 @@ export default class Overview extends Component {
     },
     deckCard: cardIndex => {
       this.state.pool.deckCard(cardIndex)
+      this.processState()
+    },
+    deckCardBottom: cardIndex => {
+      this.state.pool.deckCardBottom(cardIndex)
       this.processState()
     },
     shuffleTheDeck: () => {

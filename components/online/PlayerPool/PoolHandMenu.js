@@ -25,6 +25,10 @@ export default class PoolHandMenu extends Component {
     this.props.deckCard(this.props.handIndex)
   }
 
+  deckCardBottom = () => {
+    this.props.deckCardBottom(this.props.handIndex)
+  }
+
   render () {
     const styles = {
       bgImg: {
@@ -42,7 +46,10 @@ export default class PoolHandMenu extends Component {
             <i className='fas fa-angle-up'></i>
           </a>
           <a onClick={() => this.deckCard()}>
-            <i className='fas fa-minus-circle'></i>
+            <i className='fa fa-hourglass-start'></i>
+          </a>
+          <a onClick={() => this.deckCardBottom()}>
+            <i className='fa fa-hourglass-end'></i>
           </a>
           <a onClick={() => this.moveHandToDiscard()}>
             <i className='fas fa-angle-down'></i>

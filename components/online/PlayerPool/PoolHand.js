@@ -16,6 +16,7 @@ export default class PoolHand extends Component {
             discardCard={this.props.discardCard}
             commitCard={this.props.commitCard}
             deckCard={this.props.deckCard}
+            deckCardBottom={this.props.deckCardBottom}
           />
         </div>
       ))
