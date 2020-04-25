@@ -17,7 +17,6 @@ export default class PoolCardTemplate extends Component {
 
     switch (type) {
       case 'attack':
-        console.log('===HIT!===')
         return 'fas fa-virus'
         break
       case 'defence':
