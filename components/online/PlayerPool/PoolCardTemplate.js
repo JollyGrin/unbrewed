@@ -12,6 +12,28 @@ export default class PoolCardTemplate extends Component {
     const { basicText, immediateText, duringText, afterText } = this.props.card
   }
 
+  renderIcon = () => {
+    const { type } = this.props.card
+
+    switch (type) {
+      case 'attack':
+        console.log('===HIT!===')
+        return 'fas fa-virus'
+        break
+      case 'defence':
+        return 'fas fa-shield-alt'
+        break
+      case 'versatile':
+        return 'fas fa-shield-virus'
+        break
+      case 'scheme':
+        return 'fas fa-bolt'
+        break
+      default:
+        return ''
+    }
+  }
+
   render () {
     const styles = {
       bgImg: {
@@ -31,9 +53,15 @@ export default class PoolCardTemplate extends Component {
             <br />
             <div className='flexbox'>
               <div className='value'>
-                {this.props.card.type !== 'scheme'
-                  ? this.props.card.value
-                  : 'ϟ'}
+                <center>
+                  <i className={this.renderIcon()}></i>
+                  <br />
+                  <span>
+                    {this.props.card.type === 'scheme'
+                      ? ''
+                      : this.props.card.value}
+                  </span>
+                </center>
               </div>
               <div className='image-container' style={styles.bgImg}></div>
             </div>
@@ -101,7 +129,7 @@ export default class PoolCardTemplate extends Component {
 
           .value {
             font-size: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
           }
 
           .boost {

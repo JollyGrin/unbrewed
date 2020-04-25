@@ -12,6 +12,74 @@ export default class CardTemplate extends Component {
     const { basicText, immediateText, duringText, afterText } = this.props.card
   }
 
+  renderIcon = () => {
+    const { type, value } = this.props.card
+
+    if (type === 'attack') {
+      return (
+        <div className='value-box'>
+          <center>
+            <i className='fas fa-virus'></i> <br /> <span>{value}</span>
+          </center>
+        </div>
+      )
+    } else if (type === 'defence') {
+      return (
+        <div className='value-box'>
+          <center>
+            <i className='fas fa-shield-alt'></i> <br /> <span>{value}</span>
+          </center>
+        </div>
+      )
+    } else if (type === 'versatile') {
+      return (
+        <div className='value-box'>
+          <center>
+            <i className='fas fa-shield-virus'></i> <br /> <span>{value}</span>
+          </center>
+        </div>
+      )
+    } else {
+      return (
+        <div className='value-box'>
+          <center>
+            <span>ϟ</span>
+          </center>
+        </div>
+      )
+    }
+
+    // switch (type) {
+    //   case type == 'attack':
+    //     return (
+    //       <div>
+    //         <span>⚔️</span> <br /> <span>{value}</span>
+    //       </div>
+    //     )
+
+    //   case type === 'defence':
+    //     return (
+    //       <div>
+    //         <span>🛡</span> <br /> <span>{value}</span>
+    //       </div>
+    //     )
+
+    //   case type === 'versatile':
+    //     return (
+    //       <div>
+    //         <span>⌧</span> <br /> <span>{value}</span>
+    //       </div>
+    //     )
+
+    //   case type === 'scheme':
+    //     return (
+    //       <div>
+    //         <span>ϟ</span>
+    //       </div>
+    //     )
+    // }
+  }
+
   render () {
     const styles = {
       bgImg: {
@@ -31,9 +99,10 @@ export default class CardTemplate extends Component {
             <br />
             <div className='flexbox'>
               <div className='value'>
-                {this.props.card.type !== 'scheme'
-                  ? this.props.card.value
-                  : 'ϟ'}
+                {/* {this.props.card.type !== 'scheme'
+                  ? `⚔️${this.props.card.value}`
+                  : 'ϟ'} */}
+                {this.renderIcon()}
               </div>
               <div className='image-container' style={styles.bgImg}></div>
             </div>
@@ -107,7 +176,7 @@ export default class CardTemplate extends Component {
 
           .value {
             font-size: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
           }
 
           .boost {
