@@ -13,26 +13,23 @@ export default class PlayTestDeck extends Component {
 
   renderDeck = () => {
     if (this.props.deck) {
-      return this.props.deck
-        .slice(0)
-        .reverse()
-        .map((card, index) => (
-          <li key={Math.random()}>
-            <div className='dropdown'>
-              <span>{card.title}</span>
-              <div className='dropdown-content'>
-                <div className='navDeck'>
-                  <center>
-                    <a onClick={() => this.drawDeck(index)}>
-                      <i className='deckIcon fas fa-hands'></i>
-                    </a>
-                  </center>
-                </div>
-                <CardTemplate className='cardTemplate' card={card} />
+      return this.props.deck.map((card, index) => (
+        <li key={Math.random()}>
+          <div className='dropdown'>
+            <span>{card.title}</span>
+            <div className='dropdown-content'>
+              <div className='navDeck'>
+                <center>
+                  <a onClick={() => this.drawDeck(index)}>
+                    <i className='deckIcon fas fa-hands'></i>
+                  </a>
+                </center>
               </div>
+              <CardTemplate className='cardTemplate' card={card} />
             </div>
-          </li>
-        ))
+          </div>
+        </li>
+      ))
     }
   }
 
@@ -56,6 +53,8 @@ export default class PlayTestDeck extends Component {
         <style global jsx>{`
           ol {
             font-family: Archivo Narrow;
+            display: flex;
+            flex-direction: column-reverse;
           }
 
           .navDeck {
