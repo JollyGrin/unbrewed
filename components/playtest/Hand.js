@@ -16,6 +16,7 @@ export default class Hand extends Component {
             commitCard={this.props.commitCard}
             modal={this.props.modal}
             deckCard={this.props.deckCard}
+            deckCardBottom={this.props.deckCardBottom}
           />
         </div>
       ))

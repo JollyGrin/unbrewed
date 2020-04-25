@@ -140,6 +140,11 @@ export default class playtest extends Component {
     this.setState({ pool: this.state.pool })
   }
 
+  deckCardBottom = cardIndex => {
+    this.state.pool.deckCardBottom(cardIndex)
+    this.setState({ pool: this.state.pool })
+  }
+
   shuffleTheDeck = () => {
     this.state.pool.shuffleDeck()
     this.setState({ pool: this.state.pool })
@@ -226,6 +231,7 @@ export default class playtest extends Component {
             modal={this.modalComponent}
             commitCard={this.commitActions.commit}
             deckCard={this.deckCard}
+            deckCardBottom={this.deckCardBottom}
           />
         </div>
         <hr />
