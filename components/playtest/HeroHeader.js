@@ -42,7 +42,6 @@ export default class HeroHeader extends Component {
           <div className='item-icons'>
             <div className='column'>
               <div className='item-v'>
-                {console.log(this.props.sidekick)}
                 {this.sidekickRenderIcon()}{' '}
                 {this.props.sidekick.quantity === 1
                   ? this.props.sidekick.hp
