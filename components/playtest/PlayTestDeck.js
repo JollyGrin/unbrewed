@@ -13,23 +13,26 @@ export default class PlayTestDeck extends Component {
 
   renderDeck = () => {
     if (this.props.deck) {
-      return this.props.deck.map((card, index) => (
-        <li key={Math.random()}>
-          <div className='dropdown'>
-            <span>{card.title}</span>
-            <div className='dropdown-content'>
-              <div className='navDeck'>
-                <center>
-                  <a onClick={() => this.drawDeck(index)}>
-                    <i className='deckIcon fas fa-hands'></i>
-                  </a>
-                </center>
+      return this.props.deck
+        .slice(0)
+        .reverse()
+        .map((card, index) => (
+          <li key={Math.random()}>
+            <div className='dropdown'>
+              <span>{card.title}</span>
+              <div className='dropdown-content'>
+                <div className='navDeck'>
+                  <center>
+                    <a onClick={() => this.drawDeck(index)}>
+                      <i className='deckIcon fas fa-hands'></i>
+                    </a>
+                  </center>
+                </div>
+                <CardTemplate className='cardTemplate' card={card} />
               </div>
-              <CardTemplate className='cardTemplate' card={card} />
             </div>
-          </div>
-        </li>
-      ))
+          </li>
+        ))
     }
   }
 
