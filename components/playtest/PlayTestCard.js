@@ -43,16 +43,22 @@ export default class PlayTestCard extends Component {
       <Fragment>
         <div className='nav'>
           <a onClick={() => this.commitCard()}>
-            <i className='fas fa-angle-up'></i>
+            <i className='fas fa-angle-up' title='Play this card facedown'></i>
           </a>
           <a onClick={() => this.deckCard()}>
-            <i className='fa fa-hourglass-start'></i>
+            <i
+              className='fa fa-hourglass-start'
+              title='Places card on the top of your deck'
+            ></i>
           </a>
           <a onClick={() => this.deckCardBottom()}>
-            <i className='fa fa-hourglass-end'></i>
+            <i
+              className='fa fa-hourglass-end'
+              title='Places card on the bottom of your deck'
+            ></i>
           </a>
           <a onClick={() => this.moveHandToDiscard()}>
-            <i className='fas fa-angle-down'></i>
+            <i className='fas fa-angle-down' title='Discard this card'></i>
           </a>
         </div>
         <CardTemplate card={this.props.card} />
