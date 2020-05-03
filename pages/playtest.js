@@ -38,6 +38,8 @@ export default class playtest extends Component {
     this.setState({ pool: pool })
   }
 
+  // test
+
   modalComponent = {
     close: () => {
       this.modal = false
