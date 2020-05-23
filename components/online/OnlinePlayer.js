@@ -5,7 +5,7 @@ import Slider from 'react-slick'
 import fetch from 'axios'
 
 export default class OnlinePlayer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { player: [] }
     this.connection = false
@@ -469,15 +469,15 @@ export default class OnlinePlayer extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetch
-      .get(`https://a7ed8baa.ngrok.io/lobby/${this.props.lobby}`)
+      .get(`https://api.unbrewed.xyz/lobby/${this.props.lobby}`)
       .then(res => {
         console.log('initiated lobby to ' + this.props.lobby)
       })
   }
 
-  render () {
+  render() {
     const styles = {
       connectionDisplay: {
         display: `${this.connection ? 'none' : ''}`
