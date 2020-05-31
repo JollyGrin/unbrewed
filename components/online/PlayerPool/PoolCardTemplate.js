@@ -187,6 +187,7 @@ export default class PoolCardTemplate extends Component {
           }
           .attack {
             background-color: #dc3034;
+            color: white;
           }
           .defence {
             background-color: #2c76ac;
