@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react'
-import Slider from 'react-slick'
-import PoolHandMenu from './PoolHandMenu'
+import React, { Component, Fragment } from "react";
+import Slider from "react-slick";
+import PoolHandMenu from "./PoolHandMenu";
 
 export default class PoolHand extends Component {
-  glider = React.createRef()
+  glider = React.createRef();
 
   renderHand = () => {
     if (this.props.hand) {
@@ -19,12 +19,13 @@ export default class PoolHand extends Component {
             deckCardBottom={this.props.deckCardBottom}
           />
         </div>
-      ))
+      ));
     }
-  }
+  };
 
-  render () {
+  render() {
     var settings = {
+      arrows: false,
       dots: true,
       infinite: false,
       speed: 500,
@@ -37,26 +38,26 @@ export default class PoolHand extends Component {
           settings: {
             slidesToShow: 4,
             slidesToScroll: 4,
-            dots: true
-          }
+            dots: true,
+          },
         },
         {
           breakpoint: 600,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 2,
-            initialSlide: 0
-          }
+            initialSlide: 0,
+          },
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        }
-      ]
-    }
+            slidesToScroll: 2,
+          },
+        },
+      ],
+    };
 
     return (
       <Fragment>
@@ -64,6 +65,6 @@ export default class PoolHand extends Component {
 
         <style jsx>{``}</style>
       </Fragment>
-    )
+    );
   }
 }
