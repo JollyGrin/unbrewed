@@ -1,77 +1,85 @@
-import React, { Component, Fragment } from 'react'
-import PoolLayout from './PoolLayout'
+import React, { Component, Fragment } from "react";
+import PoolLayout from "./PoolLayout";
 
 // DECK ACTIONS
-import DeckPool from '../../../lib/classes/DeckPool'
-import { makeDeck, shuffleDeck } from '../../../lib/deckActions'
-import ThrallDeck from '../../../lib/decks/thrall.json'
+import DeckPool from "../../../lib/classes/DeckPool";
+import { makeDeck, shuffleDeck } from "../../../lib/deckActions";
+import ThrallDeck from "../../../lib/decks/thrall.json";
 
 // DOM ELEMENTS
-import HeroHeader from '../../playtest/HeroHeader'
-import PoolHand from './PoolHand'
-import PoolModal from './PoolModal'
-import Discard from '../../playtest/Discard'
-import PlayTestDeck from '../../playtest/PlayTestDeck'
+import HeroHeader from "../../playtest/HeroHeader";
+import PoolHand from "./PoolHand";
+import PoolModal from "./PoolModal";
+import Discard from "../../playtest/Discard";
+import PlayTestDeck from "../../playtest/PlayTestDeck";
 
 export default class Overview extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      pool: {}
-    }
-    this.loadDeckInput = React.createRef()
-    this.modal = false
-    this.handView = true
-    this.deckView = false
+      pool: {},
+    };
+    this.loadDeckInput = React.createRef();
+    this.modal = false;
+    this.heroView = true;
+    this.handView = true;
+    this.deckView = false;
   }
 
   conditionalRender = {
     modalDisplay: () => {
       if (this.modal) {
         return (
-          <div id='myModal' className='modal'>
-            <div className='modal-content'>{this.domState.modal.load()}</div>
+          <div id="myModal" className="modal">
+            <div className="modal-content">{this.domState.modal.load()}</div>
           </div>
-        )
+        );
       }
     },
     heroHeader: () => {
-      if (this.state.pool.hero) {
+      if (this.heroView && this.state.pool.hero) {
         return (
           <HeroHeader
             hero={this.state.pool.hero}
             sidekick={this.state.pool.sidekick}
           />
-        )
+        );
+      }
+    },
+    heroEye: () => {
+      if (this.heroView) {
+        return <i className="fa fa-eye"></i>;
+      } else {
+        return <i className="fa fa-eye-slash"></i>;
       }
     },
     handEye: () => {
       if (this.handView) {
-        return <i className='fa fa-eye'></i>
+        return <i className="fa fa-eye"></i>;
       } else {
-        return <i className='fa fa-eye-slash'></i>
+        return <i className="fa fa-eye-slash"></i>;
       }
     },
     handLength: () => {
       if (this.state.pool.hand) {
-        return this.state.pool.hand.length
+        return this.state.pool.hand.length;
       }
     },
     handDrawButton: () => {
       if (this.connectionCheck()) {
         return (
-          <div className='item'>
-            <a className='button' onClick={this.deckActions.drawCard}>
+          <div className="item">
+            <a className="button" onClick={this.deckActions.drawCard}>
               Draw 1 Card
             </a>
           </div>
-        )
+        );
       } else {
         return (
-          <div className='item'>
+          <div className="item">
             <span>Connect to Lobby</span>
           </div>
-        )
+        );
       }
     },
     handDisplay: () => {
@@ -84,12 +92,12 @@ export default class Overview extends Component {
             deckCard={this.deckActions.deckCard}
             deckCardBottom={this.deckActions.deckCardBottom}
           />
-        )
+        );
       }
     },
     discardLength: () => {
       if (this.state.pool.discard) {
-        return this.state.pool.discard.length
+        return this.state.pool.discard.length;
       }
     },
     discardDisplay: () => {
@@ -99,19 +107,19 @@ export default class Overview extends Component {
             discard={this.state.pool.discard}
             drawDiscard={this.deckActions.drawDiscard}
           />
-        )
+        );
       }
     },
     deckEye: () => {
       if (this.deckView) {
-        return <i className='fa fa-eye'></i>
+        return <i className="fa fa-eye"></i>;
       } else {
-        return <i className='fa fa-eye-slash'></i>
+        return <i className="fa fa-eye-slash"></i>;
       }
     },
     deckLength: () => {
       if (this.state.pool.deck) {
-        return this.state.pool.deck.length
+        return this.state.pool.deck.length;
       }
     },
     deckDisplay: () => {
@@ -121,30 +129,42 @@ export default class Overview extends Component {
             drawDeck={this.deckActions.drawDeck}
             deck={this.state.pool.deck}
           />
-        )
+        );
       }
-    }
-  }
+    },
+  };
 
   domState = {
-    hand: {
-      close: e => {
-        e.preventDefault()
-        this.handView = false
-        this.setState({ pool: this.state.pool })
+    hero: {
+      close: (e) => {
+        e.preventDefault();
+        this.heroView = false;
+        this.setState({ pool: this.state.pool });
       },
-      open: e => {
-        e.preventDefault()
-        this.handView = true
-        this.setState({ pool: this.state.pool })
-      }
+      open: (e) => {
+        e.preventDefault();
+        this.heroView = true;
+        this.setState({ pool: this.state.pool });
+      },
+    },
+    hand: {
+      close: (e) => {
+        e.preventDefault();
+        this.handView = false;
+        this.setState({ pool: this.state.pool });
+      },
+      open: (e) => {
+        e.preventDefault();
+        this.handView = true;
+        this.setState({ pool: this.state.pool });
+      },
     },
     modal: {
       close: () => {
-        this.modal = false
+        this.modal = false;
       },
       open: () => {
-        this.modal = true
+        this.modal = true;
       },
       load: () => {
         if (this.modal) {
@@ -156,215 +176,230 @@ export default class Overview extends Component {
               reveal={this.state.pool.commit.reveal}
               actions={this.commitActions}
             />
-          )
+          );
         } else {
-          return
+          return;
         }
-      }
+      },
     },
     deck: {
-      close: e => {
-        e.preventDefault()
-        this.deckView = false
-        this.deckActions.shuffleTheDeck()
-        this.processState()
+      close: (e) => {
+        e.preventDefault();
+        this.deckView = false;
+        this.deckActions.shuffleTheDeck();
+        this.processState();
       },
-      open: e => {
-        e.preventDefault()
-        this.deckView = true
-        this.processState()
-      }
-    }
-  }
+      open: (e) => {
+        e.preventDefault();
+        this.deckView = true;
+        this.processState();
+      },
+    },
+  };
 
   domActions = {
-    displayHand: e => {
-      if (this.handView) {
-        this.domState.hand.close(e)
+    displayHero: (e) => {
+      if (this.heroView) {
+        this.domState.hero.close(e);
       } else {
-        this.domState.hand.open(e)
+        this.domState.hero.open(e);
       }
     },
-    displayDeck: e => {
-      if (this.deckView) {
-        this.domState.deck.close(e)
+    displayHand: (e) => {
+      if (this.handView) {
+        this.domState.hand.close(e);
       } else {
-        this.domState.deck.open(e)
+        this.domState.hand.open(e);
       }
-    }
-  }
+    },
+    displayDeck: (e) => {
+      if (this.deckView) {
+        this.domState.deck.close(e);
+      } else {
+        this.domState.deck.open(e);
+      }
+    },
+  };
 
   deckActions = {
     drawCard: () => {
       if (this.connectionCheck()) {
         if (!this.state.pool.deck.length <= 0) {
-          this.state.pool.draw()
-          this.processState()
+          this.state.pool.draw();
+          this.processState();
         } else {
-          alert('Your deck is empty')
+          alert("Your deck is empty");
         }
       } else {
-        alert('Connect to lobby before drawing')
+        alert("Connect to lobby before drawing");
       }
     },
-    discardCard: cardIndex => {
-      this.state.pool.discardCard(cardIndex)
-      this.processState()
+    discardCard: (cardIndex) => {
+      this.state.pool.discardCard(cardIndex);
+      this.processState();
     },
-    deckCard: cardIndex => {
-      this.state.pool.deckCard(cardIndex)
-      this.processState()
+    deckCard: (cardIndex) => {
+      this.state.pool.deckCard(cardIndex);
+      this.processState();
     },
-    drawDiscard: cardIndex => {
-      this.state.pool.drawDiscard(cardIndex)
-      this.processState()
+    drawDiscard: (cardIndex) => {
+      this.state.pool.drawDiscard(cardIndex);
+      this.processState();
     },
-    drawDeck: cardIndex => {
-      this.state.pool.drawDeck(cardIndex)
-      this.processState()
+    drawDeck: (cardIndex) => {
+      this.state.pool.drawDeck(cardIndex);
+      this.processState();
     },
-    deckCard: cardIndex => {
-      this.state.pool.deckCard(cardIndex)
-      this.processState()
+    deckCard: (cardIndex) => {
+      this.state.pool.deckCard(cardIndex);
+      this.processState();
     },
-    deckCardBottom: cardIndex => {
-      this.state.pool.deckCardBottom(cardIndex)
-      this.processState()
+    deckCardBottom: (cardIndex) => {
+      this.state.pool.deckCardBottom(cardIndex);
+      this.processState();
     },
     shuffleTheDeck: () => {
-      this.state.pool.shuffleDeck()
-      this.processState()
-    }
-  }
+      this.state.pool.shuffleDeck();
+      this.processState();
+    },
+  };
 
   commitActions = {
-    commit: cardIndex => {
-      this.state.pool.commitCard(cardIndex)
-      this.modal = true
-      this.processState()
+    commit: (cardIndex) => {
+      this.state.pool.commitCard(cardIndex);
+      this.modal = true;
+      this.processState();
     },
     cancel: () => {
-      this.state.pool.cancelCommit()
-      this.modal = false
-      this.processState()
+      this.state.pool.cancelCommit();
+      this.modal = false;
+      this.processState();
     },
     discard: () => {
-      this.state.pool.discardCommit()
-      this.modal = false
-      this.processState()
+      this.state.pool.discardCommit();
+      this.modal = false;
+      this.processState();
     },
     reveal: () => {
-      this.state.pool.revealCommit()
-      this.processState()
-    }
-  }
+      this.state.pool.revealCommit();
+      this.processState();
+    },
+  };
 
   connectionCheck = () => {
     if (this.props.state.gameState.gid.length > 0) {
-      return true
+      return true;
     } else {
-      false
+      false;
     }
-  }
+  };
 
   processState = () => {
-    this.props.wsClient.sendData(this.state.pool)
-    this.setState({ pool: this.state.pool })
-  }
+    this.props.wsClient.sendData(this.state.pool);
+    this.setState({ pool: this.state.pool });
+  };
 
   loadState = () => {
-    const playerArray = Object.entries(this.props.state.gameState.players)
+    const playerArray = Object.entries(this.props.state.gameState.players);
 
-    playerArray.forEach(player => {
+    playerArray.forEach((player) => {
       if (player[0] === this.props.player) {
-        this.loadGamestateDeck(player[1])
+        this.loadGamestateDeck(player[1]);
       }
-    })
-  }
+    });
+  };
 
-  loadGamestateDeck = gameState => {
+  loadGamestateDeck = (gameState) => {
     const pool = new DeckPool(
       gameState.deck,
       gameState.hero,
       gameState.sidekick
-    )
-    pool.hand = gameState.hand
-    pool.discard = gameState.discard
-    pool.commit = gameState.commit
+    );
+    pool.hand = gameState.hand;
+    pool.discard = gameState.discard;
+    pool.commit = gameState.commit;
 
     if (pool.commit.main) {
-      this.modal = true
-      this.setState({ pool: pool })
+      this.modal = true;
+      this.setState({ pool: pool });
     } else {
-      this.setState({ pool: pool })
+      this.setState({ pool: pool });
     }
-  }
+  };
 
-  loadNewDeck = deck => {
-    const newInput = deck
-    const formattedDeck = makeDeck(newInput)
-    const shuffledDeck = shuffleDeck(formattedDeck)
-    let pool = new DeckPool(shuffledDeck, newInput.hero, newInput.sidekick)
-    this.setState({ pool: pool })
-  }
+  loadNewDeck = (deck) => {
+    const newInput = deck;
+    const formattedDeck = makeDeck(newInput);
+    const shuffledDeck = shuffleDeck(formattedDeck);
+    let pool = new DeckPool(shuffledDeck, newInput.hero, newInput.sidekick);
+    this.setState({ pool: pool });
+  };
 
   onInit = () => {
-    const formattedDeck = makeDeck(ThrallDeck)
-    const shuffledDeck = shuffleDeck(formattedDeck)
-    let pool = new DeckPool(shuffledDeck, ThrallDeck.hero, ThrallDeck.sidekick)
+    const formattedDeck = makeDeck(ThrallDeck);
+    const shuffledDeck = shuffleDeck(formattedDeck);
+    let pool = new DeckPool(shuffledDeck, ThrallDeck.hero, ThrallDeck.sidekick);
 
-    this.setState({ pool: pool })
+    this.setState({ pool: pool });
+  };
+
+  componentDidMount() {
+    this.onInit();
   }
 
-  componentDidMount () {
-    this.onInit()
-  }
-
-  render () {
+  render() {
     return (
       <PoolLayout>
-        <div id='reload-deck'>
+        <div id="reload-deck">
           <a onClick={() => this.loadState()}>
-            <i className='fas fa-sync-alt'></i>
+            <i className="fas fa-sync-alt"></i>
           </a>
         </div>
         {this.conditionalRender.modalDisplay()}
-        {this.conditionalRender.heroHeader()}
-        <hr />
-        <div id='hand-controls' className='container'>
-          <div className='item'>
+        <div className="container">
+          <div className="item">{this.conditionalRender.heroHeader()}</div>
+          <a onClick={(e) => this.domActions.displayHero(e)}>
+            {this.conditionalRender.heroEye()}
+          </a>
+        </div>
+        <div id="hand-controls" className="container">
+          <div className="item">
             <h1>
-              <a onClick={e => this.domActions.displayHand(e)}>
-                {this.conditionalRender.handEye()} Hand -{' '}
+              <a onClick={(e) => this.domActions.displayHand(e)}>
+                {this.conditionalRender.handEye()} Hand -{" "}
                 {this.conditionalRender.handLength()}
               </a>
             </h1>
           </div>
-          <div className='item'>
-            <a className='button' onClick={this.deckActions.drawCard}>
+          <div className="item">
+            <a className="button" onClick={this.deckActions.drawCard}>
               Draw 1 Card
             </a>
           </div>
           {/* {this.conditionalRender.handDrawButton()} */}
         </div>
-        <div className='show-hand'>{this.conditionalRender.handDisplay()}</div>
-        <hr />
+        <div className="show-hand">{this.conditionalRender.handDisplay()}</div>
+        <br />
+        <br />
         <h1>Discard - {this.conditionalRender.discardLength()}</h1>
         {this.conditionalRender.discardDisplay()}
-        <hr />
-        <a onClick={e => this.domActions.displayDeck(e)}>
+        <br />
+        <br />
+        <a onClick={(e) => this.domActions.displayDeck(e)}>
           <h1>
-            {this.conditionalRender.deckEye()} Deck -{' '}
+            {this.conditionalRender.deckEye()} Deck -{" "}
             {this.conditionalRender.deckLength()}
           </h1>
         </a>
         {this.conditionalRender.deckDisplay()}
-        <hr />
+        <br />
+        <br />
         <center>
-          <textarea ref={this.loadDeckInput} className='loadDeck'></textarea>
+          <h3>paste deck:</h3>
+          <textarea ref={this.loadDeckInput} className="loadDeck"></textarea>
           <br />
           <a
-            className='button'
+            className="button"
             onClick={() =>
               this.loadNewDeck(JSON.parse(this.loadDeckInput.current.value))
             }
@@ -372,7 +407,6 @@ export default class Overview extends Component {
             Load Deck
           </a>
         </center>
-
         <style global jsx>{`
           .container {
             display: flex;
@@ -384,7 +418,14 @@ export default class Overview extends Component {
           }
 
           h1 h3 {
-            font-family: 'Rubik';
+            font-family: "Rubik";
+          }
+
+          textarea {
+            border-radius: 2em;
+            opacity: 0.5;
+            width: 20rem;
+            height: 5rem;
           }
 
           #reload-deck {
@@ -392,6 +433,10 @@ export default class Overview extends Component {
             top: 0.5rem;
             right: 0.5rem;
             opacity: 0.5;
+          }
+
+          .fa-sync-alt:hover {
+            color: #fff;
           }
 
           /* The Modal (background) */
@@ -420,6 +465,6 @@ export default class Overview extends Component {
           }
         `}</style>
       </PoolLayout>
-    )
+    );
   }
 }

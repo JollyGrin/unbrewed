@@ -1,87 +1,45 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from "react";
+import PoolCardTemplate from "../online/PlayerPool/PoolCardTemplate";
 
 export default class PlayTestDiscard extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      check: false
-    }
+      check: false,
+    };
   }
 
   displayText = () => {
-    const { basicText, immediateText, duringText, afterText } = this.props.card
-  }
+    const { basicText, immediateText, duringText, afterText } = this.props.card;
+  };
 
   moveDiscardToHand = () => {
-    this.props.drawDiscard(this.props.discardIndex)
-  }
+    this.props.drawDiscard(this.props.discardIndex);
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     // console.log(this.props)
   }
-  render () {
+  render() {
     const styles = {
       bgImg: {
         backgroundImage: `url(${
           this.props.card.imageUrl
             ? this.props.card.imageUrl
-            : 'https://picsum.photos/200/300'
-        })`
-      }
-    }
+            : "https://picsum.photos/200/300"
+        })`,
+      },
+    };
     return (
       <Fragment>
-        <div className='nav'>
+        <div className="nav">
           <a onClick={() => this.moveDiscardToHand()}>
-            <i className='fas fa-angle-up'></i>
+            <i className="fas fa-angle-up"></i>
           </a>
           <a></a>
           <a>{/* <i className='fas fa-angle-down'></i> */}</a>
         </div>
-        <div className={`base ${this.props.card.type}`}>
-          <div className='content'>
-            <span className='help'>{this.props.card.characterName}</span>
-            <h1>{this.props.card.title.substring(0, 16)}</h1>
-            <br />
-            <div className='flexbox'>
-              <div className='value'>
-                {this.props.card.type !== 'scheme'
-                  ? this.props.card.value
-                  : 'ϟ'}
-              </div>
-              <div className='image-container' style={styles.bgImg}></div>
-            </div>
-            <span className='boost'>{this.props.card.boost}</span>
-            <div className='card-text'>
-              {this.props.card.basicText ? (
-                <span>{this.props.card.basicText}</span>
-              ) : (
-                ''
-              )}{' '}
-              {this.props.card.basicText ? <br /> : ''}
-              {this.props.card.immediateText ? 'Immediately' : ''}
-              {this.props.card.immediateText ? (
-                <span>{this.props.card.immediateText}</span>
-              ) : (
-                ''
-              )}{' '}
-              {this.props.card.immediateText ? <br /> : ''}
-              {this.props.card.duringText ? 'During' : ''}
-              {this.props.card.duringText ? (
-                <span>{this.props.card.duringText}</span>
-              ) : (
-                ''
-              )}
-              {this.props.card.duringText ? <br /> : ''}
-              {this.props.card.afterText ? 'After' : ''}
-              {this.props.card.afterText ? (
-                <span>{this.props.card.afterText}</span>
-              ) : (
-                ''
-              )}
-            </div>
-          </div>
-        </div>
+        <PoolCardTemplate card={this.props.card} />
 
         <style jsx>{`
           .card-text span {
@@ -173,6 +131,6 @@ export default class PlayTestDiscard extends Component {
           }
         `}</style>
       </Fragment>
-    )
+    );
   }
 }
