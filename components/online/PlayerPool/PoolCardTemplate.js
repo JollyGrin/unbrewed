@@ -8,6 +8,28 @@ export default class PoolCardTemplate extends Component {
     };
   }
 
+  trimTool = {
+    limit: 100,
+    hide: (string) => {
+      return (
+        this.shortenText(JSON.stringify(string), this.trimTool.limit) + "..."
+      );
+    },
+    isHidden: (string) => {
+      string > this.limit ? true : false;
+    },
+  };
+
+  shortenText(string, limit) {
+    string = string.replace(/\s+/g, " ");
+    let newString = string;
+
+    if (string.length > limit) {
+      newString = string.substring(0, limit) + "-";
+    }
+    return newString;
+  }
+
   displayText = () => {
     const { basicText, immediateText, duringText, afterText } = this.props.card;
   };
@@ -67,7 +89,9 @@ export default class PoolCardTemplate extends Component {
             <span className="boost">{this.props.card.boost}</span>
             <div className="card-text">
               {this.props.card.basicText ? (
-                <span>{this.props.card.basicText}</span>
+                <span title={this.props.card.basicText}>
+                  {this.trimTool.hide(this.props.card.basicText)}
+                </span>
               ) : (
                 ""
               )}{" "}
