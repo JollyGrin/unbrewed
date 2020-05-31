@@ -39,7 +39,7 @@
   font-style: italic; }
 
 @font-face {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   src: url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
   font-weight: normal;
   font-style: normal; }
@@ -49,6 +49,7 @@
   display: inline-block; }
 
 .dropdown-content {
+  color: #434343;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -65,6 +66,7 @@
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
   background: #1e90ff;
   padding: 0.7rem;
   border-radius: 3rem;
@@ -79,3 +81,12 @@
   -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
   box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
   transition: all 0.4s ease 0s; }
+
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #e7cc98; }
