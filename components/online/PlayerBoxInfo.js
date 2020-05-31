@@ -18,6 +18,52 @@ export default class PlayerBoxInfo extends Component {
         return this.props.playerPool.deck.length;
       }
     },
+    displayHero: () => {
+      if (this.props.playerPool.hero) {
+        const { name, hp, isRanged, move } = this.props.playerPool.hero;
+        return (
+          <div>
+            <span>🐾️ {move}</span>
+            <br />
+            <span>
+              {name} ❤️ {hp} - {isRanged ? "Ranged" : "Melee"}
+            </span>
+          </div>
+        );
+      }
+    },
+    displaySidekick: () => {
+      if (this.props.playerPool.sidekick) {
+        const {
+          name,
+          hp,
+          isRanged,
+          move,
+          quantity,
+        } = this.props.playerPool.sidekick;
+        return (
+          <div>
+            <span>
+              {name} {quantity > 1 ? "🔢️ " : "❤️ "}
+              {quantity > 1 ? quantity : hp} - {isRanged ? "Ranged" : "Melee"}
+            </span>
+          </div>
+        );
+      }
+    },
+    displayDiscard: () => {
+      if (this.props.playerPool.discard) {
+        return (
+          <div>
+            <ul>
+              {this.props.playerPool.discard.map((card) => (
+                <li key={Math.random()}>{card.title}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+    },
     renderCommit: {
       controller: () => {
         const { commit } = this.props.playerPool;
@@ -51,25 +97,15 @@ export default class PlayerBoxInfo extends Component {
             <div className="dropdown">
               <h1>{this.props.player}</h1>
               <div className="dropdown-content">
-                <span>🐾️ {this.props.playerPool.hero.move}</span>
+                {this.conditionalRender.displayHero()}
                 <br />
-                <span>
-                  {this.props.playerPool.hero.name} ❤️{" "}
-                  {this.props.playerPool.hero.hp} -{" "}
-                  {this.props.playerPool.hero.isRanged ? "Ranged" : "Melee"}
-                </span>
-                <br />
-                <span>
-                  {this.props.playerPool.sidekick.name}{" "}
-                  {this.props.playerPool.sidekick.quantity > 1 ? "🔢️ " : "❤️ "}
-                  {this.props.playerPool.sidekick.quantity > 1
-                    ? this.props.playerPool.sidekick.quantity
-                    : this.props.playerPool.sidekick.hp}{" "}
-                  -{" "}
-                  {this.props.playerPool.sidekick.isRanged ? "Ranged" : "Melee"}
-                </span>
+                {this.conditionalRender.displaySidekick()}
                 <hr />
-                <span>{this.props.playerPool.hero.specialAbility}</span>
+                <span>
+                  {this.props.playerPool.hero
+                    ? this.props.playerPool.hero.specialAbility
+                    : ""}
+                </span>
               </div>
             </div>
           </center>
@@ -83,11 +119,7 @@ export default class PlayerBoxInfo extends Component {
                 <i className="fas fa-ban"></i>{" "}
                 {this.conditionalRender.discardSize()}
                 <div className="dropdown-content">
-                  <ul>
-                    {this.props.playerPool.discard.map((card) => (
-                      <li key={Math.random()}>{card.title}</li>
-                    ))}
-                  </ul>
+                  {this.conditionalRender.displayDiscard()}
                 </div>
               </div>
             </li>
