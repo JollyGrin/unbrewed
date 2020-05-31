@@ -1,51 +1,52 @@
-import React, { Component, Fragment } from 'react'
-import CardTemplate from '../CardTemplate'
+import React, { Component, Fragment } from "react";
+import CardTemplate from "../CardTemplate";
+import PoolCardTemplate from "../online/PlayerPool/PoolCardTemplate";
 
 export default class PlayTestDeck extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { deck: {} }
+  constructor(props) {
+    super(props);
+    this.state = { deck: {} };
   }
 
-  drawDeck = cardIndex => {
-    this.props.drawDeck(cardIndex)
-  }
+  drawDeck = (cardIndex) => {
+    this.props.drawDeck(cardIndex);
+  };
 
   renderDeck = () => {
     if (this.props.deck) {
       return this.props.deck.map((card, index) => (
         <li key={Math.random()}>
-          <div className='dropdown'>
+          <div className="dropdown">
             <span>{card.title}</span>
-            <div className='dropdown-content'>
-              <div className='navDeck'>
+            <div className="dropdown-content">
+              <div className="navDeck">
                 <center>
                   <a onClick={() => this.drawDeck(index)}>
-                    <i className='deckIcon fas fa-hands'></i>
+                    <i className="deckIcon fas fa-hands"></i>
                   </a>
                 </center>
               </div>
-              <CardTemplate className='cardTemplate' card={card} />
+              <PoolCardTemplate className="cardTemplate" card={card} />
             </div>
           </div>
         </li>
-      ))
+      ));
     }
-  }
+  };
 
   loadDeckState = async () => {
-    return this.props.deck
+    return this.props.deck;
+  };
+
+  componentDidMount() {
+    console.log("does prop load?", this.props.deck);
+    this.loadDeckState().then((obj) => {
+      this.setState({ deck: obj });
+    });
   }
 
-  componentDidMount () {
-    console.log('does prop load?', this.props.deck)
-    this.loadDeckState().then(obj => {
-      this.setState({ deck: obj })
-    })
-  }
-
-  render () {
-    const { deck } = this.props
+  render() {
+    const { deck } = this.props;
     return (
       <Fragment>
         <ol>{this.renderDeck()}</ol>
@@ -76,6 +77,6 @@ export default class PlayTestDeck extends Component {
           }
         `}</style>
       </Fragment>
-    )
+    );
   }
 }
