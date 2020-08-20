@@ -5,6 +5,7 @@ import HomeFooter from '../components/home/HomeFooter'
 import StepBox from '../components/home/StepBox'
 
 export default class index extends Component {
+  // test
   render () {
     return (
       <div>
