@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss static/css/styles.css",
+    "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss public/css/styles.css",
     "css:watch": "npm run css:build -- --watch"
   },
   "author": "",

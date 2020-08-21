@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import Layout from '../components/Layout';
+import CardTemplate from '../components/card/CardTemplate'
 
 export default function Index({ hi, preview }) {
 
 
     return (
-        <div>
-            <span>hi</span>
-        </div>
+        <Layout>
+            <div className="flex">
+                <CardTemplate />
+            </div>
+        </Layout>
     );
 }
 

@@ -1,3 +1,11 @@
 body {
-  background-color: red;
+  background-color: grey;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: auto;
 }
