@@ -8,7 +8,6 @@
     "build": "next build",
     "start": "next start",
     "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss static/css/styles.css",
-    "css:bulma": "node-sass --omit-source-map-url assets/sass/bulma-styles.scss static/css/bulma-styles.css",
     "css:watch": "npm run css:build -- --watch"
   },
   "author": "",
@@ -18,13 +17,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "axios": "^0.19.2",
-    "bulma": "^0.8.2",
-    "isomorphic-fetch": "^2.2.1",
-    "next": "^9.3.2",
-    "node-sass": "^4.13.1",
+    "next": "^9.5.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-glider": "^1.1.5",
     "react-slick": "^0.25.2",
     "socket.io-client": "^2.3.0"
   }
