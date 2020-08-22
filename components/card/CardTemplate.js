@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import cardMock from '../../assets/mock/card.json';
+import IconSvg from './IconSvg';
 
 export default class CardTemplate extends Component {
   constructor(props) {
@@ -23,10 +24,23 @@ export default class CardTemplate extends Component {
   cardDetails = {
     height: 88,
     width: 63,
+    bottomPanelPadding: 3,
     outerBorderWidth: 3,
     innerCornerRadius: 1.5,
+    cornerRadius: 2.5,
     hRuleThickness: 0.8,
     bottomPanelPadding: 3,
+    outerBorderColour: '#f7eadb',
+    boostCircleRadius: 3.75,
+  };
+
+  asyncActions = {
+    dataUri: () => {
+      if (this.cardProp.imageUrl) {
+        return this.cardProp.imageUrl;
+      }
+      return 'https://picsum.photos/300';
+    },
   };
 
   actions = {
@@ -51,16 +65,73 @@ export default class CardTemplate extends Component {
         this.actions.bodyTextStyle().fontSize *
           1.1 *
           (this.isScheme
-            ? this.wrapBasicText.length
-            : this.wrapBasicText.length +
-              this.wrapImmediateText.length +
-              this.wrapDuringText.length +
-              this.wrapAfterText.length) +
+            ? this.actions.wrapBasicText().length
+            : this.actions.wrapBasicText().length +
+              this.actions.wrapImmediateText().length +
+              this.actions.wrapDuringText().length +
+              this.actions.wrapAfterText().length) +
         5;
       return Math.max(28.8, textHeight);
     },
     bottomPanelWidth: () => {
       return this.innerWidth;
+    },
+    bottomPanelY: () => {
+      return this.actions.topPanelHeight() + this.cardDetails.hRuleThickness;
+    },
+    bottomPanelStyle: () => {
+      return { fill: '#000' };
+    },
+    bottomPanelHeight: () => {
+      const textHeight =
+        this.actions.bodyTextStyle().fontSize * 0.8 +
+        6 * this.actions.wrapCardTitle().length +
+        this.actions.bodyTextStyle().fontSize *
+          1.1 *
+          (this.actions.isScheme()
+            ? this.actions.wrapBasicText().length
+            : this.actions.wrapBasicText().length +
+              this.actions.wrapImmediateText().length +
+              this.actions.wrapDuringText().length +
+              this.actions.wrapAfterText().length) +
+        5;
+      return Math.max(28.8, textHeight);
+    },
+    namePanel: () => {
+      return {
+        fill: '#000',
+      };
+    },
+    characterNameStyle: () => {
+      return {
+        fill: '#fff',
+        'font-family': 'BebasNeueRegular',
+        'font-size': '6px',
+      };
+    },
+    cantonAdjust: () => {
+      const width = this.actions.getTextWidth(
+        this.cardProp.characterName,
+        '6px BebasNeueRegular'
+      );
+      const adjust = width - 22.1;
+      return adjust < 0 ? adjust : 0;
+    },
+    outerBorderStyle: () => {
+      return {
+        fill: this.cardDetails.outerBorderColour,
+      };
+    },
+    topPanelStyle: () => {
+      return { fill: '#fff' };
+    },
+    titleTextStyle: () => {
+      const fontSize = 5;
+      return {
+        fill: '#fff',
+        font: `${fontSize}px BebasNeueRegular`,
+        fontSize,
+      };
     },
     bodyTextStyle: () => {
       const fontSize = 3.3;
@@ -78,6 +149,14 @@ export default class CardTemplate extends Component {
         fontSize,
       };
     },
+    sectionHeadingStyle: () => {
+      const fontSize = 4;
+      return {
+        fill: '#fff',
+        font: `${fontSize}px BebasNeueRegular`,
+        fontSize,
+      };
+    },
     wrapBasicText: () => {
       if (!(this.cardProp.basicText && this.cardProp.basicText.trim()))
         return [];
@@ -85,10 +164,58 @@ export default class CardTemplate extends Component {
         .trim()
         .split(/\r?\n/)
         .map((line) => {
-          return this.wrapLines(
+          return this.actions.wrapLines(
             line.split(' '),
             this.actions.bodyTextStyle().font,
             this.actions.maxTextLength()
+          );
+        });
+      return lines.flat();
+    },
+    wrapImmediateText: () => {
+      if (!(this.cardProp.immediateText && this.cardProp.immediateText.trim()))
+        return [];
+      const indent = this.actions.getTextWidth(
+        'IMMEDIATELY: ',
+        this.sectionHeadingStyle.font
+      );
+    },
+    wrapDuringText: () => {
+      if (!(this.cardProp.duringText && this.cardProp.duringText.trim()))
+        return [];
+      const indent = this.actions.getTextWidth(
+        'DURING COMBAT: ',
+        this.actions.sectionHeadingStyle().font
+      );
+      const lines = this.duringText
+        .trim()
+        .split(/\r?\n/)
+        .map((line, index) => {
+          return this.wrapLines(
+            line.split(' '),
+            this.actions.bodyTextStyle().font,
+            this.actions.maxTextLength(),
+            index === 0 ? indent : 0
+          );
+        });
+      return lines.flat();
+    },
+    wrapAfterText: () => {
+      if (!(this.cardProp.afterText && this.cardProp.afterText.trim()))
+        return [];
+      const indent = this.actions.getTextWidth(
+        'AFTER COMBAT: ',
+        this.actions.sectionHeadingStyle().font
+      );
+      const lines = this.cardProp.afterText
+        .trim()
+        .split(/\r?\n/)
+        .map((line, index) => {
+          return this.actions.wrapLines(
+            line.split(' '),
+            this.actions.bodyTextStyle().font,
+            this.actions.maxTextLength(),
+            index === 0 ? indent : 0
           );
         });
       return lines.flat();
@@ -124,10 +251,36 @@ export default class CardTemplate extends Component {
       );
     },
     getTextWidth: (text, font) => {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      context.font = font;
-      return context.measureText(text).width;
+      if (process.browser) {
+        const canvas = window.document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        context.font = font;
+        return context.measureText(text).width;
+      }
+    },
+    boostValueStyle: () => {
+      return {
+        fill: '#fff',
+        'font-family': 'BebasNeueRegular',
+        'font-size': '5px',
+      };
+    },
+    bottomCornerStyle: () => {
+      return {
+        fill: '#fff',
+        'font-family': 'BebasNeueRegular',
+        'font-size': '1.8px',
+      };
+    },
+    quantityStyle: () => {
+      return {
+        fill: '#fff',
+        'font-family': 'League Gothic',
+        'font-size': '1.8px',
+      };
+    },
+    isScheme: () => {
+      return this.cardProp.type === 'scheme';
     },
   };
 
@@ -137,32 +290,334 @@ export default class CardTemplate extends Component {
       height,
       outerBorderWidth,
       innerCornerRadius,
+      cornerRadius,
+      outerBorderStyle,
+      bottomPanelPadding,
+      boostCircleRadius,
+      outerBorderColour,
+      hRuleThickness,
     } = this.cardDetails;
 
+    const {
+      afterText,
+      basicText,
+      boost,
+      characterName,
+      duringText,
+      imageUrl,
+      immediateText,
+      quantity,
+      title,
+      type,
+      value,
+    } = this.cardProp;
+
+    const isScheme = this.actions.isScheme();
     const topPanelWidth = this.actions.topPanelWidth();
     const topPanelHeight = this.actions.topPanelHeight();
+    const topPanelStyle = this.actions.topPanelStyle();
+    const bottomPanelWidth = this.actions.bottomPanelWidth();
+    const bottomPanelHeight = this.actions.bottomPanelHeight();
+    const bottomPanelY = this.actions.bottomPanelY();
+    const bottomPanelStyle = this.actions.bottomPanelStyle();
     const innerWidth = this.actions.innerWidth();
+    const namePanel = this.actions.namePanel();
+    const dataUri = this.asyncActions.dataUri();
+    const cantonAdjust = this.actions.cantonAdjust();
+    const characterNameStyle = this.actions.characterNameStyle();
+    const titleTextStyle = this.actions.titleTextStyle();
+    const wrapCardTitle = this.actions.wrapCardTitle();
+    const wrapBasicText = this.actions.wrapBasicText();
+    const wrapDuringText = this.actions.wrapDuringText();
+    const wrapImmediateText = this.actions.wrapImmediateText();
+    const wrapAfterText = this.actions.wrapAfterText();
+    const bodyTextStyle = this.actions.bodyTextStyle();
+    const sectionHeadingStyle = this.actions.sectionHeadingStyle();
+    const boostValueStyle = this.actions.boostValueStyle();
+    const bottomCornerStyle = this.actions.bottomCornerStyle();
+    const quantityStyle = this.actions.quantityStyle();
 
     return (
       <Fragment>
-        <svg
-          width={width}
-          height={height}
-          ref='svg'
-          viewBox='0 0 63 88'
-          shapeRendering='geometricPrecision'
-        >
-          <clipPath id='innerBorder'>
+        <div id='cardSVG'>
+          <svg
+            width={width}
+            height={height}
+            ref='svg'
+            viewBox='0 0 63 88'
+            shapeRendering='geometricPrecision'
+          >
+            <clipPath id='innerBorder'>
+              <rect
+                width={innerWidth}
+                height={height - 2 * outerBorderWidth}
+                rx={innerCornerRadius}
+              />
+            </clipPath>
+            <clipPath id='topPanel'>
+              <rect width={topPanelWidth} height={topPanelHeight} />
+            </clipPath>
             <rect
-              width={innerWidth}
-              height={height - 2 * outerBorderWidth}
-              rx={innerCornerRadius}
+              width={width}
+              height={height}
+              rx={cornerRadius}
+              style={outerBorderStyle}
             />
-          </clipPath>
-          <clipPath id='topPanel'>
-            <rect width={topPanelWidth} height={topPanelHeight} />
-          </clipPath>
-        </svg>
+            <g
+              transform={`translate(${outerBorderWidth} ${outerBorderWidth})`}
+              clipPath={`url(#innerBorder)`}
+            >
+              <rect
+                className='top-panel'
+                width={topPanelWidth}
+                height={topPanelHeight}
+                style={topPanelStyle}
+              />
+              <image
+                width={topPanelWidth}
+                href={dataUri}
+                clipPath='url(#topPanel)'
+              />
+              <polygon
+                style={outerBorderStyle}
+                points={`0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${
+                  47 + cantonAdjust
+                } 0,${44.2 + cantonAdjust}`}
+              />
+              <polygon
+                style={namePanel}
+                points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${
+                  46.2 + cantonAdjust
+                } 0,${43.3 + cantonAdjust}`}
+              />
+              <text
+                x='-20'
+                y='7'
+                textAnchor='end'
+                transform='rotate(-90 0 0)'
+                lengthAdjust='spacingAndGlyphs'
+                textLength={cantonAdjust === 0 ? 23.5 : null}
+                style={characterNameStyle}
+              >
+                {this.cardProp.characterName}
+              </text>
+              <polygon
+                className={type}
+                points='0,0 10,0 10,14.2 5,17.1 0,14.2'
+              />
+              {this.actions.isScheme() ? (
+                <text x='5' y='14.8' textAnchor='middle' style={cardValueStyle}>
+                  {value}
+                </text>
+              ) : (
+                ''
+              )}
+              <IconSvg
+                cardType={this.cardProp.type}
+                width={6}
+                x={5 - 6 / 2}
+                y={1.5}
+                fill={`#fff`}
+              />
+              <rect
+                className='bottom-panel'
+                width={bottomPanelWidth}
+                height={bottomPanelHeight}
+                y={bottomPanelY}
+                style={bottomPanelStyle}
+              />
+              <text style={titleTextStyle} y={bottomPanelY} dy='6'>
+                {wrapCardTitle.map((line, index) => (
+                  <tspan key={index} x={bottomPanelPadding} dy='6'>
+                    {line}
+                  </tspan>
+                ))}
+              </text>
+              <line
+                x1={bottomPanelPadding}
+                y1={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
+                x2={bottomPanelWidth - bottomPanelPadding}
+                y2={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
+                stroke-width='0.4'
+                stroke='#fff'
+              />
+              {basicText ? (
+                <text
+                  style={bodyTextStyle}
+                  y={
+                    bottomPanelY +
+                    bodyTextStyle.fontSize * 0.8 +
+                    6 * wrapCardTitle.length
+                  }
+                >
+                  {wrapBasicText.map((line, index) => (
+                    <tspan
+                      dy={bodyTextStyle.fontSize * 1.1}
+                      x={bottomPanelPadding}
+                      key={index}
+                    >
+                      {line}
+                    </tspan>
+                  ))}
+                </text>
+              ) : (
+                ''
+              )}
+
+              {!isScheme && immediateText ? (
+                <text
+                  style={bodyTextStyle}
+                  y={
+                    bottomPanelY +
+                    bodyTextStyle.fontSize * 0.8 +
+                    6 * wrapCardTitle.length +
+                    bodyTextStyle.fontSize * 1.1 * wrapBasicText.length
+                  }
+                >
+                  <tspan
+                    dy={sectionHeadingStyle.fontSize * 0.9}
+                    x={bottomPanelPadding}
+                    style={sectionHeadingStyle}
+                  >
+                    IMMEDIATELY:
+                  </tspan>
+                  {wrapImmediateText.map((line, index) => (
+                    <tspan
+                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                      x={index ? bottomPanelPadding : null}
+                      key={index}
+                    >
+                      {line}
+                    </tspan>
+                  ))}
+                </text>
+              ) : (
+                ''
+              )}
+
+              {!isScheme && duringText ? (
+                <text
+                  style={bodyTextStyle}
+                  y={
+                    bottomPanelY +
+                    bodyTextStyle.fontSize * 0.8 +
+                    6 * wrapCardTitle.length +
+                    bodyTextStyle.fontSize *
+                      1.1 *
+                      (wrapBasicText.length + wrapImmediateText.length)
+                  }
+                >
+                  <tspan
+                    dy={sectionHeadingStyle.fontSize * 0.9}
+                    x={bottomPanelPadding}
+                    style={sectionHeadingStyle}
+                  >
+                    DURING COMBAT:
+                  </tspan>
+                  {wrapDuringText.map((line, index) => (
+                    <tspan
+                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                      x={index ? bottomPanelPadding : null}
+                      key={index}
+                    >
+                      {line}
+                    </tspan>
+                  ))}
+                </text>
+              ) : (
+                ''
+              )}
+
+              {!isScheme && afterText ? (
+                <text
+                  style={bodyTextStyle}
+                  y={
+                    bottomPanelY +
+                    bodyTextStyle.fontSize * 0.8 +
+                    6 * wrapCardTitle.length +
+                    bodyTextStyle.fontSize *
+                      1.1 *
+                      (wrapBasicText.length +
+                        wrapImmediateText.length +
+                        wrapDuringText.length)
+                  }
+                >
+                  <tspan
+                    dy={sectionHeadingStyle.fontSize * 0.9}
+                    x={bottomPanelPadding}
+                    style={sectionHeadingStyle}
+                  >
+                    AFTER COMBAT:
+                  </tspan>
+                  {wrapAfterText.map((line, index) => (
+                    <tspan
+                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                      x={index ? bottomPanelPadding : null}
+                      key={index}
+                    >
+                      {line}
+                    </tspan>
+                  ))}
+                </text>
+              ) : (
+                ''
+              )}
+
+              {/* if boostValue */}
+              {boost ? (
+                <g>
+                  <circle
+                    r={boostCircleRadius}
+                    fill={outerBorderColour}
+                    cx='52'
+                    cy={bottomPanelY - 1}
+                  />
+                  <circle
+                    r={boostCircleRadius - hRuleThickness}
+                    fill='#000'
+                    cx={52}
+                    cy={bottomPanelY - 1}
+                  />
+                  <text
+                    x={52}
+                    y={bottomPanelY - 1}
+                    dy={1.5}
+                    text-anchor='middle'
+                    style={boostValueStyle}
+                  >
+                    {boost}
+                  </text>
+                </g>
+              ) : (
+                ''
+              )}
+
+              <text
+                x='52.5'
+                y={height - 2 * outerBorderWidth - 1.5}
+                text-anchor='end'
+                style={bottomCornerStyle}
+              >
+                {characterName}
+              </text>
+              <line
+                x1={53.25}
+                y1={height - 2 * outerBorderWidth - 0.8}
+                x2={53.25}
+                y2={height - 2 * outerBorderWidth - 1.5 - 2.2}
+                stroke-width='0.3'
+                stroke='#fff'
+              />
+              <text
+                x='54'
+                y={height - 2 * outerBorderWidth - 1.5}
+                style={quantityStyle}
+              >
+                {quantity}
+              </text>
+            </g>
+          </svg>
+        </div>
       </Fragment>
     );
   }
