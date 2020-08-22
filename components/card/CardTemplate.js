@@ -43,6 +43,11 @@ export default class CardTemplate extends Component {
     },
   };
 
+  roundNumber = (number, roundTo) => {
+    const round = +number.toFixed(roundTo);
+    return round;
+  };
+
   actions = {
     innerWidth: () => {
       return this.cardDetails.width - 2 * this.cardDetails.outerBorderWidth;
@@ -51,12 +56,13 @@ export default class CardTemplate extends Component {
       return this.actions.innerWidth();
     },
     topPanelHeight: () => {
-      return (
+      const topHeight =
         this.cardDetails.height -
         2 * this.cardDetails.outerBorderWidth -
         this.actions.bottomPanelHeight() -
-        this.cardDetails.hRuleThickness
-      );
+        this.cardDetails.hRuleThickness;
+
+      return topHeight;
     },
     bottomPanelHeight: () => {
       const textHeight =
@@ -74,7 +80,7 @@ export default class CardTemplate extends Component {
       return Math.max(28.8, textHeight);
     },
     bottomPanelWidth: () => {
-      return this.innerWidth;
+      return this.actions.innerWidth();
     },
     bottomPanelY: () => {
       return this.actions.topPanelHeight() + this.cardDetails.hRuleThickness;
@@ -105,8 +111,8 @@ export default class CardTemplate extends Component {
     characterNameStyle: () => {
       return {
         fill: '#fff',
-        'font-family': 'BebasNeueRegular',
-        'font-size': '6px',
+        fontSize: 'BebasNeueRegular',
+        fontSize: '6px',
       };
     },
     cantonAdjust: () => {
@@ -261,22 +267,22 @@ export default class CardTemplate extends Component {
     boostValueStyle: () => {
       return {
         fill: '#fff',
-        'font-family': 'BebasNeueRegular',
-        'font-size': '5px',
+        fontSize: 'BebasNeueRegular',
+        fontSize: '5px',
       };
     },
     bottomCornerStyle: () => {
       return {
         fill: '#fff',
-        'font-family': 'BebasNeueRegular',
-        'font-size': '1.8px',
+        fontSize: 'BebasNeueRegular',
+        fontSize: '1.8px',
       };
     },
     quantityStyle: () => {
       return {
         fill: '#fff',
-        'font-family': 'League Gothic',
-        'font-size': '1.8px',
+        fontSize: 'League Gothic',
+        fontSize: '1.8px',
       };
     },
     isScheme: () => {
@@ -312,312 +318,341 @@ export default class CardTemplate extends Component {
       value,
     } = this.cardProp;
 
+    const styles = {
+      topPanelStyle: this.actions.topPanelStyle(),
+    };
+
     const isScheme = this.actions.isScheme();
     const topPanelWidth = this.actions.topPanelWidth();
     const topPanelHeight = this.actions.topPanelHeight();
-    const topPanelStyle = this.actions.topPanelStyle();
     const bottomPanelWidth = this.actions.bottomPanelWidth();
     const bottomPanelHeight = this.actions.bottomPanelHeight();
     const bottomPanelY = this.actions.bottomPanelY();
-    const bottomPanelStyle = this.actions.bottomPanelStyle();
     const innerWidth = this.actions.innerWidth();
     const namePanel = this.actions.namePanel();
     const dataUri = this.asyncActions.dataUri();
     const cantonAdjust = this.actions.cantonAdjust();
-    const characterNameStyle = this.actions.characterNameStyle();
-    const titleTextStyle = this.actions.titleTextStyle();
     const wrapCardTitle = this.actions.wrapCardTitle();
     const wrapBasicText = this.actions.wrapBasicText();
     const wrapDuringText = this.actions.wrapDuringText();
     const wrapImmediateText = this.actions.wrapImmediateText();
     const wrapAfterText = this.actions.wrapAfterText();
     const bodyTextStyle = this.actions.bodyTextStyle();
-    const sectionHeadingStyle = this.actions.sectionHeadingStyle();
-    const boostValueStyle = this.actions.boostValueStyle();
-    const bottomCornerStyle = this.actions.bottomCornerStyle();
-    const quantityStyle = this.actions.quantityStyle();
+
+    const topPanelStyle = { fill: '#fff' };
+    const bottomPanelStyle = { fill: '#000' };
+    const characterNameStyle = {
+      fill: '#fff',
+      fontSize: 'BebasNeueRegular',
+      fontSize: '6px',
+    };
+    const titleTextStyle = {
+      fill: '#fff',
+      font: `5px BebasNeueRegular`,
+      fontSize: `5px`,
+    };
+    const sectionHeadingStyle = {
+      fill: '#fff',
+      font: `4px BebasNeueRegular`,
+      fontSize: 4,
+    };
+    const boostValueStyle = {
+      fill: '#fff',
+      fontFamily: 'BebasNeueRegular',
+      fontSize: 5,
+    };
+    const bottomCornerStyle = {
+      fill: '#fff',
+      fontSize: 'BebasNeueRegular',
+      fontSize: '1.8px',
+    };
+    const quantityStyle = {
+      fill: '#fff',
+      fontSize: 'League Gothic',
+      fontSize: '1.8px',
+    };
 
     return (
       <Fragment>
-        <div id='cardSVG'>
-          <svg
+        <svg
+          width={width}
+          height={height}
+          ref='svg'
+          viewBox='0 0 63 88'
+          shapeRendering='geometricPrecision'
+        >
+          <clipPath id='innerBorder'>
+            <rect
+              width={innerWidth}
+              height={height - 2 * outerBorderWidth}
+              rx={innerCornerRadius}
+            />
+          </clipPath>
+          <clipPath id='topPanel'>
+            <rect
+              width={topPanelWidth}
+              height={this.roundNumber(topPanelHeight, 2)}
+            />
+          </clipPath>
+          <rect
             width={width}
             height={height}
-            ref='svg'
-            viewBox='0 0 63 88'
-            shapeRendering='geometricPrecision'
+            rx={cornerRadius}
+            style={outerBorderStyle}
+          />
+          <g
+            transform={`translate(${outerBorderWidth} ${outerBorderWidth})`}
+            clipPath={`url(#innerBorder)`}
           >
-            <clipPath id='innerBorder'>
-              <rect
-                width={innerWidth}
-                height={height - 2 * outerBorderWidth}
-                rx={innerCornerRadius}
-              />
-            </clipPath>
-            <clipPath id='topPanel'>
-              <rect width={topPanelWidth} height={topPanelHeight} />
-            </clipPath>
             <rect
-              width={width}
-              height={height}
-              rx={cornerRadius}
-              style={outerBorderStyle}
+              className='top-panel'
+              width={topPanelWidth}
+              height={topPanelHeight}
+              style={topPanelStyle}
             />
-            <g
-              transform={`translate(${outerBorderWidth} ${outerBorderWidth})`}
-              clipPath={`url(#innerBorder)`}
+            <image
+              width={topPanelWidth}
+              href={dataUri}
+              clipPath='url(#topPanel)'
+            />
+            <polygon
+              style={outerBorderStyle}
+              points={`
+                    0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${
+                47 + cantonAdjust
+              } 0,${44.2 + cantonAdjust}
+                `}
+            />
+            <polygon
+              style={namePanel}
+              points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${
+                46.2 + cantonAdjust
+              } 0,${43.3 + cantonAdjust}`}
+            />
+            <text
+              x='-20'
+              y='7'
+              textAnchor='end'
+              transform='rotate(-90 0 0)'
+              lengthAdjust='spacingAndGlyphs'
+              textLength={cantonAdjust === 0 ? 23.5 : null}
+              style={characterNameStyle}
             >
-              <rect
-                className='top-panel'
-                width={topPanelWidth}
-                height={topPanelHeight}
-                style={topPanelStyle}
-              />
-              <image
-                width={topPanelWidth}
-                href={dataUri}
-                clipPath='url(#topPanel)'
-              />
-              <polygon
-                style={outerBorderStyle}
-                points={`0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${
-                  47 + cantonAdjust
-                } 0,${44.2 + cantonAdjust}`}
-              />
-              <polygon
-                style={namePanel}
-                points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${
-                  46.2 + cantonAdjust
-                } 0,${43.3 + cantonAdjust}`}
-              />
-              <text
-                x='-20'
-                y='7'
-                textAnchor='end'
-                transform='rotate(-90 0 0)'
-                lengthAdjust='spacingAndGlyphs'
-                textLength={cantonAdjust === 0 ? 23.5 : null}
-                style={characterNameStyle}
-              >
-                {this.cardProp.characterName}
+              {this.cardProp.characterName}
+            </text>
+            <polygon className={type} points='0,0 10,0 10,14.2 5,17.1 0,14.2' />
+            {this.actions.isScheme() ? (
+              <text x='5' y='14.8' textAnchor='middle' style={cardValueStyle}>
+                {value}
               </text>
-              <polygon
-                className={type}
-                points='0,0 10,0 10,14.2 5,17.1 0,14.2'
-              />
-              {this.actions.isScheme() ? (
-                <text x='5' y='14.8' textAnchor='middle' style={cardValueStyle}>
-                  {value}
-                </text>
-              ) : (
-                ''
-              )}
-              <IconSvg
-                cardType={this.cardProp.type}
-                width={6}
-                x={5 - 6 / 2}
-                y={1.5}
-                fill={`#fff`}
-              />
-              <rect
-                className='bottom-panel'
-                width={bottomPanelWidth}
-                height={bottomPanelHeight}
-                y={bottomPanelY}
-                style={bottomPanelStyle}
-              />
-              <text style={titleTextStyle} y={bottomPanelY} dy='6'>
-                {wrapCardTitle.map((line, index) => (
-                  <tspan key={index} x={bottomPanelPadding} dy='6'>
+            ) : (
+              ''
+            )}
+            <IconSvg
+              cardType={this.cardProp.type}
+              width={6}
+              x={5 - 6 / 2}
+              y={1.5}
+              fill={`#fff`}
+            />
+            <rect
+              className='bottom-panel'
+              width={bottomPanelWidth}
+              height={bottomPanelHeight}
+              y={bottomPanelY}
+              style={bottomPanelStyle}
+            />
+            <text style={titleTextStyle} y={bottomPanelY} dy='6'>
+              {wrapCardTitle.map((line, index) => (
+                <tspan key={index} x={bottomPanelPadding} dy='6'>
+                  {line}
+                </tspan>
+              ))}
+            </text>
+            <line
+              x1={bottomPanelPadding}
+              y1={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
+              x2={bottomPanelWidth - bottomPanelPadding}
+              y2={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
+              strokeWidth='0.4'
+              stroke='#fff'
+            />
+            {basicText ? (
+              <text
+                style={bodyTextStyle}
+                y={
+                  bottomPanelY +
+                  bodyTextStyle.fontSize * 0.8 +
+                  6 * wrapCardTitle.length
+                }
+              >
+                {wrapBasicText.map((line, index) => (
+                  <tspan
+                    dy={bodyTextStyle.fontSize * 1.1}
+                    x={bottomPanelPadding}
+                    key={index}
+                  >
                     {line}
                   </tspan>
                 ))}
               </text>
-              <line
-                x1={bottomPanelPadding}
-                y1={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
-                x2={bottomPanelWidth - bottomPanelPadding}
-                y2={bottomPanelY + 1.5 + 6 * wrapCardTitle.length}
-                stroke-width='0.4'
-                stroke='#fff'
-              />
-              {basicText ? (
-                <text
-                  style={bodyTextStyle}
-                  y={
-                    bottomPanelY +
-                    bodyTextStyle.fontSize * 0.8 +
-                    6 * wrapCardTitle.length
-                  }
-                >
-                  {wrapBasicText.map((line, index) => (
-                    <tspan
-                      dy={bodyTextStyle.fontSize * 1.1}
-                      x={bottomPanelPadding}
-                      key={index}
-                    >
-                      {line}
-                    </tspan>
-                  ))}
-                </text>
-              ) : (
-                ''
-              )}
+            ) : (
+              ''
+            )}
 
-              {!isScheme && immediateText ? (
-                <text
-                  style={bodyTextStyle}
-                  y={
-                    bottomPanelY +
-                    bodyTextStyle.fontSize * 0.8 +
-                    6 * wrapCardTitle.length +
-                    bodyTextStyle.fontSize * 1.1 * wrapBasicText.length
-                  }
-                >
-                  <tspan
-                    dy={sectionHeadingStyle.fontSize * 0.9}
-                    x={bottomPanelPadding}
-                    style={sectionHeadingStyle}
-                  >
-                    IMMEDIATELY:
-                  </tspan>
-                  {wrapImmediateText.map((line, index) => (
-                    <tspan
-                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
-                      x={index ? bottomPanelPadding : null}
-                      key={index}
-                    >
-                      {line}
-                    </tspan>
-                  ))}
-                </text>
-              ) : (
-                ''
-              )}
-
-              {!isScheme && duringText ? (
-                <text
-                  style={bodyTextStyle}
-                  y={
-                    bottomPanelY +
-                    bodyTextStyle.fontSize * 0.8 +
-                    6 * wrapCardTitle.length +
-                    bodyTextStyle.fontSize *
-                      1.1 *
-                      (wrapBasicText.length + wrapImmediateText.length)
-                  }
-                >
-                  <tspan
-                    dy={sectionHeadingStyle.fontSize * 0.9}
-                    x={bottomPanelPadding}
-                    style={sectionHeadingStyle}
-                  >
-                    DURING COMBAT:
-                  </tspan>
-                  {wrapDuringText.map((line, index) => (
-                    <tspan
-                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
-                      x={index ? bottomPanelPadding : null}
-                      key={index}
-                    >
-                      {line}
-                    </tspan>
-                  ))}
-                </text>
-              ) : (
-                ''
-              )}
-
-              {!isScheme && afterText ? (
-                <text
-                  style={bodyTextStyle}
-                  y={
-                    bottomPanelY +
-                    bodyTextStyle.fontSize * 0.8 +
-                    6 * wrapCardTitle.length +
-                    bodyTextStyle.fontSize *
-                      1.1 *
-                      (wrapBasicText.length +
-                        wrapImmediateText.length +
-                        wrapDuringText.length)
-                  }
-                >
-                  <tspan
-                    dy={sectionHeadingStyle.fontSize * 0.9}
-                    x={bottomPanelPadding}
-                    style={sectionHeadingStyle}
-                  >
-                    AFTER COMBAT:
-                  </tspan>
-                  {wrapAfterText.map((line, index) => (
-                    <tspan
-                      dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
-                      x={index ? bottomPanelPadding : null}
-                      key={index}
-                    >
-                      {line}
-                    </tspan>
-                  ))}
-                </text>
-              ) : (
-                ''
-              )}
-
-              {/* if boostValue */}
-              {boost ? (
-                <g>
-                  <circle
-                    r={boostCircleRadius}
-                    fill={outerBorderColour}
-                    cx='52'
-                    cy={bottomPanelY - 1}
-                  />
-                  <circle
-                    r={boostCircleRadius - hRuleThickness}
-                    fill='#000'
-                    cx={52}
-                    cy={bottomPanelY - 1}
-                  />
-                  <text
-                    x={52}
-                    y={bottomPanelY - 1}
-                    dy={1.5}
-                    text-anchor='middle'
-                    style={boostValueStyle}
-                  >
-                    {boost}
-                  </text>
-                </g>
-              ) : (
-                ''
-              )}
-
+            {!isScheme && immediateText ? (
               <text
-                x='52.5'
-                y={height - 2 * outerBorderWidth - 1.5}
-                text-anchor='end'
-                style={bottomCornerStyle}
+                style={bodyTextStyle}
+                y={
+                  bottomPanelY +
+                  bodyTextStyle.fontSize * 0.8 +
+                  6 * wrapCardTitle.length +
+                  bodyTextStyle.fontSize * 1.1 * wrapBasicText.length
+                }
               >
-                {characterName}
+                <tspan
+                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  x={bottomPanelPadding}
+                  style={sectionHeadingStyle}
+                >
+                  IMMEDIATELY:
+                </tspan>
+                {wrapImmediateText.map((line, index) => (
+                  <tspan
+                    dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                    x={index ? bottomPanelPadding : null}
+                    key={index}
+                  >
+                    {line}
+                  </tspan>
+                ))}
               </text>
-              <line
-                x1={53.25}
-                y1={height - 2 * outerBorderWidth - 0.8}
-                x2={53.25}
-                y2={height - 2 * outerBorderWidth - 1.5 - 2.2}
-                stroke-width='0.3'
-                stroke='#fff'
-              />
+            ) : (
+              ''
+            )}
+
+            {!isScheme && duringText ? (
               <text
-                x='54'
-                y={height - 2 * outerBorderWidth - 1.5}
-                style={quantityStyle}
+                style={bodyTextStyle}
+                y={
+                  bottomPanelY +
+                  bodyTextStyle.fontSize * 0.8 +
+                  6 * wrapCardTitle.length +
+                  bodyTextStyle.fontSize *
+                    1.1 *
+                    (wrapBasicText.length + wrapImmediateText.length)
+                }
               >
-                {quantity}
+                <tspan
+                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  x={bottomPanelPadding}
+                  style={sectionHeadingStyle}
+                >
+                  DURING COMBAT:
+                </tspan>
+                {wrapDuringText.map((line, index) => (
+                  <tspan
+                    dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                    x={index ? bottomPanelPadding : null}
+                    key={index}
+                  >
+                    {line}
+                  </tspan>
+                ))}
               </text>
-            </g>
-          </svg>
-        </div>
+            ) : (
+              ''
+            )}
+
+            {!isScheme && afterText ? (
+              <text
+                style={bodyTextStyle}
+                y={
+                  bottomPanelY +
+                  bodyTextStyle.fontSize * 0.8 +
+                  6 * wrapCardTitle.length +
+                  bodyTextStyle.fontSize *
+                    1.1 *
+                    (wrapBasicText.length +
+                      wrapImmediateText.length +
+                      wrapDuringText.length)
+                }
+              >
+                <tspan
+                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  x={bottomPanelPadding}
+                  style={sectionHeadingStyle}
+                >
+                  AFTER COMBAT:
+                </tspan>
+                {wrapAfterText.map((line, index) => (
+                  <tspan
+                    dy={index ? bodyTextStyle.fontSize * 1.1 : 0}
+                    x={index ? bottomPanelPadding : null}
+                    key={index}
+                  >
+                    {line}
+                  </tspan>
+                ))}
+              </text>
+            ) : (
+              ''
+            )}
+
+            {/* if boostValue */}
+            {boost ? (
+              <g>
+                <circle
+                  r={boostCircleRadius}
+                  fill={outerBorderColour}
+                  cx='52'
+                  cy={bottomPanelY - 1}
+                />
+                <circle
+                  r={boostCircleRadius - hRuleThickness}
+                  fill='#000'
+                  cx={52}
+                  cy={bottomPanelY - 1}
+                />
+                <text
+                  x={52}
+                  y={bottomPanelY - 1}
+                  dy={1.5}
+                  textAnchor='middle'
+                  style={boostValueStyle}
+                >
+                  {boost}
+                </text>
+              </g>
+            ) : (
+              ''
+            )}
+
+            <text
+              x='52.5'
+              y={height - 2 * outerBorderWidth - 1.5}
+              textAnchor='end'
+              style={bottomCornerStyle}
+            >
+              {characterName}
+            </text>
+            <line
+              x1={53.25}
+              y1={height - 2 * outerBorderWidth - 0.8}
+              x2={53.25}
+              y2={height - 2 * outerBorderWidth - 1.5 - 2.2}
+              strokeWidth='0.3'
+              stroke='#fff'
+            />
+            <text
+              x='54'
+              y={height - 2 * outerBorderWidth - 1.5}
+              style={quantityStyle}
+            >
+              {quantity}
+            </text>
+          </g>
+        </svg>
       </Fragment>
     );
   }

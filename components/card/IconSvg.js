@@ -10,6 +10,7 @@ export default class IconSvg extends Component {
     width: this.props.width,
     x: this.props.x,
     y: this.props.y,
+    fill: this.props.fill,
   };
 
   actions = {
@@ -111,7 +112,7 @@ export default class IconSvg extends Component {
     },
   };
   render() {
-    const { cardType, width, x, y } = this.iconDetails;
+    const { cardType, width, x, y, fill } = this.iconDetails;
     const transform = this.actions.transform();
     const params = this.actions.params();
     const renderIcon = this.renderIcon();
@@ -123,6 +124,7 @@ export default class IconSvg extends Component {
             preserveAspectRatio='xMidYMid meet'
             width='1'
             height={params.heightRatio}
+            fill={fill}
           >
             {renderIcon}
           </svg>
