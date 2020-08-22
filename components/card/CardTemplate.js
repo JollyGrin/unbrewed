@@ -1,270 +1,169 @@
 import React, { Component, Fragment } from 'react';
-import Head from 'next/head';
-import cardMock from '../../assets/mock/card.json'
+import cardMock from '../../assets/mock/card.json';
 
-export default class Layout extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <Fragment>
+export default class CardTemplate extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-                <svg
-    :width="width"
-    :height="height"
-    ref="svg"
-    viewBox="0 0 63 88"
-    shape-rendering="geometricPrecision"
-  >
-    <clipPath id="innerBorder">
-                    <rect
-        :width="innerWidth"
-        :height="height - 2 * outerBorderWidth"
-        :rx="innerCornerRadius"
-      />
-    </clipPath>
-                <clipPath id="topPanel">
-                    <rect :width="topPanelWidth" :height="topPanelHeight" />
-    </clipPath>
-                <rect
-      :width="width"
-      :height="height"
-      :rx="cornerRadius"
-      :style="outerBorderStyle"
-    />
-    <g
-      : {outerBorderWidth} ${outerBorderWidth})`"
-      clip-path="url(#innerBorder)"
-    >
-      <rect
-                    class="top-panel"
-        :width="topPanelWidth"
-        :height="topPanelHeight"
-        :style="topPanelStyle"
-      />
-      <image
-                    v-if="dataUri"
-        :width="topPanelWidth"
-        :href="dataUri"
-        clip-path="url(#topPanel)"
-      />
-      <polygon
-        :style="outerBorderStyle"
-        :points="
-          `0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${47 +
-                    cantonAdjust} 0,${44.2 + cantonAdjust}`
-        "
-      />
-      <polygon
-        :style="namePanel"
-        :points="
-          `0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${46.2 +
-                    cantonAdjust} 0,${43.3 + cantonAdjust}`
-        "
-      />
-      <text
-                    x="-20"
-                    y="7"
-                    text-anchor="end"
-                    transform="rotate(-90 0 0)"
-                    lengthAdjust="spacingAndGlyphs"
-        :textLength="cantonAdjust === 0 ? 23.5 : null"
-        :style="characterNameStyle"
-      >
-        {{ characterName }}
-      </text>
-            <polygon : class="[cardType]" points="0,0 10,0 10,14.2 5,17.1 0,14.2" />
-            <text
-                v-if="!isScheme"
-                x="5"
-                y="14.8"
-                text-anchor="middle"
-        : style="cardValueStyle"
-            >
-                {{ cardValue }}
-            </text>
-            <SvgUnmatchedCardIcon
-        : cardType="cardType"
-        : width="6"
-        : x="5 - 6 / 2"
-        : y="1.5"
-                fill="#fff"
-            />
+  cardProp = {
+    afterText: this.props.card.afterText,
+    basicText: this.props.card.basicText,
+    boost: this.props.card.boost,
+    characterName: this.props.card.characterName,
+    duringText: this.props.card.duringText,
+    imageUrl: this.props.card.imageUrl,
+    immediateText: this.props.card.immediateText,
+    quantity: this.props.card.quantity,
+    title: this.props.card.title,
+    type: this.props.card.type,
+    value: this.props.card.value,
+  };
+
+  cardDetails = {
+    height: 88,
+    width: 63,
+    outerBorderWidth: 3,
+    innerCornerRadius: 1.5,
+    hRuleThickness: 0.8,
+    bottomPanelPadding: 3,
+  };
+
+  actions = {
+    innerWidth: () => {
+      return this.cardDetails.width - 2 * this.cardDetails.outerBorderWidth;
+    },
+    topPanelWidth: () => {
+      return this.actions.innerWidth();
+    },
+    topPanelHeight: () => {
+      return (
+        this.cardDetails.height -
+        2 * this.cardDetails.outerBorderWidth -
+        this.actions.bottomPanelHeight() -
+        this.cardDetails.hRuleThickness
+      );
+    },
+    bottomPanelHeight: () => {
+      const textHeight =
+        this.actions.bodyTextStyle().fontSize * 0.8 +
+        6 * this.actions.wrapCardTitle().length +
+        this.actions.bodyTextStyle().fontSize *
+          1.1 *
+          (this.isScheme
+            ? this.wrapBasicText.length
+            : this.wrapBasicText.length +
+              this.wrapImmediateText.length +
+              this.wrapDuringText.length +
+              this.wrapAfterText.length) +
+        5;
+      return Math.max(28.8, textHeight);
+    },
+    bottomPanelWidth: () => {
+      return this.innerWidth;
+    },
+    bodyTextStyle: () => {
+      const fontSize = 3.3;
+      return {
+        fill: '#fff',
+        font: `${fontSize}px Archivo Narrow`,
+        fontSize,
+      };
+    },
+    titleTextStyle: () => {
+      const fontSize = 5;
+      return {
+        fill: '#fff',
+        font: `${fontSize}px BebasNeueRegular`,
+        fontSize,
+      };
+    },
+    wrapBasicText: () => {
+      if (!(this.cardProp.basicText && this.cardProp.basicText.trim()))
+        return [];
+      const lines = this.cardProp.basicText
+        .trim()
+        .split(/\r?\n/)
+        .map((line) => {
+          return this.wrapLines(
+            line.split(' '),
+            this.actions.bodyTextStyle().font,
+            this.actions.maxTextLength()
+          );
+        });
+      return lines.flat();
+    },
+    wrapCardTitle: () => {
+      return this.actions.wrapLines(
+        this.cardProp.title.split(' '),
+        this.actions.titleTextStyle().font,
+        this.actions.maxTextLength()
+      );
+    },
+    wrapLines: (words, font, maxLength, indent = 0) => {
+      var line = '';
+      var i;
+      for (i = 0; i < words.length; i++) {
+        line = words.slice(0, words.length - i).join(' ');
+        if (this.actions.getTextWidth(line, font) <= maxLength - indent) break;
+      }
+      const remainingWords =
+        i === words.length ? words.slice(1) : words.slice(words.length - i);
+      if (i && remainingWords.length) {
+        return [
+          line,
+          ...this.actions.wrapLines(remainingWords, font, maxLength),
+        ];
+      }
+      return [line];
+    },
+    maxTextLength: () => {
+      return (
+        this.actions.bottomPanelWidth() -
+        2 * this.cardDetails.bottomPanelPadding
+      );
+    },
+    getTextWidth: (text, font) => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = font;
+      return context.measureText(text).width;
+    },
+  };
+
+  render() {
+    const {
+      width,
+      height,
+      outerBorderWidth,
+      innerCornerRadius,
+    } = this.cardDetails;
+
+    const topPanelWidth = this.actions.topPanelWidth();
+    const topPanelHeight = this.actions.topPanelHeight();
+    const innerWidth = this.actions.innerWidth();
+
+    return (
+      <Fragment>
+        <svg
+          width={width}
+          height={height}
+          ref='svg'
+          viewBox='0 0 63 88'
+          shapeRendering='geometricPrecision'
+        >
+          <clipPath id='innerBorder'>
             <rect
-                class="bottom-panel"
-        : width="bottomPanelWidth"
-        : height="bottomPanelHeight"
-        : y="bottomPanelY"
-        : style="bottomPanelStyle"
+              width={innerWidth}
+              height={height - 2 * outerBorderWidth}
+              rx={innerCornerRadius}
             />
-            <text : style="titleTextStyle" : y="bottomPanelY" dy="6">
-                <tspan
-                    v-for="(line, index) in wrapCardTitle"
-          :key="index"
-          :x="bottomPanelPadding"
-          dy="6"
-        >
-          {{ line }}
-        </tspan>
-      </text >
-            <line
-        : x1="bottomPanelPadding"
-        : y1="bottomPanelY + 1.5 + 6 * wrapCardTitle.length"
-        : x2="bottomPanelWidth - bottomPanelPadding"
-        : y2="bottomPanelY + 1.5 + 6 * wrapCardTitle.length"
-                stroke-width="0.4"
-                stroke="#fff"
-            />
-            <text
-        : v-if="basicText"
-        : style="bodyTextStyle"
-        : y="
-          bottomPanelY + bodyTextStyle.fontSize * 0.8 + 6 * wrapCardTitle.length
-        "
-            >
-                <tspan
-                    v-for="(line, index) in wrapBasicText"
-          :dy="bodyTextStyle.fontSize * 1.1"
-          :x="bottomPanelPadding"
-          :key="index"
-        >
-          {{ line }}
-        </tspan>
-      </text >
-            <text
-                v-if="!isScheme && immediateText"
-        : style="bodyTextStyle"
-        : y="
-          bottomPanelY +
-            bodyTextStyle.fontSize * 0.8 +
-            6 * wrapCardTitle.length +
-            bodyTextStyle.fontSize * 1.1 * wrapBasicText.length
-        "
-            >
-                <tspan
-          :dy="sectionHeadingStyle.fontSize * 0.9"
-          :x="bottomPanelPadding"
-          :style="sectionHeadingStyle"
-        >
-          IMMEDIATELY:
-        </tspan>
-            <tspan
-                v-for="(line, index) in wrapImmediateText"
-          : dy="index ? bodyTextStyle.fontSize * 1.1 : 0"
-          : x="index ? bottomPanelPadding : null"
-          : key="index"
-            >
-                {{ line }}
-            </tspan>
-      </text >
-            <text
-                v-if="!isScheme && duringText"
-        : style="bodyTextStyle"
-        : y="
-          bottomPanelY +
-            bodyTextStyle.fontSize * 0.8 +
-            6 * wrapCardTitle.length +
-            bodyTextStyle.fontSize *
-              1.1 *
-              (wrapBasicText.length + wrapImmediateText.length)
-        "
-            >
-                <tspan
-          :dy="sectionHeadingStyle.fontSize * 0.9"
-          :x="bottomPanelPadding"
-          :style="sectionHeadingStyle"
-        >
-          DURING COMBAT:
-        </tspan>
-            <tspan
-                v-for="(line, index) in wrapDuringText"
-          : dy="index ? bodyTextStyle.fontSize * 1.1 : 0"
-          : x="index ? bottomPanelPadding : null"
-          : key="index"
-            >
-                {{ line }}
-            </tspan>
-      </text >
-            <text
-                v-if="!isScheme && afterText"
-        : style="bodyTextStyle"
-        : y="
-          bottomPanelY +
-            bodyTextStyle.fontSize * 0.8 +
-            6 * wrapCardTitle.length +
-            bodyTextStyle.fontSize *
-              1.1 *
-              (wrapBasicText.length +
-                wrapImmediateText.length +
-                wrapDuringText.length)
-        "
-            >
-                <tspan
-          :dy="sectionHeadingStyle.fontSize * 0.9"
-          :x="bottomPanelPadding"
-          :style="sectionHeadingStyle"
-        >
-          AFTER COMBAT:
-        </tspan>
-            <tspan
-                v-for="(line, index) in wrapAfterText"
-          : dy="index ? bodyTextStyle.fontSize * 1.1 : 0"
-          : x="index ? bottomPanelPadding : null"
-          : key="index"
-            >
-                {{ line }}
-            </tspan>
-      </text >
-            <g v-if="boostValue">
-                <circle
-          :r="boostCircleRadius"
-          :fill="outerBorderColour"
-          cx="52"
-          :cy="bottomPanelY - 1"
-        />
-        <circle
-          :r="boostCircleRadius - hRuleThickness"
-          fill="#000"
-          cx="52"
-          :cy="bottomPanelY - 1"
-        />
-        <text
-                    x="52"
-          :y="bottomPanelY - 1"
-          :dy="1.5"
-          text-anchor="middle"
-          :style="boostValueStyle"
-        >
-          {{ boostValue }}
-        </text>
-      </g >
-            <text
-                x="52.5"
-        : y="height - 2 * outerBorderWidth - 1.5"
-                text-anchor="end"
-        : style="bottomCornerStyle"
-            >
-                {{ deckName }}
-            </text>
-            <line
-        : x1="53.25"
-        : y1="height - 2 * outerBorderWidth - 0.8"
-        : x2="53.25"
-        : y2="height - 2 * outerBorderWidth - 1.5 - 2.2"
-                stroke-width="0.3"
-                stroke="#fff"
-            />
-            <text
-                x="54"
-        : y="height - 2 * outerBorderWidth - 1.5"
-        : style="quantityStyle"
-            >
-                x{{ cardQuantity }}
-            </text>
-    </g >
-  </svg >
-            </Fragment >
-        );
-    }
+          </clipPath>
+          <clipPath id='topPanel'>
+            <rect width={topPanelWidth} height={topPanelHeight} />
+          </clipPath>
+        </svg>
+      </Fragment>
+    );
+  }
 }
