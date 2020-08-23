@@ -29,7 +29,9 @@ body {
 }
 
 .flex {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  grid-gap: 0.25em;
   align-items: center;
   justify-content: center;
   height: 80vh;

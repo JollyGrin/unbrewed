@@ -64,21 +64,6 @@ export default class CardTemplate extends Component {
 
       return topHeight;
     },
-    bottomPanelHeight: () => {
-      const textHeight =
-        this.actions.bodyTextStyle().fontSize * 0.8 +
-        6 * this.actions.wrapCardTitle().length +
-        this.actions.bodyTextStyle().fontSize *
-          1.1 *
-          (this.isScheme
-            ? this.actions.wrapBasicText().length
-            : this.actions.wrapBasicText().length +
-              this.actions.wrapImmediateText().length +
-              this.actions.wrapDuringText().length +
-              this.actions.wrapAfterText().length) +
-        5;
-      return Math.max(28.8, textHeight);
-    },
     bottomPanelWidth: () => {
       return this.actions.innerWidth();
     },
@@ -89,6 +74,8 @@ export default class CardTemplate extends Component {
       return { fill: '#000' };
     },
     bottomPanelHeight: () => {
+      console.log('issue: ', this.actions.wrapImmediateText());
+
       const textHeight =
         this.actions.bodyTextStyle().fontSize * 0.8 +
         6 * this.actions.wrapCardTitle().length +
@@ -179,25 +166,44 @@ export default class CardTemplate extends Component {
       return lines.flat();
     },
     wrapImmediateText: () => {
-      if (!(this.cardProp.immediateText && this.cardProp.immediateText.trim()))
+      console.log('wrapImmediateText: ', this.cardProp.immediateText);
+
+      if (
+        !(this.cardProp.immediateText && this.cardProp.immediateText.trim())
+      ) {
         return [];
+      }
       const indent = this.actions.getTextWidth(
         'IMMEDIATELY: ',
-        this.sectionHeadingStyle.font
+        this.actions.sectionHeadingStyle().font
       );
+
+      const lines = this.cardProp.immediateText
+        .trim()
+        .split(/\r?\n/)
+        .map((line, index) => {
+          return this.actions.wrapLines(
+            line.split(' '),
+            this.actions.bodyTextStyle().font,
+            this.actions.maxTextLength(),
+            index === 0 ? indent : 0
+          );
+        });
+      return lines.flat();
     },
     wrapDuringText: () => {
-      if (!(this.cardProp.duringText && this.cardProp.duringText.trim()))
+      if (!(this.cardProp.duringText && this.cardProp.duringText.trim())) {
         return [];
+      }
       const indent = this.actions.getTextWidth(
         'DURING COMBAT: ',
         this.actions.sectionHeadingStyle().font
       );
-      const lines = this.duringText
+      const lines = this.cardProp.duringText
         .trim()
         .split(/\r?\n/)
         .map((line, index) => {
-          return this.wrapLines(
+          return this.actions.wrapLines(
             line.split(' '),
             this.actions.bodyTextStyle().font,
             this.actions.maxTextLength(),
@@ -267,21 +273,28 @@ export default class CardTemplate extends Component {
     boostValueStyle: () => {
       return {
         fill: '#fff',
-        fontSize: 'BebasNeueRegular',
+        fontFamily: 'BebasNeueRegular',
         fontSize: '5px',
       };
     },
     bottomCornerStyle: () => {
       return {
         fill: '#fff',
-        fontSize: 'BebasNeueRegular',
+        fontFamily: 'BebasNeueRegular',
         fontSize: '1.8px',
+      };
+    },
+    cardValueStyle: () => {
+      return {
+        fill: '#fff',
+        fontFamily: 'BebasNeueRegular',
+        fontSize: '7.8px',
       };
     },
     quantityStyle: () => {
       return {
         fill: '#fff',
-        fontSize: 'League Gothic',
+        fontFamily: 'League Gothic',
         fontSize: '1.8px',
       };
     },
@@ -368,8 +381,13 @@ export default class CardTemplate extends Component {
     };
     const quantityStyle = {
       fill: '#fff',
-      fontSize: 'League Gothic',
+      font: 'League Gothic',
       fontSize: '1.8px',
+    };
+    const cardValueStyle = {
+      fill: '#fff',
+      fontFamily: 'BebasNeueRegular',
+      fontSize: '7.8px',
     };
 
     return (
@@ -418,16 +436,14 @@ export default class CardTemplate extends Component {
             <polygon
               style={outerBorderStyle}
               points={`
-                    0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${
-                47 + cantonAdjust
-              } 0,${44.2 + cantonAdjust}
+                    0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${47 +
+                cantonAdjust} 0,${44.2 + cantonAdjust}
                 `}
             />
             <polygon
               style={namePanel}
-              points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${
-                46.2 + cantonAdjust
-              } 0,${43.3 + cantonAdjust}`}
+              points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${46.2 +
+                cantonAdjust} 0,${43.3 + cantonAdjust}`}
             />
             <text
               x='-20'
@@ -634,7 +650,7 @@ export default class CardTemplate extends Component {
               textAnchor='end'
               style={bottomCornerStyle}
             >
-              {characterName}
+              {title}
             </text>
             <line
               x1={53.25}
