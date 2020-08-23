@@ -19,13 +19,16 @@
   fill: #fcbd71; }
 
 body {
-  background-color: grey; }
+  background-color: #4a2a50;
+  color: #e7cc98;
+  font-family: "ArchivoNarrow", sans-serif; }
 
-.flex {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  grid-gap: 0.25em;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  width: auto; }
+#nav {
+  padding: 1em;
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  font-family: "BebasNeueRegular";
+  font-size: 1.75rem; }
+  #nav .nav-right > * {
+    padding: 0 1em 0 0; }

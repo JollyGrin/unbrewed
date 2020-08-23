@@ -7,33 +7,27 @@
   src: url('/fonts/ArchivoNarrow.otf');
 }
 
-$defence-blue: #2c76ac;
-$attack-red: #dc3034;
-$versatile-violet: #6c4e8d;
-$scheme-yellow: #fcbd71;
-.attack {
-  fill: $attack-red;
-}
-.defence {
-  fill: $defence-blue;
-}
-.versatile {
-  fill: $versatile-violet;
-}
-.scheme {
-  fill: $scheme-yellow;
-}
+$color-purple: #4a2a50;
+$color-tan: #e7cc98;
+$font-reg: 'ArchivoNarrow', sans-serif;
+$font-header: 'BebasNeueRegular';
+
+@import './card.scss';
 
 body {
-  background-color: grey;
+  background-color: $color-purple;
+  color: $color-tan;
+  font-family: $font-reg;
 }
 
-.flex {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  grid-gap: 0.25em;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  width: auto;
+#nav {
+  padding: 1em;
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  font-family: $font-header;
+  font-size: 1.75rem;
+  & .nav-right > * {
+    padding: 0 1em 0 0;
+  }
 }

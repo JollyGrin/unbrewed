@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import cardMock from '../../assets/mock/card.json';
 import IconSvg from './IconSvg';
+const { createCanvas } = require('canvas');
 
 export default class CardTemplate extends Component {
   constructor(props) {
@@ -74,8 +75,6 @@ export default class CardTemplate extends Component {
       return { fill: '#000' };
     },
     bottomPanelHeight: () => {
-      console.log('issue: ', this.actions.wrapImmediateText());
-
       const textHeight =
         this.actions.bodyTextStyle().fontSize * 0.8 +
         6 * this.actions.wrapCardTitle().length +
@@ -166,8 +165,6 @@ export default class CardTemplate extends Component {
       return lines.flat();
     },
     wrapImmediateText: () => {
-      console.log('wrapImmediateText: ', this.cardProp.immediateText);
-
       if (
         !(this.cardProp.immediateText && this.cardProp.immediateText.trim())
       ) {
@@ -263,12 +260,12 @@ export default class CardTemplate extends Component {
       );
     },
     getTextWidth: (text, font) => {
-      if (process.browser) {
-        const canvas = window.document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        context.font = font;
-        return context.measureText(text).width;
-      }
+      const canvas = createCanvas(200, 200);
+      const context = canvas.getContext('2d');
+      // const canvas = window.document.createElement('canvas');
+      // const context = canvas.getContext('2d');
+      context.font = font;
+      return context.measureText(text).width;
     },
     boostValueStyle: () => {
       return {
@@ -356,18 +353,19 @@ export default class CardTemplate extends Component {
     const bottomPanelStyle = { fill: '#000' };
     const characterNameStyle = {
       fill: '#fff',
-      fontSize: 'BebasNeueRegular',
+      fontFamily: 'BebasNeueRegular',
       fontSize: '6px',
     };
     const titleTextStyle = {
       fill: '#fff',
-      font: `5px BebasNeueRegular`,
+      fontFamily: `BebasNeueRegular`,
       fontSize: `5px`,
     };
     const sectionHeadingStyle = {
       fill: '#fff',
-      font: `4px BebasNeueRegular`,
-      fontSize: 4,
+      fontFamily: `BebasNeueRegular`,
+      fontSize: `4px`,
+      fsize: 4,
     };
     const boostValueStyle = {
       fill: '#fff',
@@ -376,12 +374,12 @@ export default class CardTemplate extends Component {
     };
     const bottomCornerStyle = {
       fill: '#fff',
-      fontSize: 'BebasNeueRegular',
+      fontFamily: 'BebasNeueRegular',
       fontSize: '1.8px',
     };
     const quantityStyle = {
       fill: '#fff',
-      font: 'League Gothic',
+      fontFamily: 'League Gothic',
       fontSize: '1.8px',
     };
     const cardValueStyle = {
@@ -392,9 +390,15 @@ export default class CardTemplate extends Component {
 
     return (
       <Fragment>
-        <svg
+        {/* <svg
           width={width}
           height={height}
+          ref='svg'
+          viewBox='0 0 63 88'
+          shapeRendering='geometricPrecision'
+        > */}
+        <svg
+          preserveAspectRatio='xMinYMin meet'
           ref='svg'
           viewBox='0 0 63 88'
           shapeRendering='geometricPrecision'
@@ -436,14 +440,25 @@ export default class CardTemplate extends Component {
             <polygon
               style={outerBorderStyle}
               points={`
+              0,0 10.8,0 10.8,39.6 5,42.9 0,40.1
+                `}
+            />
+            {/* old dynamic polygons that stretch */}
+            {/* <polygon
+              style={outerBorderStyle}
+              points={`
                     0,0 10.8,0 10.8,${43.7 + cantonAdjust} 5,${47 +
                 cantonAdjust} 0,${44.2 + cantonAdjust}
                 `}
-            />
-            <polygon
+            /> */}
+            {/* <polygon
               style={namePanel}
               points={`0,14.2 10,14.2 10,${43.3 + cantonAdjust} 5,${46.2 +
                 cantonAdjust} 0,${43.3 + cantonAdjust}`}
+            /> */}
+            <polygon
+              style={namePanel}
+              points='0,14.2 10,14.2 10,39.87 5,42.77 0,39.9'
             />
             <text
               x='-20'
@@ -457,7 +472,7 @@ export default class CardTemplate extends Component {
               {this.cardProp.characterName}
             </text>
             <polygon className={type} points='0,0 10,0 10,14.2 5,17.1 0,14.2' />
-            {this.actions.isScheme() ? (
+            {!this.actions.isScheme() ? (
               <text x='5' y='14.8' textAnchor='middle' style={cardValueStyle}>
                 {value}
               </text>
@@ -527,7 +542,7 @@ export default class CardTemplate extends Component {
                 }
               >
                 <tspan
-                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  dy={4.36}
                   x={bottomPanelPadding}
                   style={sectionHeadingStyle}
                 >
@@ -560,7 +575,7 @@ export default class CardTemplate extends Component {
                 }
               >
                 <tspan
-                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  dy={4.36}
                   x={bottomPanelPadding}
                   style={sectionHeadingStyle}
                 >
@@ -595,7 +610,7 @@ export default class CardTemplate extends Component {
                 }
               >
                 <tspan
-                  dy={sectionHeadingStyle.fontSize * 0.9}
+                  dy={4.36}
                   x={bottomPanelPadding}
                   style={sectionHeadingStyle}
                 >
