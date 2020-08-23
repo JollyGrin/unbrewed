@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap");
 @font-face {
   font-family: 'BebasNeueRegular';
   src: url("/fonts/BebasNeueRegular.otf"); }
@@ -21,7 +22,9 @@
 body {
   background-color: #4a2a50;
   color: #e7cc98;
-  font-family: "ArchivoNarrow", sans-serif; }
+  font-family: "Crimson Text";
+  font-size: 1.25rem;
+  letter-spacing: 0.5px; }
 
 #nav {
   padding: 1em;
@@ -32,3 +35,46 @@ body {
   font-size: 1.75rem; }
   #nav .nav-right > * {
     padding: 0 1em 0 0; }
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  justify-content: center; }
+  #hero > img {
+    width: 50vw; }
+  #hero > span {
+    padding-top: 1em;
+    font-family: "Crimson Text";
+    font-size: 2.5rem;
+    text-align: center; }
+    #hero > span strong {
+      font-weight: 700; }
+
+#home-box-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #home-box-wrapper > #home-boxes {
+    display: grid;
+    grid-gap: 2em;
+    width: 80%; }
+    #home-box-wrapper > #home-boxes > .home-box {
+      padding: 1em;
+      color: #4a2a50;
+      background-color: #e7cc98;
+      border-radius: 0.5em;
+      width: 100%; }
+      #home-box-wrapper > #home-boxes > .home-box h3 {
+        font-family: "BebasNeueRegular";
+        font-size: 2rem;
+        padding-bottom: 0.5rem; }
+
+@media (min-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr; } }
