@@ -95,7 +95,7 @@
   display: flex;
   flex-direction: column;
   min-height: 30vh;
-  padding: 2em 0;
+  padding: 2em 1em;
   justify-content: center;
   align-items: center;
   text-align: center; }
@@ -139,18 +139,48 @@ body {
   color: #4a2a50;
   padding: 2em 1em;
   display: flex;
-  justify-content: center; }
+  align-items: center;
+  flex-direction: column; }
   #section-video h1 {
     font-family: "BebasNeueRegular";
     font-size: 3rem;
+    justify-self: center;
     text-align: center; }
+  #section-video .videos-grid {
+    padding: 1em;
+    width: 60%;
+    display: grid;
+    grid-gap: 0.25em;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    #section-video .videos-grid .video-wrapper {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      background-color: #4a2a50;
+      border-radius: 0.5em;
+      min-height: 180px;
+      background-position: center;
+      filter: grayscale(90%);
+      justify-content: center;
+      align-items: center;
+      transition: filter 0.25s ease-in-out; }
+      #section-video .videos-grid .video-wrapper i {
+        font-size: 1.5em;
+        transition: font-size 0.25s ease-in; }
+    #section-video .videos-grid .video-wrapper:hover {
+      filter: grayscale(0%); }
+      #section-video .videos-grid .video-wrapper:hover i {
+        font-size: 2.5em; }
 
 @media (min-width: 600px) {
   #home-boxes {
     grid-template-columns: 1fr 1fr; }
   .board-button-wrapper {
     display: flex;
-    flex-direction: row; } }
+    flex-direction: row; }
+  .video-wrapper {
+    background-size: 130%; } }
 
 @media (max-width: 600px) {
   #home-boxes {
@@ -159,4 +189,6 @@ body {
     display: flex;
     flex-direction: column; }
     .board-button-wrapper .recButton-wrapper {
-      margin-bottom: 0.5em !important; } }
+      margin-bottom: 0.5em !important; }
+  .video-wrapper {
+    background-size: 130%; } }

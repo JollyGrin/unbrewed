@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import CardTemplate from '../components/card/CardTemplate';
-import cardMock from '../assets/mock/card.json';
-import kirby from '../assets/mock/kirby.json';
-import chief from '../assets/mock/chief.json';
 import Navbar from '../components/dom/Navbar';
 import Hero from '../components/dom/Hero';
 import HomeBoxes from '../components/dom/HomeBoxes';
 import BoardRec from '../components/dom/BoardRec';
 import VideoSection from '../components/dom/VideoSection';
+import { getVideos } from '../assets/js/lib/youtube';
 
-export default function Index({ hi, preview }) {
+export default function Index({ videos, preview }) {
   return (
     <Layout>
       <Navbar />
       <Hero />
       <HomeBoxes />
       <BoardRec />
-      <VideoSection />
+      <VideoSection videos={videos} />
     </Layout>
   );
 }
 
 export async function getStaticProps({ preview = false }) {
-  const hi = 'hi';
+  const youtube = await getVideos();
+  const videos = youtube.items;
 
   return {
-    props: { hi },
+    props: { videos },
   };
 }
