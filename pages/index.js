@@ -7,6 +7,8 @@ import chief from '../assets/mock/chief.json';
 import Navbar from '../components/dom/Navbar';
 import Hero from '../components/dom/Hero';
 import HomeBoxes from '../components/dom/HomeBoxes';
+import BoardRec from '../components/dom/BoardRec';
+import VideoSection from '../components/dom/VideoSection';
 
 export default function Index({ hi, preview }) {
   return (
@@ -14,6 +16,8 @@ export default function Index({ hi, preview }) {
       <Navbar />
       <Hero />
       <HomeBoxes />
+      <BoardRec />
+      <VideoSection />
     </Layout>
   );
 }
