@@ -1,0 +1,54 @@
+#section-video {
+  min-height: 20vh;
+  background-color: $color-tan;
+  color: $color-purple;
+  padding: 2em 1em;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & h1 {
+    font-family: $font-header;
+    font-size: 3rem;
+    justify-self: center;
+    text-align: center;
+  }
+
+  & .videos-grid {
+    padding: 1em;
+    width: 60%;
+    display: grid;
+    grid-gap: 0.25em;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+    & .video-wrapper {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      background-color: $color-purple;
+      border-radius: 0.5em;
+      min-height: 180px;
+      background-position: center;
+      filter: grayscale(90%);
+      justify-content: center;
+      align-items: center;
+      transition: filter 0.25s ease-in-out;
+
+      & i {
+        color: $color-tan;
+
+        font-size: 1.5em;
+        transition: font-size 0.25s ease-in;
+      }
+    }
+
+    & .video-wrapper:hover {
+      filter: grayscale(0%);
+      & i {
+        font-size: 2.5em;
+      }
+    }
+  }
+}

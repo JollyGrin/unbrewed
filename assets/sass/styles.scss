@@ -19,6 +19,7 @@ $font-serif: 'Crimson Text';
 @import './homeboxes.scss';
 @import './hero.scss';
 @import './boardRec.scss';
+@import './videos.scss';
 
 body {
   background-color: $color-purple;
@@ -28,54 +29,57 @@ body {
   letter-spacing: 0.5px;
 }
 
-#section-video {
-  min-height: 20vh;
+#cardPool {
   background-color: $color-tan;
   color: $color-purple;
-  padding: 2em 1em;
+  min-height: 100vh;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  padding: 1em;
 
-  & h1 {
-    font-family: $font-header;
-    font-size: 3rem;
-    justify-self: center;
-    text-align: center;
-  }
-
-  & .videos-grid {
-    padding: 1em;
-    width: 60%;
-    display: grid;
-    grid-gap: 0.25em;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-    & .video-wrapper {
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      background-color: $color-purple;
-      border-radius: 0.5em;
-      min-height: 180px;
-      background-position: center;
-      filter: grayscale(90%);
-      justify-content: center;
-      align-items: center;
-      transition: filter 0.25s ease-in-out;
-
-      & i {
-        font-size: 1.5em;
-        transition: font-size 0.25s ease-in;
-      }
+  & #deckInfo {
+    & .deckInfo-header h1 {
+      font-family: $font-header;
+      font-size: 2rem;
+      padding-bottom: 0.25em;
     }
+    & .deckInfo-boxes {
+      display: grid;
+      grid-gap: 0.5em;
+      grid-template-columns: 1fr 2fr 1fr;
+      min-height: 10vh;
+      & .deckInfo-box {
+        background-color: #fff;
+        border-radius: 0.25em;
+        padding: 0.5em;
 
-    & .video-wrapper:hover {
-      filter: grayscale(0%);
-      & i {
-        font-size: 2.5em;
+        & .info-icons {
+          padding: 0.5em 0;
+          display: grid;
+          grid-gap: 10px;
+          grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
+
+          & .icon-wrap {
+            display: flex;
+            flex-direction: row;
+            font-family: $font-header;
+            align-items: center;
+            justify-content: center;
+            & i {
+              padding-right: 5px;
+            }
+          }
+        }
+      }
+      & .deckInfo-box-wrapper {
+        display: grid;
+        grid-gap: 0.5em;
+        grid-template-columns: 1fr;
+      }
+      & .info-hero,
+      .info-sidekick {
+        & h1 {
+          font-family: $font-header;
+        }
       }
     }
   }
@@ -95,6 +99,14 @@ body {
   & .video-wrapper {
     background-size: 130%;
   }
+
+  #cardPool {
+    & #deckInfo {
+      & .deckInfo-boxes {
+        grid-template-columns: 1fr 2fr 1fr;
+      }
+    }
+  }
 }
 
 // MOBILE
@@ -113,5 +125,13 @@ body {
 
   & .video-wrapper {
     background-size: 130%;
+  }
+
+  #cardPool {
+    & #deckInfo {
+      & .deckInfo-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 }
