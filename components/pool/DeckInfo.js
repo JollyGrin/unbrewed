@@ -69,7 +69,7 @@ export default class DeckInfo extends Component {
       return this.props.pool ? this.props.pool.author : 'loading...';
     },
     note: () => {
-      return this.props.pool ? this.props.pool.deckNote : '(no note)';
+      return this.props.pool ? this.props.pool.deckNote : 'not available';
     },
   };
 
@@ -81,7 +81,9 @@ export default class DeckInfo extends Component {
             <h1>Deck Details</h1>
           </div>
           <div className='deckInfo-boxes'>
+            {/* hero and sidekick wrapper */}
             <div className='deckInfo-box-wrapper'>
+              {/* hero box */}
               <div className='deckInfo-box info-hero'>
                 <h1>{this.renderDom.heroName()}</h1>
                 <div className='info-icons'>
@@ -92,6 +94,8 @@ export default class DeckInfo extends Component {
                   <div className='icon-wrap'>{this.renderDom.move()}</div>
                 </div>
               </div>
+
+              {/* sidekick box */}
               <div className='deckInfo-box info-sidekick'>
                 <h1>{this.renderDom.sidekickName()}</h1>
                 <div className='info-icons'>
@@ -104,11 +108,18 @@ export default class DeckInfo extends Component {
                 </div>
               </div>
             </div>
+
+            {/* special ability */}
             <div className='deckInfo-box info-special'>
               <p>{this.renderDom.special()}</p>
             </div>
-            <div className='deckInfo-box'>
-              <h3>{this.renderDom.author()}</h3>
+
+            {/* deck info and author */}
+            <div className='deckInfo-box deckInfo-author'>
+              <div className='author-header'>
+                <h1>by: {this.renderDom.author()}</h1>
+                <a href='#'>View</a>
+              </div>
               <p>{this.renderDom.note()}</p>
             </div>
           </div>

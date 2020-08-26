@@ -11,6 +11,10 @@
 $color-purple: #4a2a50;
 $color-tan: #e7cc98;
 $color-gray: #9b9b9b;
+$color-defence-blue: #2c76ac;
+$color-attack-red: #dc3034;
+$color-versatile-violet: #6c4e8d;
+$color-scheme-yellow: #fcbd71;
 $font-reg: 'ArchivoNarrow', sans-serif;
 $font-header: 'BebasNeueRegular';
 $font-serif: 'Crimson Text';
@@ -20,6 +24,7 @@ $font-serif: 'Crimson Text';
 @import './hero.scss';
 @import './boardRec.scss';
 @import './videos.scss';
+@import './player/deckInfo.scss';
 
 body {
   background-color: $color-purple;
@@ -27,62 +32,6 @@ body {
   font-family: $font-serif;
   font-size: 1.25rem;
   letter-spacing: 0.5px;
-}
-
-#cardPool {
-  background-color: $color-tan;
-  color: $color-purple;
-  min-height: 100vh;
-
-  padding: 1em;
-
-  & #deckInfo {
-    & .deckInfo-header h1 {
-      font-family: $font-header;
-      font-size: 2rem;
-      padding-bottom: 0.25em;
-    }
-    & .deckInfo-boxes {
-      display: grid;
-      grid-gap: 0.5em;
-      grid-template-columns: 1fr 2fr 1fr;
-      min-height: 10vh;
-      & .deckInfo-box {
-        background-color: #fff;
-        border-radius: 0.25em;
-        padding: 0.5em;
-
-        & .info-icons {
-          padding: 0.5em 0;
-          display: grid;
-          grid-gap: 10px;
-          grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
-
-          & .icon-wrap {
-            display: flex;
-            flex-direction: row;
-            font-family: $font-header;
-            align-items: center;
-            justify-content: center;
-            & i {
-              padding-right: 5px;
-            }
-          }
-        }
-      }
-      & .deckInfo-box-wrapper {
-        display: grid;
-        grid-gap: 0.5em;
-        grid-template-columns: 1fr;
-      }
-      & .info-hero,
-      .info-sidekick {
-        & h1 {
-          font-family: $font-header;
-        }
-      }
-    }
-  }
 }
 
 // DESKTOP

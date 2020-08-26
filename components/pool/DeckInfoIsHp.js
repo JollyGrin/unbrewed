@@ -10,8 +10,6 @@ export default class DeckInfoIsHp extends Component {
       return;
     }
 
-    console.log('090900', this.props.hp, this.props.quantity);
-
     return this.props.quantity <= 1 ? (
       <span>
         <i className='fas fa-heart' /> {this.props.hp}

@@ -167,13 +167,6 @@
       #section-video .videos-grid .video-wrapper:hover i {
         font-size: 2.5em; }
 
-body {
-  background-color: #4a2a50;
-  color: #e7cc98;
-  font-family: "Crimson Text";
-  font-size: 1.25rem;
-  letter-spacing: 0.5px; }
-
 #cardPool {
   background-color: #e7cc98;
   color: #4a2a50;
@@ -183,6 +176,34 @@ body {
     font-family: "BebasNeueRegular";
     font-size: 2rem;
     padding-bottom: 0.25em; }
+  #cardPool #deckInfo .info-hero h1,
+  #cardPool #deckInfo .info-sidekick h1,
+  #cardPool #deckInfo .deckInfo-box h1 {
+    font-family: "BebasNeueRegular"; }
+  #cardPool #deckInfo .info-special {
+    justify-content: center; }
+    #cardPool #deckInfo .info-special > p {
+      align-self: center; }
+  #cardPool #deckInfo .deckInfo-author > p {
+    padding-top: 0.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical; }
+  #cardPool #deckInfo .deckInfo-author .author-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    #cardPool #deckInfo .deckInfo-author .author-header a {
+      background-color: #4a2a50;
+      border-radius: 0.25rem;
+      color: #e7cc98;
+      padding: 0.5em;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-right: 0.25em;
+      font-family: "BebasNeueRegular"; }
   #cardPool #deckInfo .deckInfo-boxes {
     display: grid;
     grid-gap: 0.5em;
@@ -196,7 +217,7 @@ body {
         padding: 0.5em 0;
         display: grid;
         grid-gap: 10px;
-        grid-template-columns: repeat(auto-fill, minmax(4em, 1fr)); }
+        grid-template-columns: repeat(auto-fill, minmax(3.58em, 1fr)); }
         #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap {
           display: flex;
           flex-direction: row;
@@ -205,13 +226,23 @@ body {
           justify-content: center; }
           #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap i {
             padding-right: 5px; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-heart {
+            color: #dc3034; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-shoe-prints {
+            color: #fcbd71; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-list-ol {
+            color: #2c76ac; }
     #cardPool #deckInfo .deckInfo-boxes .deckInfo-box-wrapper {
       display: grid;
       grid-gap: 0.5em;
       grid-template-columns: 1fr; }
-    #cardPool #deckInfo .deckInfo-boxes .info-hero h1,
-    #cardPool #deckInfo .deckInfo-boxes .info-sidekick h1 {
-      font-family: "BebasNeueRegular"; }
+
+body {
+  background-color: #4a2a50;
+  color: #e7cc98;
+  font-family: "Crimson Text";
+  font-size: 1.25rem;
+  letter-spacing: 0.5px; }
 
 @media (min-width: 600px) {
   #home-boxes {
