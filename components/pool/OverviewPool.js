@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PlayerBox from './PlayerBox';
+import Slider from 'react-slick';
 
 export default class OverviewPool extends Component {
   constructor(props) {
@@ -7,7 +8,14 @@ export default class OverviewPool extends Component {
   }
 
   renderPlayers = () => {
-    return <PlayerBox />;
+    if (this.props && this.props.state) {
+      const playersArray = Object.entries(this.props.state.gameState.players);
+      return playersArray.map((player, index) => (
+        <div key={index}>
+          <PlayerBox player={player[0]} deck={player[1]} />
+        </div>
+      ));
+    }
   };
 
   render() {
@@ -54,7 +62,9 @@ export default class OverviewPool extends Component {
               {this.props.urlParams.player}
             </h1>
           </div>
-          <div className='overview-players'>{this.renderPlayers()}</div>
+          <div className='overview-players'>
+            <Slider {...settings}>{this.renderPlayers()}</Slider>
+          </div>
         </section>
       </Fragment>
     );

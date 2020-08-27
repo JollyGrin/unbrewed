@@ -61,6 +61,8 @@
         padding: 0.5em;
 
         & .info-icons {
+          cursor: grab;
+          user-select: none;
           padding: 0.5em 0;
           display: grid;
           grid-gap: 10px;

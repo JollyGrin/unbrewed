@@ -9,10 +9,11 @@ export default class HandPool extends Component {
   }
 
   renderHand = () => {
-    console.log('sssss', this.props.pool);
-    if (this.props.pool && this.props.pool.deck) {
-      return this.props.pool.deck.map((card, index) => (
-        <HandCardWrapper card={card} />
+    if (this.props.pool && this.props.pool.hand) {
+      return this.props.pool.hand.map((card, index) => (
+        <div key={index}>
+          <HandCardWrapper card={card} />
+        </div>
       ));
     }
   };

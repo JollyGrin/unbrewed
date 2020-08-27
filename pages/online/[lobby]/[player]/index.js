@@ -20,8 +20,6 @@ export async function getServerSideProps(context) {
     deck = await getDeck(urlParams.deck);
   }
 
-  console.log('=-=-=-=', deck, urlParams);
-
   return {
     props: { deck, urlParams }, // will be passed to the page component as props
   };

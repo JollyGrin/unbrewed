@@ -34,6 +34,11 @@ body {
   letter-spacing: 0.5px;
 }
 
+*:focus {
+  outline: 0;
+  outline: none;
+}
+
 #section-hand {
   padding: 2em 0.25em;
 
@@ -49,45 +54,31 @@ body {
       font-size: 2rem;
     }
     & a {
+      cursor: pointer;
+      user-select: none;
       background-color: $color-purple;
       color: $color-tan;
       padding: 0.5em;
       border-radius: 0.25em;
       font-family: $font-header;
+      transition: letter-spacing 0.25s ease-in, box-shadow 0.25s ease-in,
+        filter 0.1s ease-in-out;
+    }
+
+    & a:hover {
+      letter-spacing: 1px;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    & a:active {
+      filter: saturate(2);
+      letter-spacing: 2px;
     }
   }
   & .hand-wrapper {
     & li {
       display: none;
     }
-  }
-  & .cardWrapper {
-    padding: 0 1.5px;
-    filter: saturate(1);
-    transition: filter 0.25s ease-in;
-
-    & .navWrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      text-align: center;
-      padding-bottom: 0.25em;
-      font-size: 1rem;
-      & a {
-        opacity: 0.2;
-        transition: opacity 0.25s ease-in;
-        cursor: pointer;
-        padding: 0.5em;
-        margin-bottom: -0.25em;
-      }
-      & a:hover {
-        opacity: 1;
-        background-color: #fff;
-        border-radius: 0.5em 0.5em 0 0;
-      }
-    }
-  }
-  & .cardWrapper:hover {
-    filter: saturate(3);
   }
 }
 
@@ -113,20 +104,27 @@ body {
   & .overview-players {
     padding-top: 1em;
     & .overview-player-box {
+      padding: 0.5em;
       display: flex;
       flex-direction: column;
-      width: 10em;
+      width: 100%;
+      align-items: center;
       & h1 {
         font-family: $font-header;
         font-size: 2rem;
       }
       & .player-box-icon-wrapper {
-        padding-top: 0.5em;
+        padding: 0.5em;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        & > div > span {
-          padding-left: 0.25rem;
-          font-family: $font-reg;
+        & > div {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em;
+          & > span {
+            padding-left: 0.25rem;
+            font-family: $font-reg;
+          }
         }
       }
     }

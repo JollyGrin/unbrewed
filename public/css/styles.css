@@ -19,6 +19,30 @@
 .scheme {
   fill: #fcbd71; }
 
+.cardWrapper {
+  padding: 0 1.5px;
+  filter: saturate(1);
+  transition: filter 0.25s ease-in; }
+  .cardWrapper .navWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    padding-bottom: 0.25em;
+    font-size: 1rem; }
+    .cardWrapper .navWrapper a {
+      cursor: pointer;
+      opacity: 0.2;
+      transition: opacity 0.25s ease-in;
+      padding: 0.5em;
+      margin-bottom: -0.25em; }
+    .cardWrapper .navWrapper a:hover {
+      opacity: 1;
+      background-color: #fff;
+      border-radius: 0.5em 0.5em 0 0; }
+
+.cardWrapper:hover {
+  filter: saturate(3); }
+
 #home-box-wrapper {
   display: flex;
   justify-content: center;
@@ -214,6 +238,8 @@
       border-radius: 0.25em;
       padding: 0.5em; }
       #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons {
+        cursor: grab;
+        user-select: none;
         padding: 0.5em 0;
         display: grid;
         grid-gap: 10px;
@@ -244,6 +270,10 @@ body {
   font-size: 1.25rem;
   letter-spacing: 0.5px; }
 
+*:focus {
+  outline: 0;
+  outline: none; }
+
 #section-hand {
   padding: 2em 0.25em; }
   #section-hand .hand-header {
@@ -256,35 +286,22 @@ body {
       font-family: "BebasNeueRegular";
       font-size: 2rem; }
     #section-hand .hand-header a {
+      cursor: pointer;
+      user-select: none;
       background-color: #4a2a50;
       color: #e7cc98;
       padding: 0.5em;
       border-radius: 0.25em;
-      font-family: "BebasNeueRegular"; }
+      font-family: "BebasNeueRegular";
+      transition: letter-spacing 0.25s ease-in, box-shadow 0.25s ease-in, filter 0.1s ease-in-out; }
+    #section-hand .hand-header a:hover {
+      letter-spacing: 1px;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35); }
+    #section-hand .hand-header a:active {
+      filter: saturate(2);
+      letter-spacing: 2px; }
   #section-hand .hand-wrapper li {
     display: none; }
-  #section-hand .cardWrapper {
-    padding: 0 1.5px;
-    filter: saturate(1);
-    transition: filter 0.25s ease-in; }
-    #section-hand .cardWrapper .navWrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      text-align: center;
-      padding-bottom: 0.25em;
-      font-size: 1rem; }
-      #section-hand .cardWrapper .navWrapper a {
-        opacity: 0.2;
-        transition: opacity 0.25s ease-in;
-        cursor: pointer;
-        padding: 0.5em;
-        margin-bottom: -0.25em; }
-      #section-hand .cardWrapper .navWrapper a:hover {
-        opacity: 1;
-        background-color: #fff;
-        border-radius: 0.5em 0.5em 0 0; }
-  #section-hand .cardWrapper:hover {
-    filter: saturate(3); }
 
 #section-overview {
   padding: 1em;
@@ -303,19 +320,25 @@ body {
   #section-overview .overview-players {
     padding-top: 1em; }
     #section-overview .overview-players .overview-player-box {
+      padding: 0.5em;
       display: flex;
       flex-direction: column;
-      width: 10em; }
+      width: 100%;
+      align-items: center; }
       #section-overview .overview-players .overview-player-box h1 {
         font-family: "BebasNeueRegular";
         font-size: 2rem; }
       #section-overview .overview-players .overview-player-box .player-box-icon-wrapper {
-        padding-top: 0.5em;
+        padding: 0.5em;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; }
-        #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div > span {
-          padding-left: 0.25rem;
-          font-family: "ArchivoNarrow", sans-serif; }
+        #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em; }
+          #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div > span {
+            padding-left: 0.25rem;
+            font-family: "ArchivoNarrow", sans-serif; }
 
 @media (min-width: 600px) {
   #home-boxes {

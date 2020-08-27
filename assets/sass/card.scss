@@ -14,3 +14,32 @@ $scheme-yellow: #fcbd71;
 .scheme {
   fill: $scheme-yellow;
 }
+
+.cardWrapper {
+  padding: 0 1.5px;
+  filter: saturate(1);
+  transition: filter 0.25s ease-in;
+
+  & .navWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    padding-bottom: 0.25em;
+    font-size: 1rem;
+    & a {
+      cursor: pointer;
+      opacity: 0.2;
+      transition: opacity 0.25s ease-in;
+      padding: 0.5em;
+      margin-bottom: -0.25em;
+    }
+    & a:hover {
+      opacity: 1;
+      background-color: #fff;
+      border-radius: 0.5em 0.5em 0 0;
+    }
+  }
+}
+.cardWrapper:hover {
+  filter: saturate(3);
+}

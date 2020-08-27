@@ -5,6 +5,7 @@ export default class Pool {
     this.deckid = deckData.family_id;
     this.deckName = deckData.name;
     this.deckNote = deckData.note;
+    this.cards = deckData.deck_data.cards;
 
     // BASE INFO
     this.deck = deckData.deck_data.cards;
@@ -32,6 +33,26 @@ export default class Pool {
     };
 
     // FUNCTIONS
+    this.makeDeck = function() {
+      const { cards } = deckData.deck_data;
+      let newDeck = [];
+      cards.forEach((spell) => {
+        const { quantity } = spell;
+        let i;
+        for (i = 0; i < quantity; i++) {
+          newDeck.push(spell);
+        }
+      });
+      this.deck = newDeck;
+    };
+
+    this.shuffleDeck = function() {
+      for (let i = this.deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+      }
+    };
+
     this.draw = function() {
       this.hand.push(this.deck.pop());
     };
@@ -49,10 +70,6 @@ export default class Pool {
     this.deckCardBottom = function(cardIndex) {
       this.deck.unshift(this.hand[cardIndex]);
       this.hand.splice(cardIndex, 1);
-    };
-
-    this.shuffleDeck = function() {
-      this.deck.sort(() => Math.random() - 0.5);
     };
 
     this.discardCard = function(cardIndex) {
