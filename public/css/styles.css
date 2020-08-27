@@ -244,6 +244,79 @@ body {
   font-size: 1.25rem;
   letter-spacing: 0.5px; }
 
+#section-hand {
+  padding: 2em 0.25em; }
+  #section-hand .hand-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0; }
+    #section-hand .hand-header h1 {
+      font-family: "BebasNeueRegular";
+      font-size: 2rem; }
+    #section-hand .hand-header a {
+      background-color: #4a2a50;
+      color: #e7cc98;
+      padding: 0.5em;
+      border-radius: 0.25em;
+      font-family: "BebasNeueRegular"; }
+  #section-hand .hand-wrapper li {
+    display: none; }
+  #section-hand .cardWrapper {
+    padding: 0 1.5px;
+    filter: saturate(1);
+    transition: filter 0.25s ease-in; }
+    #section-hand .cardWrapper .navWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      text-align: center;
+      padding-bottom: 0.25em;
+      font-size: 1rem; }
+      #section-hand .cardWrapper .navWrapper a {
+        opacity: 0.2;
+        transition: opacity 0.25s ease-in;
+        cursor: pointer;
+        padding: 0.5em;
+        margin-bottom: -0.25em; }
+      #section-hand .cardWrapper .navWrapper a:hover {
+        opacity: 1;
+        background-color: #fff;
+        border-radius: 0.5em 0.5em 0 0; }
+  #section-hand .cardWrapper:hover {
+    filter: saturate(3); }
+
+#section-overview {
+  padding: 1em;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  #section-overview .overview-header {
+    align-self: center; }
+    #section-overview .overview-header > h1 {
+      font-family: "BebasNeueRegular";
+      font-size: 2.5rem; }
+      #section-overview .overview-header > h1 > span {
+        opacity: 0.2;
+        letter-spacing: -1px; }
+  #section-overview .overview-players {
+    padding-top: 1em; }
+    #section-overview .overview-players .overview-player-box {
+      display: flex;
+      flex-direction: column;
+      width: 10em; }
+      #section-overview .overview-players .overview-player-box h1 {
+        font-family: "BebasNeueRegular";
+        font-size: 2rem; }
+      #section-overview .overview-players .overview-player-box .player-box-icon-wrapper {
+        padding-top: 0.5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; }
+        #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div > span {
+          padding-left: 0.25rem;
+          font-family: "ArchivoNarrow", sans-serif; }
+
 @media (min-width: 600px) {
   #home-boxes {
     grid-template-columns: 1fr 1fr; }

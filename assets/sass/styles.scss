@@ -34,6 +34,105 @@ body {
   letter-spacing: 0.5px;
 }
 
+#section-hand {
+  padding: 2em 0.25em;
+
+  & .hand-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+
+    & h1 {
+      font-family: $font-header;
+      font-size: 2rem;
+    }
+    & a {
+      background-color: $color-purple;
+      color: $color-tan;
+      padding: 0.5em;
+      border-radius: 0.25em;
+      font-family: $font-header;
+    }
+  }
+  & .hand-wrapper {
+    & li {
+      display: none;
+    }
+  }
+  & .cardWrapper {
+    padding: 0 1.5px;
+    filter: saturate(1);
+    transition: filter 0.25s ease-in;
+
+    & .navWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      text-align: center;
+      padding-bottom: 0.25em;
+      font-size: 1rem;
+      & a {
+        opacity: 0.2;
+        transition: opacity 0.25s ease-in;
+        cursor: pointer;
+        padding: 0.5em;
+        margin-bottom: -0.25em;
+      }
+      & a:hover {
+        opacity: 1;
+        background-color: #fff;
+        border-radius: 0.5em 0.5em 0 0;
+      }
+    }
+  }
+  & .cardWrapper:hover {
+    filter: saturate(3);
+  }
+}
+
+#section-overview {
+  padding: 1em;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & .overview-header {
+    align-self: center;
+    & > h1 {
+      font-family: $font-header;
+      font-size: 2.5rem;
+      & > span {
+        opacity: 0.2;
+        letter-spacing: -1px;
+      }
+    }
+  }
+
+  & .overview-players {
+    padding-top: 1em;
+    & .overview-player-box {
+      display: flex;
+      flex-direction: column;
+      width: 10em;
+      & h1 {
+        font-family: $font-header;
+        font-size: 2rem;
+      }
+      & .player-box-icon-wrapper {
+        padding-top: 0.5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        & > div > span {
+          padding-left: 0.25rem;
+          font-family: $font-reg;
+        }
+      }
+    }
+  }
+}
+
 // DESKTOP
 @media (min-width: 600px) {
   #home-boxes {

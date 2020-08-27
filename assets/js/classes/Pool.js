@@ -7,7 +7,7 @@ export default class Pool {
     this.deckNote = deckData.note;
 
     // BASE INFO
-    this.deck = deckData.cards;
+    this.deck = deckData.deck_data.cards;
     this.hero = {
       hp: deckData.deck_data.hero.hp,
       isRanged: deckData.deck_data.hero.isRanged,

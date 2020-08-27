@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import DeckPool from '../pool/DeckPool';
-import Pool from '../../assets/js/classes/Pool';
+import OverviewPool from '../pool/OverviewPool';
 
-export default class OfflineWrapper extends Component {
+export default class OnlineWrapper extends Component {
   constructor(props) {
     super(props);
     this.state = {
       socket: {},
       playerState: {},
-      gameState: {},
+      gameState: { gid: {}, players: {} },
     };
   }
 
@@ -20,19 +20,16 @@ export default class OfflineWrapper extends Component {
     this.setState({ socket, playerState, gameState });
   };
 
-  componentDidMount() {
-    const pool = new Pool(this.props.data);
-    console.log('pool', pool);
+  sendMessageTest = () => {
+    return 'sendmessage';
+  };
 
-    this.setState({ pool: pool });
-  }
+  componentDidMount() {}
   render() {
     return (
       <div>
-        <section id='top'>
-          <span>hi</span>
-        </section>
-        <DeckPool pool={this.state.pool} />
+        <OverviewPool state={this.state} urlParams={this.props.urlParams} />
+        <DeckPool state={this.state} pool={this.state.pool} />
       </div>
     );
   }

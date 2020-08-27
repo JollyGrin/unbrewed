@@ -117,7 +117,7 @@ export default class DeckInfo extends Component {
             {/* deck info and author */}
             <div className='deckInfo-box deckInfo-author'>
               <div className='author-header'>
-                <h1>by: {this.renderDom.author()}</h1>
+                <h1>{this.renderDom.author()}</h1>
                 <a href='#'>View</a>
               </div>
               <p>{this.renderDom.note()}</p>

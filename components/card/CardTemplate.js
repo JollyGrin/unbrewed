@@ -390,13 +390,6 @@ export default class CardTemplate extends Component {
 
     return (
       <Fragment>
-        {/* <svg
-          width={width}
-          height={height}
-          ref='svg'
-          viewBox='0 0 63 88'
-          shapeRendering='geometricPrecision'
-        > */}
         <svg
           preserveAspectRatio='xMinYMin meet'
           ref='svg'
