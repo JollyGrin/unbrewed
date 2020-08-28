@@ -20,6 +20,8 @@
     }
 
     & .info-special {
+      font-family: $font-reg;
+      font-size: 0.9em;
       justify-content: center;
       & > p {
         align-self: center;
@@ -39,14 +41,20 @@
         justify-content: space-between;
         align-items: center;
         & a {
+          cursor: pointer;
           background-color: $color-purple;
           border-radius: 0.25rem;
           color: $color-tan;
           padding: 0.5em;
           text-decoration: none;
           font-size: 0.95rem;
-          margin-right: 0.25em;
+          margin-right: -0.5em;
+          margin-top: -0.5em;
           font-family: $font-header;
+          transition: filter 0.25s ease-in-out;
+        }
+        & a:hover {
+          filter: saturate(2);
         }
       }
     }

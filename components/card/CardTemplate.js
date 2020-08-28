@@ -429,6 +429,7 @@ export default class CardTemplate extends Component {
               width={topPanelWidth}
               href={dataUri}
               clipPath='url(#topPanel)'
+              preserveAspectRatio='xMidYMid meet'
             />
             <polygon
               style={outerBorderStyle}

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import DeckInfoIsRanged from './DeckInfoIsRanged';
 import DeckInfoIsHp from './DeckInfoIsHp';
+import Link from 'next/link';
 
 export default class DeckInfo extends Component {
   constructor(props) {
@@ -71,6 +72,17 @@ export default class DeckInfo extends Component {
     note: () => {
       return this.props.pool ? this.props.pool.deckNote : 'not available';
     },
+    link: () => {
+      return this.props.pool.deckid ? (
+        <Link href={`https://unmatched.cards/decks/${this.props.pool.deckid}`}>
+          <a>
+            <i className='fas fa-external-link-alt' />
+          </a>
+        </Link>
+      ) : (
+        '...'
+      );
+    },
   };
 
   render() {
@@ -118,7 +130,7 @@ export default class DeckInfo extends Component {
             <div className='deckInfo-box deckInfo-author'>
               <div className='author-header'>
                 <h1>{this.renderDom.author()}</h1>
-                <a href='#'>View</a>
+                {this.renderDom.link()}
               </div>
               <p>{this.renderDom.note()}</p>
             </div>

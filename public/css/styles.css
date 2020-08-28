@@ -205,6 +205,8 @@
   #cardPool #deckInfo .deckInfo-box h1 {
     font-family: "BebasNeueRegular"; }
   #cardPool #deckInfo .info-special {
+    font-family: "ArchivoNarrow", sans-serif;
+    font-size: 0.9em;
     justify-content: center; }
     #cardPool #deckInfo .info-special > p {
       align-self: center; }
@@ -220,14 +222,19 @@
     justify-content: space-between;
     align-items: center; }
     #cardPool #deckInfo .deckInfo-author .author-header a {
+      cursor: pointer;
       background-color: #4a2a50;
       border-radius: 0.25rem;
       color: #e7cc98;
       padding: 0.5em;
       text-decoration: none;
       font-size: 0.95rem;
-      margin-right: 0.25em;
-      font-family: "BebasNeueRegular"; }
+      margin-right: -0.5em;
+      margin-top: -0.5em;
+      font-family: "BebasNeueRegular";
+      transition: filter 0.25s ease-in-out; }
+    #cardPool #deckInfo .deckInfo-author .author-header a:hover {
+      filter: saturate(2); }
   #cardPool #deckInfo .deckInfo-boxes {
     display: grid;
     grid-gap: 0.5em;
@@ -274,18 +281,18 @@ body {
   outline: 0;
   outline: none; }
 
-#section-hand {
-  padding: 2em 0.25em; }
-  #section-hand .hand-header {
+.carousel-section {
+  padding: 1em 0.25em; }
+  .carousel-section .carousel-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 0; }
-    #section-hand .hand-header h1 {
+    padding: 0.25em 0; }
+    .carousel-section .carousel-header h1 {
       font-family: "BebasNeueRegular";
       font-size: 2rem; }
-    #section-hand .hand-header a {
+    .carousel-section .carousel-header a {
       cursor: pointer;
       user-select: none;
       background-color: #4a2a50;
@@ -294,14 +301,18 @@ body {
       border-radius: 0.25em;
       font-family: "BebasNeueRegular";
       transition: letter-spacing 0.25s ease-in, box-shadow 0.25s ease-in, filter 0.1s ease-in-out; }
-    #section-hand .hand-header a:hover {
+    .carousel-section .carousel-header a:hover {
       letter-spacing: 1px;
       box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35); }
-    #section-hand .hand-header a:active {
+    .carousel-section .carousel-header a:active {
       filter: saturate(2);
       letter-spacing: 2px; }
-  #section-hand .hand-wrapper li {
+  .carousel-section .carousel-wrapper li {
     display: none; }
+  .carousel-section .carousel-grid-wrapper {
+    display: grid;
+    grid-gap: 1.5px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 
 #section-overview {
   padding: 1em;

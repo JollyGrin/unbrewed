@@ -39,15 +39,15 @@ body {
   outline: none;
 }
 
-#section-hand {
-  padding: 2em 0.25em;
+.carousel-section {
+  padding: 1em 0.25em;
 
-  & .hand-header {
+  & .carousel-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 0;
+    padding: 0.25em 0;
 
     & h1 {
       font-family: $font-header;
@@ -75,10 +75,15 @@ body {
       letter-spacing: 2px;
     }
   }
-  & .hand-wrapper {
+  & .carousel-wrapper {
     & li {
       display: none;
     }
+  }
+  & .carousel-grid-wrapper {
+    display: grid;
+    grid-gap: 1.5px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 

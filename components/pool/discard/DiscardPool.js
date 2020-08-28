@@ -1,18 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import Slider from 'react-slick';
-import CardTemplate from '../../card/CardTemplate';
-import HandCardWrapper from './HandCardWrapper';
+import DiscardCardWrapper from './DiscardCardWrapper';
 
-export default class HandPool extends Component {
+export default class DiscardPool extends Component {
   constructor(props) {
     super(props);
   }
 
-  renderHand = () => {
-    if (this.props.pool && this.props.pool.hand) {
-      return this.props.pool.hand.map((card, index) => (
+  renderDiscard = () => {
+    if (this.props.pool && this.props.pool.discard) {
+      return this.props.pool.discard.map((card, index) => (
         <div key={index}>
-          <HandCardWrapper card={card} />
+          <DiscardCardWrapper card={card} />
         </div>
       ));
     }
@@ -58,13 +57,14 @@ export default class HandPool extends Component {
         <section className='carousel-section'>
           <div className='carousel-header'>
             <h1>
-              Hand ({this.props.pool.hand ? this.props.pool.hand.length : '...'}
+              Discard (
+              {this.props.pool.discard ? this.props.pool.discard.length : '...'}
               )
             </h1>
-            <a>Draw 1 Card</a>
+            {/* <a>Draw 1 Card</a> */}
           </div>
           <div className='carousel-wrapper'>
-            <Slider {...settings}>{this.renderHand()}</Slider>
+            <Slider {...settings}>{this.renderDiscard()}</Slider>
           </div>
         </section>
       </Fragment>

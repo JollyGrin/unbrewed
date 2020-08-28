@@ -9,7 +9,7 @@ export default class HandCardWrapper extends Component {
     return (
       <Fragment>
         <div className='cardWrapper'>
-          <div className='navWrapper'>
+          <div className='navWrapper navHand'>
             <a>
               <i className='fas fa-angle-up' title='Play this card facedown' />
             </a>
