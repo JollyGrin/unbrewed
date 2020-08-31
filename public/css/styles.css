@@ -22,7 +22,7 @@
 .cardWrapper {
   padding: 0 1.5px;
   filter: saturate(1);
-  transition: filter 0.25s ease-in; }
+  transition: filter 0.25s ease-in, transform 0.25s ease-in; }
   .cardWrapper .navWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -41,7 +41,8 @@
       border-radius: 0.5em 0.5em 0 0; }
 
 .cardWrapper:hover {
-  filter: saturate(3); }
+  filter: saturate(2.5);
+  transform: scale(1.006); }
 
 #home-box-wrapper {
   display: flex;
@@ -300,13 +301,14 @@ body {
       padding: 0.5em;
       border-radius: 0.25em;
       font-family: "BebasNeueRegular";
-      transition: letter-spacing 0.25s ease-in, box-shadow 0.25s ease-in, filter 0.1s ease-in-out; }
+      transition: letter-spacing 0.1s ease-in-out, box-shadow 0.25s ease-in-out, filter 0.1s ease-in-out; }
     .carousel-section .carousel-header a:hover {
       letter-spacing: 1px;
       box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35); }
     .carousel-section .carousel-header a:active {
       filter: saturate(2);
-      letter-spacing: 2px; }
+      letter-spacing: 0px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35); }
   .carousel-section .carousel-wrapper li {
     display: none; }
   .carousel-section .carousel-grid-wrapper {
