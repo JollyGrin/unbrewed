@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PlayerBox from './PlayerBox';
-import Slider from 'react-slick';
+import dynamic from 'next/dynamic';
 
 export default class OverviewPool extends Component {
   constructor(props) {
@@ -53,6 +53,10 @@ export default class OverviewPool extends Component {
         },
       ],
     };
+
+    const Slider = dynamic(import('react-slick'), {
+      ssr: false
+    })
     return (
       <Fragment>
         <section id='section-overview'>

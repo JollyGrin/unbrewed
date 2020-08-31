@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Slider from 'react-slick';
+import dynamic from 'next/dynamic';
 import DiscardCardWrapper from './DiscardCardWrapper';
 
 export default class DiscardPool extends Component {
@@ -52,6 +52,10 @@ export default class DiscardPool extends Component {
         },
       ],
     };
+
+    const Slider = dynamic(import('react-slick'), {
+      ssr: false
+    })
     return (
       <Fragment>
         <section className='carousel-section'>

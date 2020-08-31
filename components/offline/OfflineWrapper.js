@@ -22,8 +22,6 @@ export default class OfflineWrapper extends Component {
 
   componentDidMount() {
     const pool = new Pool(this.props.data);
-    console.log('pool', pool);
-
     this.setState({ pool: pool });
   }
   render() {

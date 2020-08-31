@@ -41,6 +41,7 @@ export default class OnlineWrapper extends Component {
           player={this.props.urlParams.player}
           state={this.state}
           pool={ucardMock}
+          processState={this.processState}
         />
       </div>
     );

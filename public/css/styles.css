@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'ArchivoNarrow';
-  src: url("/fonts/ArchivoNarrow.otf"); }
+  src: url("/fonts/ArchivoNarrow-Regular.otf"); }
 
 .attack {
   fill: #dc3034; }
@@ -32,13 +32,17 @@
     .cardWrapper .navWrapper a {
       cursor: pointer;
       opacity: 0.2;
-      transition: opacity 0.25s ease-in;
+      transition: all 0.25s ease-in;
       padding: 0.5em;
       margin-bottom: -0.25em; }
     .cardWrapper .navWrapper a:hover {
       opacity: 1;
       background-color: #fff;
       border-radius: 0.5em 0.5em 0 0; }
+    .cardWrapper .navWrapper a:active {
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+      background-color: #6c4e8d;
+      color: #fff; }
 
 .cardWrapper:hover {
   filter: saturate(2.5);
@@ -281,6 +285,11 @@ body {
 *:focus {
   outline: 0;
   outline: none; }
+
+.cardWrapper:empty {
+  background-color: #fff;
+  padding: 0 1.5px;
+  min-height: 200px; }
 
 .carousel-section {
   padding: 1em 0.25em; }

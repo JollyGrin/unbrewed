@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Slider from 'react-slick';
+import dynamic from 'next/dynamic';
 import CardTemplate from '../../card/CardTemplate';
 import HandCardWrapper from './HandCardWrapper';
 
@@ -8,11 +8,19 @@ export default class HandPool extends Component {
     super(props);
   }
 
+  drawCard = () => {
+    this.props.deckActions.drawCard();
+  }
+
+  discardCard = (handIndex) => {
+    this.props.deckActions.discardCard(handIndex)
+  }
+
   renderHand = () => {
     if (this.props.pool && this.props.pool.hand) {
       return this.props.pool.hand.map((card, index) => (
         <div key={index}>
-          <HandCardWrapper card={card} />
+          <HandCardWrapper index={index} card={card} deckActions={this.props.deckActions} discardCard={this.discardCard} />
         </div>
       ));
     }
@@ -39,7 +47,7 @@ export default class HandPool extends Component {
         {
           breakpoint: 650,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 4,
             slidesToScroll: 2,
             initialSlide: 0,
           },
@@ -53,6 +61,8 @@ export default class HandPool extends Component {
         },
       ],
     };
+
+    const Slider = dynamic(import('react-slick'))
     return (
       <Fragment>
         <section className='carousel-section'>
@@ -61,7 +71,7 @@ export default class HandPool extends Component {
               Hand ({this.props.pool.hand ? this.props.pool.hand.length : '...'}
               )
             </h1>
-            <a>Draw 1 Card</a>
+            <a onClick={() => this.drawCard()} >Draw 1 Card</a>
           </div>
           <div className='carousel-wrapper'>
             <Slider {...settings}>{this.renderHand()}</Slider>

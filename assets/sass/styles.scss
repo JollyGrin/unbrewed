@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: 'ArchivoNarrow';
-  src: url('/fonts/ArchivoNarrow.otf');
+  src: url('/fonts/ArchivoNarrow-Regular.otf');
 }
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
 
@@ -37,6 +37,12 @@ body {
 *:focus {
   outline: 0;
   outline: none;
+}
+
+.cardWrapper:empty {
+  background-color: #fff;
+  padding: 0 1.5px;
+  min-height: 200px;
 }
 
 .carousel-section {
