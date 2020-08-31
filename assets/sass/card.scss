@@ -29,7 +29,7 @@ $scheme-yellow: #fcbd71;
     & a {
       cursor: pointer;
       opacity: 0.2;
-      transition: opacity 0.25s ease-in;
+      transition: all 0.25s ease-in;
       padding: 0.5em;
       margin-bottom: -0.25em;
     }
@@ -37,6 +37,11 @@ $scheme-yellow: #fcbd71;
       opacity: 1;
       background-color: #fff;
       border-radius: 0.5em 0.5em 0 0;
+    }
+    & a:active {
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+      background-color: $versatile-violet;
+      color: #fff;
     }
   }
 }
