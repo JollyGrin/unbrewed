@@ -318,12 +318,17 @@ body {
       filter: saturate(2);
       letter-spacing: 0px;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35); }
-  .carousel-section .carousel-wrapper li {
-    display: none; }
+  .carousel-section .carousel-wrapper {
+    min-height: 300px; }
+    .carousel-section .carousel-wrapper li {
+      display: none; }
   .carousel-section .carousel-grid-wrapper {
-    display: grid;
-    grid-gap: 1.5px;
-    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); }
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: center; }
+    .carousel-section .carousel-grid-wrapper > * {
+      min-width: 150px; }
 
 #section-overview {
   padding: 1em;

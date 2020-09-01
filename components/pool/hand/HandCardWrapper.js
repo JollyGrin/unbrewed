@@ -6,22 +6,6 @@ export default class HandCardWrapper extends Component {
     super(props);
   }
 
-  discardCard = () => {
-    // this.props.deckActions.discardCard(this.props.index)
-    this.props.discardCard(this.props.index);
-  }
-
-  // commitCard = () => {
-  //   this.props.commitCard(this.props.handIndex)
-  // }
-
-  // deckCard = () => {
-  //   this.props.deckCard(this.props.handIndex)
-  // }
-
-  // deckCardBottom = () => {
-  //   this.props.deckCardBottom(this.props.handIndex)
-  // }
 
   render() {
     return (
@@ -31,19 +15,19 @@ export default class HandCardWrapper extends Component {
             <a>
               <i className='fas fa-angle-up' title='Play this card facedown' />
             </a>
-            <a >
+            <a onClick={() => this.props.deckActions.deckCard(this.props.index)}>
               <i
                 className='fa fa-hourglass-start'
                 title='Places card on the top of your deck'
               />
             </a>
-            <a >
+            <a onClick={() => this.props.deckActions.deckCardBottom(this.props.index)}>
               <i
                 className='fa fa-hourglass-end'
                 title='Places card on the bottom of your deck'
               />
             </a>
-            <a onClick={() => this.discardCard()}>
+            <a onClick={() => this.props.deckActions.discardCard(this.props.index)}>
               <i className='fas fa-angle-down' title='Discard this card' />
             </a>
           </div>
