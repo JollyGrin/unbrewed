@@ -35,7 +35,7 @@ export default class Pool {
 
   // FUNCTIONS
   makeDeck = function() {
-    const cards = this.cards
+    const cards = this.cards;
     let newDeck = [];
     cards.forEach((spell) => {
       const { quantity } = spell;

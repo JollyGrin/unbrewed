@@ -6,6 +6,11 @@ export default class HandCardWrapper extends Component {
     super(props);
   }
 
+  isDeckOpen = (callback, v) => {
+    !this.props.deckView
+      ? callback(v)
+      : alert('Close your deck before making further actions.');
+  };
 
   render() {
     return (
@@ -15,19 +20,34 @@ export default class HandCardWrapper extends Component {
             <a>
               <i className='fas fa-angle-up' title='Play this card facedown' />
             </a>
-            <a onClick={() => this.props.deckActions.deckCard(this.props.index)}>
+            <a
+              onClick={() =>
+                this.isDeckOpen(
+                  this.props.deckActions.deckCard,
+                  this.props.index
+                )
+              }
+            >
               <i
                 className='fa fa-hourglass-start'
                 title='Places card on the top of your deck'
               />
             </a>
-            <a onClick={() => this.props.deckActions.deckCardBottom(this.props.index)}>
+            <a
+              onClick={() =>
+                this.props.deckActions.deckCardBottom(this.props.index)
+              }
+            >
               <i
                 className='fa fa-hourglass-end'
                 title='Places card on the bottom of your deck'
               />
             </a>
-            <a onClick={() => this.props.deckActions.discardCard(this.props.index)}>
+            <a
+              onClick={() =>
+                this.props.deckActions.discardCard(this.props.index)
+              }
+            >
               <i className='fas fa-angle-down' title='Discard this card' />
             </a>
           </div>

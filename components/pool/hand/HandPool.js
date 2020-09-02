@@ -20,6 +20,7 @@ export default class HandPool extends Component {
             index={index}
             card={card}
             deckActions={this.props.deckActions}
+            deckView={this.props.deckView}
           />
         </div>
       ));

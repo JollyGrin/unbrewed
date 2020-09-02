@@ -324,7 +324,7 @@ body {
       display: none; }
   .carousel-section .carousel-grid-wrapper {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row-reverse wrap-reverse;
     width: 100%;
     justify-content: center; }
     .carousel-section .carousel-grid-wrapper > * {
@@ -366,6 +366,44 @@ body {
           #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div > span {
             padding-left: 0.25rem;
             font-family: "ArchivoNarrow", sans-serif; }
+
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: -1em;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Black w/ opacity */ }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #4a2a50;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 3px solid #e7cc98;
+  border-radius: 1rem;
+  width: 87%;
+  /* Could be more or less, depending on screen size */
+  box-shadow: 1rem 1rem 1rem #000; }
+  .modal-content .modal-mid {
+    width: 70%;
+    margin: auto; }
+    .modal-content .modal-mid svg {
+      margin: 0 1px; }
 
 @media (min-width: 600px) {
   #home-boxes {

@@ -5,6 +5,7 @@ import HandPool from './hand/HandPool';
 import gameStateMock from '../../assets/mock/gamestate.json';
 import DiscardPool from './discard/DiscardPool';
 import DeckSectionPool from './deck/DeckSectionPool';
+import ModalComponent from './modal/ModalComponent';
 
 export default class DeckPool extends Component {
   constructor(props) {
@@ -15,16 +16,46 @@ export default class DeckPool extends Component {
     this.modal = false;
     this.heroView = true;
     this.handView = true;
-    this.deckView = false;
+    this.deckView = true;
   }
 
   conditionalRender = {
     handDisplay: () => {
       if (this.handView) {
-        return <HandPool pool={this.state.pool} deckActions={this.deckActions} />
+        return (
+          <HandPool
+            deckView={this.deckView}
+            pool={this.state.pool}
+            deckActions={this.deckActions}
+          />
+        );
       }
-    }
-  }
+    },
+    deckDisplay: () => {
+      if (this.state.pool) {
+        return (
+          <DeckSectionPool
+            pool={this.state.pool}
+            deckActions={this.deckActions}
+            domActions={this.domActions}
+            deckView={this.deckView}
+          />
+        );
+      }
+    },
+  };
+
+  domActions = {
+    viewDeck: () => {
+      if (this.deckView) {
+        this.state.pool.shuffleDeck();
+        this.state.pool.shuffleDeck();
+        this.state.pool.shuffleDeck();
+      }
+      this.deckView = this.deckView ? false : true;
+      this.processState();
+    },
+  };
 
   deckActions = {
     drawCard: () => {
@@ -32,7 +63,7 @@ export default class DeckPool extends Component {
         this.state.pool.draw();
         this.processState();
       } else {
-        alert("Your deck is empty");
+        alert('Your deck is empty');
       }
     },
     discardCard: (cardIndex) => {
@@ -82,10 +113,18 @@ export default class DeckPool extends Component {
     return (
       <Fragment>
         <section id='cardPool'>
+          <ModalComponent />
           {this.props.pool ? <DeckInfo pool={this.state.pool} /> : '...'}
           {this.conditionalRender.handDisplay()}
-          {this.props.pool ? <DiscardPool pool={this.state.pool} deckActions={this.deckActions} /> : '...'}
-          {this.props.pool ? <DeckSectionPool pool={this.state.pool} deckActions={this.deckActions} /> : '...'}
+          {this.props.pool ? (
+            <DiscardPool
+              pool={this.state.pool}
+              deckActions={this.deckActions}
+            />
+          ) : (
+            '...'
+          )}
+          {this.conditionalRender.deckDisplay()}
         </section>
       </Fragment>
     );

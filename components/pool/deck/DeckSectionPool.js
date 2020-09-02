@@ -12,7 +12,12 @@ export default class DeckSectionPool extends Component {
     if (this.props.pool && this.props.pool.deck) {
       return this.props.pool.deck.map((card, index) => (
         <div key={index}>
-          <DeckCardWrapper card={card} />
+          <DeckCardWrapper
+            deckActions={this.props.deckActions}
+            card={card}
+            index={index}
+            domActions={this.props.domActions}
+          />
         </div>
       ));
     }
@@ -27,9 +32,15 @@ export default class DeckSectionPool extends Component {
               Deck ({this.props.pool.deck ? this.props.pool.deck.length : '...'}
               )
             </h1>
-            {/* <a>Draw 1 Card</a> */}
+            <a onClick={() => this.props.domActions.viewDeck()}>
+              {this.props.deckView ? 'Close & Shuffle Deck' : 'View Deck'}
+            </a>
           </div>
-          <div className='carousel-grid-wrapper'>{this.renderDeck()}</div>
+          {this.props.deckView ? (
+            <div className='carousel-grid-wrapper'>{this.renderDeck()}</div>
+          ) : (
+            '...hidden'
+          )}
         </section>
       </Fragment>
     );
