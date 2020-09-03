@@ -153,6 +153,9 @@ export default class DeckPool extends Component {
 
   load = {
     state: () => {
+      if (isEmpty(this.props.state.gameState.gid)) {
+        return;
+      }
       const playerArray = Object.entries(this.props.state.gameState.players);
 
       playerArray.forEach((player) => {
@@ -192,11 +195,15 @@ export default class DeckPool extends Component {
   render() {
     return (
       <Fragment>
-        <div id='reload-deck' title={'load deck from gamestate'}>
-          <a onClick={() => this.load.state()}>
-            <i className='fas fa-sync-alt' />
-          </a>
-        </div>
+        {this.props.state.gameState.gid !== 'test' ? (
+          <div id='reload-deck' title={'load deck from gamestate'}>
+            <a onClick={() => this.load.state()}>
+              <i className='fas fa-sync-alt' />
+            </a>
+          </div>
+        ) : (
+          ''
+        )}
         <section id='cardPool'>
           <ModalComponent
             state={this.props.state}

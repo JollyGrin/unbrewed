@@ -8,7 +8,7 @@ export default class OfflineWrapper extends Component {
     this.state = {
       socket: {},
       playerState: {},
-      gameState: {},
+      gameState: { gid: 'test' },
     };
   }
 

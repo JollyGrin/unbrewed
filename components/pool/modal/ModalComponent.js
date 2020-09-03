@@ -25,7 +25,7 @@ export default class ModalComponent extends Component {
   };
 
   getCommits = () => {
-    if (this.props.state.gameState) {
+    if (this.props.state.gameState && this.props.state.gameState.players) {
       const { players } = this.props.state.gameState;
 
       const playersArray = Object.entries(players);
