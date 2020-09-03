@@ -1,28 +1,22 @@
 import React, { Component, Fragment } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default class GetDeck extends Component {
   constructor(props) {
     super(props);
-    this.deckIdInput = React.createRef();
-    this.url = `/online/${this.props.urlParams.lobby}/${this.props.urlParams.player}`;
+    this.state = {
+      id: ``,
+      baseUrl: `/online/${this.props.urlParams.lobby}/${this.props.urlParams.player}`,
+    };
   }
 
-  //   getDeckId = () => {
-  //     if (!this.deckIdInput.current) {
-  //       return;
-  //     }
-  //     this.url = `/online/${this.props.urlParams.lobby}/${this.props.urlParams.player}?deck=${this.deckIdInput.current.value}`;
-  //     console.log('url', this.url);
-  //   };
+  updateUrl = (e) => {
+    const { value } = e.target;
+    this.setState({ id: value });
+  };
 
   render() {
-    // const router = useRouter();
-    // const handleClick = (e) => {
-    //   e.preventDefault();
-    //   router.push('google.com');
-    // };
-
     return (
       <Fragment>
         <div className='loadDeck'>
@@ -34,18 +28,16 @@ export default class GetDeck extends Component {
           <div className='loadDeck-form'>
             <form>
               <input
-                ref={this.deckIdInput}
-                // defaultValue={'lDOM'}
                 className='input'
                 placeholder='unmatched.cards deck ID'
-                onChange={() => this.getDeckId()}
+                onChange={(e) => this.updateUrl(e)}
               />
-              {/* <a
-                className='button'
-                href={`${this.url}?deck=${this.deckIdInput.current.value}`}
-              >
-                <i className='fas fa-play' />
-              </a> */}
+
+              <Link href={`${this.state.baseUrl}?deck=${this.state.id}`}>
+                <a className='button'>
+                  <i className='fas fa-play' />
+                </a>
+              </Link>
             </form>
           </div>
         </div>

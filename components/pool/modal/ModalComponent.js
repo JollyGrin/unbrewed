@@ -4,6 +4,43 @@ import CardTemplate from '../../card/CardTemplate';
 import cardMock from '../../../assets/mock/card.json';
 
 export default class ModalComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  conditionalRender = {
+    faceDownCard: () => (
+      <div key={Math.random()} className='facedownCard'>
+        <span>(facedown)</span>
+      </div>
+    ),
+    faceUpCard: (card) => <CardTemplate key={Math.random()} card={card} />,
+    cardDisplay: (card, reveal) => {
+      if (reveal) {
+        return this.conditionalRender.faceUpCard(card);
+      } else {
+        return this.conditionalRender.faceDownCard();
+      }
+    },
+  };
+
+  getCommits = () => {
+    if (this.props.state.gameState) {
+      const { players } = this.props.state.gameState;
+
+      const playersArray = Object.entries(players);
+
+      return playersArray.map((player, index) => {
+        if (player[1].commit && player[1].commit.main) {
+          return this.conditionalRender.cardDisplay(
+            player[1].commit.main,
+            player[1].commit.reveal
+          );
+        }
+      });
+    }
+  };
+
   render() {
     var settings = {
       dots: false,
@@ -26,10 +63,7 @@ export default class ModalComponent extends Component {
           <div className='modal-content'>
             <div className='modal-top'></div>
             <div className='modal-mid'>
-              <Slider {...settings}>
-                <CardTemplate card={cardMock} />
-                <CardTemplate card={cardMock} />
-              </Slider>
+              <Slider {...settings}>{this.getCommits()}</Slider>
             </div>
             <div className='modal-bot'>
               <a onClick={() => this.props.deckActions.commitActions.cancel()}>

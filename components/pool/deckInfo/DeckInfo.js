@@ -90,7 +90,9 @@ export default class DeckInfo extends Component {
       <Fragment>
         <div id='deckInfo'>
           <div className='deckInfo-header'>
-            <h1>Deck Details</h1>
+            <h1 onClick={() => this.props.domActions.viewDeckInfo()}>
+              Deck Details
+            </h1>
           </div>
           <div className='deckInfo-boxes'>
             <div className='deckInfo-box-wrapper'>

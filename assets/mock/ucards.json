@@ -1,6 +1,6 @@
 {
   "created_on": "Sun, 23 Aug 2020 03:53:22 GMT",
-  "creator": "cosmo458",
+  "creator": "error",
   "deck_data": {
     "appearance": {
       "borderColour": "#e63333",
@@ -206,23 +206,23 @@
       }
     ],
     "hero": {
-      "hp": 16,
+      "hp": 99,
       "isRanged": true,
-      "move": 3,
-      "name": "darth maul ",
-      "specialAbility": "If Maul has less than 10 health he flips his rage token, add +2 attack to all his cards. \n\nIf Savage is dead and Maul has less than 8 health, Maul gains an additional action. "
+      "move": 99,
+      "name": "error",
+      "specialAbility": "error"
     },
     "sidekick": {
-      "hp": 1,
+      "hp": 99,
       "isRanged": false,
-      "name": "savage opress",
-      "quantity": 3,
+      "name": "error",
+      "quantity": 99,
       "quote": "I work best alone"
     }
   },
-  "family_id": "pyK-",
-  "name": "Darth Maul ",
-  "note": "",
+  "family_id": "xxxx",
+  "name": "error",
+  "note": "there was an issue, try again",
   "published": true,
   "updated_on": "Sun, 23 Aug 2020 22:42:20 GMT",
   "version_id": "o2Bh4r",
@@ -231,7 +231,7 @@
     {
       "created_on": "Sun, 23 Aug 2020 03:53:22 GMT",
       "id": "o2Bh4r",
-      "name": "Darth Maul ",
+      "name": "error",
       "published": true,
       "updated_on": "Sun, 23 Aug 2020 22:42:20 GMT",
       "version_name": "Initial version"

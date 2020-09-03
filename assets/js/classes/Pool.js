@@ -55,6 +55,9 @@ export default class Pool {
   };
 
   draw = function() {
+    if (this.deck.length === 0) {
+      alert('No cards left');
+    }
     this.hand.push(this.deck.pop());
   };
 

@@ -286,6 +286,55 @@ body {
   outline: 0;
   outline: none; }
 
+#reload-deck {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.25s ease-in-out; }
+
+#reload-deck:hover {
+  transform: scale(1.2) rotate(-20deg);
+  opacity: 0.8; }
+
+#reload-deck:active {
+  transform: scale(1) rotate(20deg);
+  opacity: 1; }
+
+.facedownCard {
+  font-family: "BebasNeueRegular";
+  color: #4a2a50;
+  background-color: #e7cc98;
+  border-radius: 0.5em;
+  min-width: 150px;
+  min-height: 200px;
+  height: auto;
+  text-align: center;
+  padding: 2em 0;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.35);
+  border: 3px solid; }
+
+.deckInfoDisplay-button {
+  font-family: "BebasNeueRegular";
+  font-size: 2rem; }
+
+.connectToLobby-button {
+  background-color: #e7cc98;
+  border-radius: 0.5em;
+  color: #4a2a50;
+  padding: 0.5em 1em;
+  font-family: "ArchivoNarrow", sans-serif;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer; }
+
+.connectToLobby-button:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); }
+
+.connectToLobby-button:active {
+  transform: translate(0px 0px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0); }
+
 .cardWrapper:empty {
   background-color: #fff;
   padding: 0 1.5px;

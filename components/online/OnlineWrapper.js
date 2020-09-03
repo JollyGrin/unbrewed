@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import DeckPool from '../pool/DeckPool';
 import OverviewPool from '../pool/OverviewPool';
-import gameStateMock from '../../assets/mock/gamestate.json';
-import ucardMock from '../../assets/mock/ucards.json';
 import wsClient from '../../assets/js/ws/websocketClient';
 import GetDeck from '../pool/GetDeck';
 
 export default class OnlineWrapper extends Component {
   constructor(props) {
     super(props);
-    // this.state = gameStateMock;
     this.state = {
       socket: {},
       playerState: {},
@@ -29,6 +26,10 @@ export default class OnlineWrapper extends Component {
     return 'sendmessage';
   };
 
+  wsClientSendData = (stateData) => {
+    wsClient.sendData(stateData);
+  };
+
   componentDidMount() {}
   render() {
     return (
@@ -36,16 +37,17 @@ export default class OnlineWrapper extends Component {
         <OverviewPool
           state={this.state}
           processState={this.processState}
-          wsClient={'mock'}
+          wsClient={wsClient}
           urlParams={this.props.urlParams}
         />
-        {console.log('90909', this.props.data)}
+
         {this.props.data ? (
           <DeckPool
             player={this.props.urlParams.player}
             state={this.state}
-            pool={ucardMock}
             processState={this.processState}
+            pool={this.props.data}
+            wsClientSendData={this.wsClientSendData}
           />
         ) : (
           <GetDeck urlParams={this.props.urlParams} />

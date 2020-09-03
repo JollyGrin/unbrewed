@@ -9,18 +9,18 @@ export default class PlayerBox extends Component {
 
   conditionalRender = {
     handSize: () => {
-      if (this.props.playerPool.hand) {
-        return this.props.playerPool.hand.length;
+      if (this.props.deck.hand) {
+        return this.props.deck.hand.length;
       }
     },
     discardSize: () => {
-      if (this.props.playerPool.discard) {
-        return this.props.playerPool.discard.length;
+      if (this.props.deck.discard) {
+        return this.props.deck.discard.length;
       }
     },
     deckSize: () => {
-      if (this.props.deck) {
-        return this.props.deck.length;
+      if (this.props.deck.deck) {
+        return this.props.deck.deck.length;
       }
     },
     displayHero: () => {
@@ -39,7 +39,6 @@ export default class PlayerBox extends Component {
       }
     },
     displaySidekick: () => {
-      console.log('siode', this.props.deck.sidekick);
       if (this.props.deck.sidekick) {
         const { name, hp, isRanged, move, quantity } = this.props.deck.sidekick;
         return (
@@ -108,28 +107,24 @@ export default class PlayerBox extends Component {
               </span>
               <hr />
               <ul>
-                <li>
-                  <CardTemplate card={cardMock} />
-                </li>
-                <li>hi</li>
-                <li>hi</li>
-                <li>hi</li>
-                <li>hi</li>
+                {this.props.deck.discard.map((card) => (
+                  <li>{card.title}</li>
+                ))}
               </ul>
             </div>
           </div>
           <div className='player-box-icon-wrapper'>
             <div>
               <i className='fas fa-hand-paper' />{' '}
-              <span>{this.props.deck.hand.length}</span>
+              <span>{this.conditionalRender.handSize()}</span>
             </div>
             <div className='overview-discard-wrapper dropdown'>
               <i className='fas fa-ban' />{' '}
-              <span>{this.props.deck.discard.length}</span>
+              <span>{this.conditionalRender.discardSize()}</span>
             </div>
             <div>
               <i className='fas fa-inbox' />{' '}
-              <span>{this.props.deck.deck.length}</span>
+              <span>{this.conditionalRender.deckSize()}</span>
             </div>
           </div>
         </div>

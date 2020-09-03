@@ -14,7 +14,13 @@ function offlinePlayer({ deck }) {
 }
 
 export async function getServerSideProps(context) {
-  const deck = await getDeck(context.query.deckid);
+  let deck = false;
+  const urlParams = context.query;
+
+  if (urlParams.deckid) {
+    deck = await getDeck(urlParams.deckid);
+  }
+
   return {
     props: { deck }, // will be passed to the page component as props
   };

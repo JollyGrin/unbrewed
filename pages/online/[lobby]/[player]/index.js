@@ -7,7 +7,6 @@ import { getDeck } from '../../../../assets/js/lib/ucards';
 function onlinePlayer({ deck, urlParams }) {
   return (
     <Layout title={`Online @${urlParams.lobby}/${urlParams.player}`}>
-      {console.log('9999', deck)}
       <OnlineWrapper data={deck} urlParams={urlParams} />
     </Layout>
   );

@@ -20,6 +20,10 @@ export default class OfflineWrapper extends Component {
     this.setState({ socket, playerState, gameState });
   };
 
+  wsClientSendData = (stateData) => {
+    return;
+  };
+
   componentDidMount() {
     const pool = new Pool(this.props.data);
     this.setState({ pool: pool });
@@ -28,9 +32,15 @@ export default class OfflineWrapper extends Component {
     return (
       <div>
         <section id='top'>
-          <span>hi</span>
+          <span>Test your Deck</span>
         </section>
-        <DeckPool pool={this.state.pool} />
+        <DeckPool
+          player={'Test'}
+          state={this.state}
+          processState={this.processState}
+          pool={this.props.data}
+          wsClientSendData={this.wsClientSendData}
+        />
       </div>
     );
   }
