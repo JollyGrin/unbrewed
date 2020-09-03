@@ -11,7 +11,11 @@ export default class DiscardPool extends Component {
     if (this.props.pool && this.props.pool.discard) {
       return this.props.pool.discard.map((card, index) => (
         <div key={index}>
-          <DiscardCardWrapper card={card} />
+          <DiscardCardWrapper
+            card={card}
+            deckActions={this.props.deckActions}
+            index={index}
+          />
         </div>
       ));
     }
@@ -54,8 +58,8 @@ export default class DiscardPool extends Component {
     };
 
     const Slider = dynamic(import('react-slick'), {
-      ssr: false
-    })
+      ssr: false,
+    });
     return (
       <Fragment>
         <section className='carousel-section'>

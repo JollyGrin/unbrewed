@@ -93,9 +93,7 @@ export default class DeckInfo extends Component {
             <h1>Deck Details</h1>
           </div>
           <div className='deckInfo-boxes'>
-            {/* hero and sidekick wrapper */}
             <div className='deckInfo-box-wrapper'>
-              {/* hero box */}
               <div className='deckInfo-box info-hero'>
                 <h1>{this.renderDom.heroName()}</h1>
                 <div className='info-icons'>

@@ -13,9 +13,9 @@
           "specialAbility": "At end of turn, place 1 totem in any space unoccupied by opposing fighters and in Thrall's range (max 4 in play at any time). When an opposing fighter occupies a totem's space, destroy that totem. To play a totem card, Thrall must also be in range of at least 1 totem."
         },
         "sidekick": {
-          "name": "None",
+          "name": "Totem",
           "isRanged": false,
-          "hp": 1,
+          "hp": 8,
           "quantity": 1,
           "quote": "I work best alone"
         },
@@ -399,10 +399,10 @@
           "specialAbility": "At end of turn, place 1 totem in any space unoccupied by opposing fighters and in Thrall's range (max 4 in play at any time). When an opposing fighter occupies a totem's space, destroy that totem. To play a totem card, Thrall must also be in range of at least 1 totem."
         },
         "sidekick": {
-          "name": "None",
+          "name": "dds",
           "isRanged": false,
           "hp": 1,
-          "quantity": 1,
+          "quantity": 4,
           "quote": "I work best alone"
         },
         "actionStack": [],

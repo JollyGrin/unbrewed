@@ -17,7 +17,14 @@ export default class HandCardWrapper extends Component {
       <Fragment>
         <div className='cardWrapper'>
           <div className='navWrapper navHand'>
-            <a>
+            <a
+              onClick={() =>
+                this.isDeckOpen(
+                  this.props.deckActions.commitActions.commit,
+                  this.props.index
+                )
+              }
+            >
               <i className='fas fa-angle-up' title='Play this card facedown' />
             </a>
             <a
@@ -35,7 +42,10 @@ export default class HandCardWrapper extends Component {
             </a>
             <a
               onClick={() =>
-                this.props.deckActions.deckCardBottom(this.props.index)
+                this.isDeckOpen(
+                  this.props.deckActions.deckCardBottom,
+                  this.props.index
+                )
               }
             >
               <i
@@ -45,7 +55,10 @@ export default class HandCardWrapper extends Component {
             </a>
             <a
               onClick={() =>
-                this.props.deckActions.discardCard(this.props.index)
+                this.isDeckOpen(
+                  this.props.deckActions.discardCard,
+                  this.props.index
+                )
               }
             >
               <i className='fas fa-angle-down' title='Discard this card' />

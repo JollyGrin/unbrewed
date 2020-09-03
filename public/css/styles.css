@@ -367,6 +367,46 @@ body {
             padding-left: 0.25rem;
             font-family: "ArchivoNarrow", sans-serif; }
 
+.loadDeck {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-family: "BebasNeueRegular"; }
+  .loadDeck h1 {
+    font-size: 2rem; }
+  .loadDeck > p {
+    padding-bottom: 1em; }
+    .loadDeck > p > a {
+      color: inherit;
+      text-decoration: none; }
+  .loadDeck form {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .loadDeck form input {
+      font-family: inherit;
+      width: 90%;
+      border: 0;
+      border-bottom: 3px solid #9b9b9b;
+      outline: 0;
+      font-size: 1.3rem;
+      color: #e7cc98;
+      padding: 7px 0;
+      background: transparent;
+      font-weight: 700;
+      transition: border-color 0.2s ease-in-out; }
+    .loadDeck form input:focus {
+      border-bottom: 3px solid #e7cc98; }
+    .loadDeck form .button {
+      padding: 0 0 0 1em;
+      color: #9b9b9b;
+      transition: color 0.25s ease-in, font-size 0.25s ease-in; }
+    .loadDeck form .button:hover {
+      cursor: pointer;
+      color: #e7cc98;
+      font-size: 1.5em; }
+
 /* The Modal (background) */
 .modal {
   display: block;
@@ -404,6 +444,49 @@ body {
     margin: auto; }
     .modal-content .modal-mid svg {
       margin: 0 1px; }
+  .modal-content .modal-bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 1em; }
+    .modal-content .modal-bot > a {
+      cursor: pointer;
+      user-select: none;
+      padding: 0.75em 1em;
+      background-color: #e7cc98;
+      border-radius: 0.5em;
+      transition: all 0.25s ease-in-out;
+      font-family: "BebasNeueRegular";
+      font-size: 1.5rem; }
+    .modal-content .modal-bot > a:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.45); }
+    .modal-content .modal-bot > a:active {
+      transform: translate(0px, 0px);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0);
+      color: #fff; }
+
+.dropdown {
+  position: relative;
+  display: contents;
+  text-align: center; }
+  .dropdown .dropdown-content {
+    color: #4a2a50;
+    font-family: "ArchivoNarrow", sans-serif;
+    font-size: 0.8rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 250px;
+    height: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    border-radius: 1em 1em 0 0;
+    z-index: 1;
+    overflow: scroll; }
+
+.dropdown:hover .dropdown-content {
+  display: block; }
 
 @media (min-width: 600px) {
   #home-boxes {

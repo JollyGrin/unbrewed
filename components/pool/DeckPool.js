@@ -13,10 +13,10 @@ export default class DeckPool extends Component {
     this.state = {
       pool: {},
     };
-    this.modal = false;
+    this.modalView = false;
     this.heroView = true;
     this.handView = true;
-    this.deckView = true;
+    this.deckView = false;
   }
 
   conditionalRender = {
@@ -55,6 +55,15 @@ export default class DeckPool extends Component {
       this.deckView = this.deckView ? false : true;
       this.processState();
     },
+    viewModal: () => {
+      if (this.modalView) {
+        this.state.pool.shuffleDeck();
+        this.state.pool.shuffleDeck();
+        this.state.pool.shuffleDeck();
+      }
+      this.modalView = this.modalView ? false : true;
+      this.processState();
+    },
   };
 
   deckActions = {
@@ -90,6 +99,27 @@ export default class DeckPool extends Component {
       this.state.pool.shuffleDeck();
       this.processState();
     },
+    commitActions: {
+      commit: (cardIndex) => {
+        this.state.pool.commitCard(cardIndex);
+        this.modalView = true;
+        this.processState();
+      },
+      cancel: () => {
+        this.state.pool.cancelCommit();
+        this.modalView = false;
+        this.processState();
+      },
+      discard: () => {
+        this.state.pool.discardCommit();
+        this.modalView = false;
+        this.processState();
+      },
+      reveal: () => {
+        this.state.pool.revealCommit();
+        this.processState();
+      },
+    },
   };
 
   processState = () => {
@@ -102,7 +132,6 @@ export default class DeckPool extends Component {
     newPool.makeDeck();
     newPool.shuffleDeck();
     this.setState({ pool: newPool });
-    // this.state.pool.shuffleDeck();
   };
 
   componentDidMount() {
@@ -113,7 +142,11 @@ export default class DeckPool extends Component {
     return (
       <Fragment>
         <section id='cardPool'>
-          <ModalComponent />
+          <ModalComponent
+            modalView={this.modalView}
+            domActions={this.domActions}
+            deckActions={this.deckActions}
+          />
           {this.props.pool ? <DeckInfo pool={this.state.pool} /> : '...'}
           {this.conditionalRender.handDisplay()}
           {this.props.pool ? (

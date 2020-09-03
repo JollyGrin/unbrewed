@@ -10,7 +10,11 @@ export default class DiscardCardWrapper extends Component {
       <Fragment>
         <div className='cardWrapper'>
           <div className='navWrapper navHand'>
-            <a>
+            <a
+              onClick={() =>
+                this.props.deckActions.drawDiscard(this.props.index)
+              }
+            >
               <i className='fas fa-angle-up' title='Play this card facedown' />
             </a>
           </div>

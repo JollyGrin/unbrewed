@@ -16,9 +16,13 @@ export default class ModalComponent extends Component {
     };
 
     const Slider = dynamic(import('react-slick'));
+
+    const displayStyle = {
+      display: this.props.modalView ? 'block' : 'none',
+    };
     return (
       <Fragment>
-        <div className='modal'>
+        <div className='modal' style={displayStyle}>
           <div className='modal-content'>
             <div className='modal-top'></div>
             <div className='modal-mid'>
@@ -28,9 +32,15 @@ export default class ModalComponent extends Component {
               </Slider>
             </div>
             <div className='modal-bot'>
-              <a>Cancel</a>
-              <a>Discard</a>
-              <a>Flip</a>
+              <a onClick={() => this.props.deckActions.commitActions.cancel()}>
+                <i className='far fa-window-close' /> Cancel
+              </a>
+              <a onClick={() => this.props.deckActions.commitActions.discard()}>
+                <i className='fas fa-angle-down' /> Discard
+              </a>
+              <a onClick={() => this.props.deckActions.commitActions.reveal()}>
+                <i className='fas fa-book-open' /> Flip
+              </a>
             </div>
           </div>
         </div>
