@@ -1,109 +1,391 @@
 @font-face {
-  font-family: BebasNeueRegular;
-  src: url("../../static/fonts/BebasNeueRegular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'BebasNeueRegular';
+  src: url('/fonts/BebasNeueRegular.otf');
+}
+@font-face {
+  font-family: 'ArchivoNarrow';
+  src: url('/fonts/ArchivoNarrow-Regular.otf');
+}
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+$color-purple: #4a2a50;
+$color-tan: #e7cc98;
+$color-gray: #9b9b9b;
+$color-defence-blue: #2c76ac;
+$color-attack-red: #dc3034;
+$color-versatile-violet: #6c4e8d;
+$color-scheme-yellow: #fcbd71;
+$font-reg: 'ArchivoNarrow', sans-serif;
+$font-header: 'BebasNeueRegular';
+$font-serif: 'Crimson Text';
+
+@import './card.scss';
+@import './homeboxes.scss';
+@import './hero.scss';
+@import './boardRec.scss';
+@import './videos.scss';
+@import './player/deckInfo.scss';
+
+body {
+  background-color: $color-purple;
+  color: $color-tan;
+  font-family: $font-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+*:focus {
+  outline: 0;
+  outline: none;
 }
 
-@font-face {
-  font-family: Roboto Condensed;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
-  //   font-weight: normal;
-  //   font-style: normal;
+#reload-deck {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.25s ease-in-out;
 }
 
-@font-face {
-  font-family: League Gothic;
-  src: url("../../static/fonts/LeagueGothic-Regular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+#reload-deck:hover {
+  transform: scale(1.2) rotate(-20deg);
+  opacity: 0.8;
+}
+#reload-deck:active {
+  transform: scale(1) rotate(20deg);
+  opacity: 1;
 }
 
-@font-face {
-  font-family: Archivo Narrow;
-  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
-  font-weight: normal;
-  font-style: normal;
+.facedownCard {
+  font-family: $font-header;
+  color: $color-purple;
+  background-color: $color-tan;
+  border-radius: 0.5em;
+  min-width: 150px;
+  min-height: 200px;
+  height: auto;
+  text-align: center;
+  padding: 2em 0;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.35);
+  border: 3px solid;
 }
 
-@font-face {
-  font-family: Archivo Narrow;
-  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
-  font-weight: bold;
-  font-style: normal;
+.deckInfoDisplay-button {
+  font-family: $font-header;
+  font-size: 2rem;
 }
 
-@font-face {
-  font-family: Archivo Narrow;
-  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
-  font-weight: normal;
-  font-style: italic;
+.connectToLobby-button {
+  background-color: $color-tan;
+  border-radius: 0.5em;
+  color: $color-purple;
+  padding: 0.5em 1em;
+  font-family: $font-reg;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.connectToLobby-button:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.connectToLobby-button:active {
+  transform: translate(0px 0px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
 }
 
-@font-face {
-  font-family: Archivo Narrow;
-  src: url("../../static/fonts/ArchivoNarrow-Regular.otf");
-  font-weight: bold;
-  font-style: italic;
+.cardWrapper:empty {
+  background-color: #fff;
+  padding: 0 1.5px;
+  min-height: 200px;
 }
 
-@font-face {
-  font-family: "Rubik", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
-  font-weight: normal;
-  font-style: normal;
+.carousel-section {
+  padding: 1em 0.25em;
+
+  & .carousel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25em 0;
+
+    & h1 {
+      font-family: $font-header;
+      font-size: 2rem;
+    }
+    & a {
+      cursor: pointer;
+      user-select: none;
+      background-color: $color-purple;
+      color: $color-tan;
+      padding: 0.5em;
+      border-radius: 0.25em;
+      font-family: $font-header;
+      transition: letter-spacing 0.1s ease-in-out, box-shadow 0.25s ease-in-out,
+        filter 0.1s ease-in-out;
+    }
+
+    & a:hover {
+      letter-spacing: 1px;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    & a:active {
+      filter: saturate(2);
+      letter-spacing: 0px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+    }
+  }
+  & .carousel-wrapper {
+    min-height: 300px;
+    & li {
+      display: none;
+    }
+  }
+  & .carousel-grid-wrapper {
+    display: flex;
+    flex-flow: row-reverse wrap-reverse;
+    // grid-gap: 1.5px;
+    // grid-template-columns: repeat(auto-fill, 150px);
+
+    width: 100%;
+    justify-content: center;
+
+    & > * {
+      min-width: 150px;
+    }
+  }
+}
+
+#section-overview {
+  padding: 1em;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & .overview-header {
+    align-self: center;
+    & > h1 {
+      font-family: $font-header;
+      font-size: 2.5rem;
+      & > span {
+        opacity: 0.2;
+        letter-spacing: -1px;
+      }
+    }
+  }
+
+  & .overview-players {
+    padding-top: 1em;
+    & .overview-player-box {
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      & h1 {
+        font-family: $font-header;
+        font-size: 2rem;
+      }
+      & .player-box-icon-wrapper {
+        padding: 0.5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        & > div {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em;
+          & > span {
+            padding-left: 0.25rem;
+            font-family: $font-reg;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loadDeck {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-family: $font-header;
+  & h1 {
+    font-size: 2rem;
+  }
+  & > p {
+    padding-bottom: 1em;
+    & > a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  & form {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & input {
+      font-family: inherit;
+      width: 90%;
+      border: 0;
+      border-bottom: 3px solid $color-gray;
+      outline: 0;
+      font-size: 1.3rem;
+      color: $color-tan;
+      padding: 7px 0;
+      background: transparent;
+      font-weight: 700;
+      transition: border-color 0.2s ease-in-out;
+    }
+
+    input:focus {
+      border-bottom: 3px solid $color-tan;
+    }
+
+    & .button {
+      padding: 0 0 0 1em;
+      color: $color-gray;
+      transition: color 0.25s ease-in, font-size 0.25s ease-in;
+    }
+    & .button:hover {
+      cursor: pointer;
+      color: $color-tan;
+      font-size: 1.5em;
+    }
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: -1em;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: $color-purple;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 3px solid $color-tan;
+  border-radius: 1rem;
+  width: 87%; /* Could be more or less, depending on screen size */
+  box-shadow: 1rem 1rem 1rem #000;
+
+  & .modal-mid {
+    width: 70%;
+    margin: auto;
+    & svg {
+      margin: 0 1px;
+    }
+  }
+  & .modal-bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 1em;
+    & > a {
+      cursor: pointer;
+      user-select: none;
+      padding: 0.75em 1em;
+      background-color: $color-tan;
+      border-radius: 0.5em;
+      transition: all 0.25s ease-in-out;
+      font-family: $font-header;
+      font-size: 1.5rem;
+    }
+    & > a:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.45);
+    }
+    & > a:active {
+      transform: translate(0px, 0px);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0);
+      color: #fff;
+    }
+  }
 }
 
 .dropdown {
   position: relative;
   display: contents;
-}
+  text-align: center;
 
-.dropdown-content {
-  color: #434343;
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  max-width: 60vw;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
+  & .dropdown-content {
+    color: $color-purple;
+    font-family: $font-reg;
+    font-size: 0.8rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 250px;
+    height: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    border-radius: 1em 1em 0 0;
+    z-index: 1;
+    overflow: scroll;
+  }
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.button {
-  font-family: BebasNeueRegular;
-  color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  background: #1e90ff;
-  padding: 0.7rem;
-  border-radius: 3rem;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
+// DESKTOP
+@media (min-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .board-button-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  & .video-wrapper {
+    background-size: 130%;
+  }
+
+  #cardPool {
+    & #deckInfo {
+      & .deckInfo-boxes {
+        grid-template-columns: 1fr 2fr 1fr;
+      }
+    }
+  }
 }
 
-.button :hover {
-  background: #434343;
-  letter-spacing: 1px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
-}
+// MOBILE
+@media (max-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr;
+  }
 
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-body {
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: #e7cc98;
+  .board-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    & .recButton-wrapper {
+      margin-bottom: 0.5em !important;
+    }
+  }
+
+  & .video-wrapper {
+    background-size: 130%;
+  }
+
+  #cardPool {
+    & #deckInfo {
+      & .deckInfo-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 }

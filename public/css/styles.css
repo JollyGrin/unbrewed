@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap");
+@font-face {
+  font-family: 'BebasNeueRegular';
+  src: url("/fonts/BebasNeueRegular.otf"); }
+
+@font-face {
+  font-family: 'ArchivoNarrow';
+  src: url("/fonts/ArchivoNarrow-Regular.otf"); }
+
+.attack {
+  fill: #dc3034; }
+
+.defence {
+  fill: #2c76ac; }
+
+.versatile {
+  fill: #6c4e8d; }
+
+.scheme {
+  fill: #fcbd71; }
+
+.cardWrapper {
+  padding: 0 1.5px;
+  filter: saturate(1);
+  transition: filter 0.25s ease-in, transform 0.25s ease-in; }
+  .cardWrapper .navWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    padding-bottom: 0.25em;
+    font-size: 1rem; }
+    .cardWrapper .navWrapper a {
+      cursor: pointer;
+      opacity: 0.2;
+      transition: all 0.25s ease-in;
+      padding: 0.5em;
+      margin-bottom: -0.25em; }
+    .cardWrapper .navWrapper a:hover {
+      opacity: 1;
+      background-color: #fff;
+      border-radius: 0.5em 0.5em 0 0; }
+    .cardWrapper .navWrapper a:active {
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+      background-color: #6c4e8d;
+      color: #fff; }
+
+.cardWrapper:hover {
+  filter: saturate(2.5);
+  transform: scale(1.006); }
+
+#home-box-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #home-box-wrapper > #home-boxes {
+    display: grid;
+    grid-gap: 2em;
+    width: 80%; }
+    #home-box-wrapper > #home-boxes > .home-box {
+      padding: 1em;
+      color: #4a2a50;
+      background-color: #e7cc98;
+      border-radius: 0.5em;
+      width: 100%; }
+      #home-box-wrapper > #home-boxes > .home-box h3 {
+        font-family: "BebasNeueRegular";
+        font-size: 2rem;
+        padding-bottom: 0.5rem; }
+  #home-box-wrapper form {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    #home-box-wrapper form input {
+      font-family: inherit;
+      width: 90%;
+      border: 0;
+      border-bottom: 3px solid #9b9b9b;
+      outline: 0;
+      font-size: 1.3rem;
+      color: #4a2a50;
+      padding: 7px 0;
+      background: transparent;
+      font-weight: 700;
+      transition: border-color 0.2s ease-in-out; }
+    #home-box-wrapper form input:focus {
+      border-bottom: 3px solid #4a2a50; }
+    #home-box-wrapper form .button {
+      padding: 0 0 0 1em;
+      color: #9b9b9b;
+      transition: color 0.25s ease-in, font-size 0.25s ease-in; }
+    #home-box-wrapper form .button:hover {
+      cursor: pointer;
+      color: #4a2a50;
+      font-size: 1.5em; }
+
+#nav {
+  padding: 1em;
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  font-family: "BebasNeueRegular";
+  font-size: 1.75rem; }
+  #nav .nav-right > * {
+    padding: 0 1em 0 0; }
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  justify-content: center; }
+  #hero > img {
+    width: 50vw; }
+  #hero > span {
+    padding-top: 1em;
+    font-family: "Crimson Text";
+    font-size: 2.5rem;
+    text-align: center; }
+    #hero > span strong {
+      font-weight: 700; }
+
+#boardRec {
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+  padding: 2em 1em;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+  #boardRec > h1 {
+    font-size: 3rem; }
+  #boardRec > p {
+    font-size: 2rem; }
+  #boardRec .board-button-wrapper {
+    padding-top: 1em; }
+    #boardRec .board-button-wrapper a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer; }
+    #boardRec .board-button-wrapper .recButton-wrapper {
+      margin: 0 0.75em;
+      padding: 0.75em;
+      min-width: 5em;
+      font-family: "BebasNeueRegular";
+      font-size: 1.5rem;
+      color: #4a2a50;
+      background-color: #e7cc98;
+      border-radius: 0.5em;
+      transition: box-shadow 0.5s ease-in-out; }
+      #boardRec .board-button-wrapper .recButton-wrapper i {
+        padding-right: 0.25em; }
+    #boardRec .board-button-wrapper .recButton-wrapper:hover {
+      -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.1);
+      -moz-box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.1); }
+
+#section-video {
+  min-height: 20vh;
+  background-color: #e7cc98;
+  color: #4a2a50;
+  padding: 2em 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  #section-video h1 {
+    font-family: "BebasNeueRegular";
+    font-size: 3rem;
+    justify-self: center;
+    text-align: center; }
+  #section-video .videos-grid {
+    padding: 1em;
+    width: 60%;
+    display: grid;
+    grid-gap: 0.25em;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    #section-video .videos-grid .video-wrapper {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      background-color: #4a2a50;
+      border-radius: 0.5em;
+      min-height: 180px;
+      background-position: center;
+      filter: grayscale(90%);
+      justify-content: center;
+      align-items: center;
+      transition: filter 0.25s ease-in-out; }
+      #section-video .videos-grid .video-wrapper i {
+        color: #e7cc98;
+        font-size: 1.5em;
+        transition: font-size 0.25s ease-in; }
+    #section-video .videos-grid .video-wrapper:hover {
+      filter: grayscale(0%); }
+      #section-video .videos-grid .video-wrapper:hover i {
+        font-size: 2.5em; }
+
+#cardPool {
+  background-color: #e7cc98;
+  color: #4a2a50;
+  min-height: 100vh;
+  padding: 1em; }
+  #cardPool #deckInfo .deckInfo-header h1 {
+    font-family: "BebasNeueRegular";
+    font-size: 2rem;
+    padding-bottom: 0.25em; }
+  #cardPool #deckInfo .info-hero h1,
+  #cardPool #deckInfo .info-sidekick h1,
+  #cardPool #deckInfo .deckInfo-box h1 {
+    font-family: "BebasNeueRegular"; }
+  #cardPool #deckInfo .info-special {
+    font-family: "ArchivoNarrow", sans-serif;
+    font-size: 0.9em;
+    justify-content: center; }
+    #cardPool #deckInfo .info-special > p {
+      align-self: center; }
+  #cardPool #deckInfo .deckInfo-author > p {
+    padding-top: 0.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical; }
+  #cardPool #deckInfo .deckInfo-author .author-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    #cardPool #deckInfo .deckInfo-author .author-header a {
+      cursor: pointer;
+      background-color: #4a2a50;
+      border-radius: 0.25rem;
+      color: #e7cc98;
+      padding: 0.5em;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-right: -0.5em;
+      margin-top: -0.5em;
+      font-family: "BebasNeueRegular";
+      transition: filter 0.25s ease-in-out; }
+    #cardPool #deckInfo .deckInfo-author .author-header a:hover {
+      filter: saturate(2); }
+  #cardPool #deckInfo .deckInfo-boxes {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: 1fr 2fr 1fr;
+    min-height: 10vh; }
+    #cardPool #deckInfo .deckInfo-boxes .deckInfo-box {
+      background-color: #fff;
+      border-radius: 0.25em;
+      padding: 0.5em; }
+      #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons {
+        cursor: grab;
+        user-select: none;
+        padding: 0.5em 0;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(3.58em, 1fr)); }
+        #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap {
+          display: flex;
+          flex-direction: row;
+          font-family: "BebasNeueRegular";
+          align-items: center;
+          justify-content: center; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap i {
+            padding-right: 5px; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-heart {
+            color: #dc3034; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-shoe-prints {
+            color: #fcbd71; }
+          #cardPool #deckInfo .deckInfo-boxes .deckInfo-box .info-icons .icon-wrap .fa-list-ol {
+            color: #2c76ac; }
+    #cardPool #deckInfo .deckInfo-boxes .deckInfo-box-wrapper {
+      display: grid;
+      grid-gap: 0.5em;
+      grid-template-columns: 1fr; }
+
+body {
+  background-color: #4a2a50;
+  color: #e7cc98;
+  font-family: "Crimson Text";
+  font-size: 1.25rem;
+  letter-spacing: 0.5px; }
+
+*:focus {
+  outline: 0;
+  outline: none; }
+
+#reload-deck {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.25s ease-in-out; }
+
+#reload-deck:hover {
+  transform: scale(1.2) rotate(-20deg);
+  opacity: 0.8; }
+
+#reload-deck:active {
+  transform: scale(1) rotate(20deg);
+  opacity: 1; }
+
+.facedownCard {
+  font-family: "BebasNeueRegular";
+  color: #4a2a50;
+  background-color: #e7cc98;
+  border-radius: 0.5em;
+  min-width: 150px;
+  min-height: 200px;
+  height: auto;
+  text-align: center;
+  padding: 2em 0;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.35);
+  border: 3px solid; }
+
+.deckInfoDisplay-button {
+  font-family: "BebasNeueRegular";
+  font-size: 2rem; }
+
+.connectToLobby-button {
+  background-color: #e7cc98;
+  border-radius: 0.5em;
+  color: #4a2a50;
+  padding: 0.5em 1em;
+  font-family: "ArchivoNarrow", sans-serif;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer; }
+
+.connectToLobby-button:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4); }
+
+.connectToLobby-button:active {
+  transform: translate(0px 0px);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0); }
+
+.cardWrapper:empty {
+  background-color: #fff;
+  padding: 0 1.5px;
+  min-height: 200px; }
+
+.carousel-section {
+  padding: 1em 0.25em; }
+  .carousel-section .carousel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25em 0; }
+    .carousel-section .carousel-header h1 {
+      font-family: "BebasNeueRegular";
+      font-size: 2rem; }
+    .carousel-section .carousel-header a {
+      cursor: pointer;
+      user-select: none;
+      background-color: #4a2a50;
+      color: #e7cc98;
+      padding: 0.5em;
+      border-radius: 0.25em;
+      font-family: "BebasNeueRegular";
+      transition: letter-spacing 0.1s ease-in-out, box-shadow 0.25s ease-in-out, filter 0.1s ease-in-out; }
+    .carousel-section .carousel-header a:hover {
+      letter-spacing: 1px;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.35); }
+    .carousel-section .carousel-header a:active {
+      filter: saturate(2);
+      letter-spacing: 0px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35); }
+  .carousel-section .carousel-wrapper {
+    min-height: 300px; }
+    .carousel-section .carousel-wrapper li {
+      display: none; }
+  .carousel-section .carousel-grid-wrapper {
+    display: flex;
+    flex-flow: row-reverse wrap-reverse;
+    width: 100%;
+    justify-content: center; }
+    .carousel-section .carousel-grid-wrapper > * {
+      min-width: 150px; }
+
+#section-overview {
+  padding: 1em;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  #section-overview .overview-header {
+    align-self: center; }
+    #section-overview .overview-header > h1 {
+      font-family: "BebasNeueRegular";
+      font-size: 2.5rem; }
+      #section-overview .overview-header > h1 > span {
+        opacity: 0.2;
+        letter-spacing: -1px; }
+  #section-overview .overview-players {
+    padding-top: 1em; }
+    #section-overview .overview-players .overview-player-box {
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center; }
+      #section-overview .overview-players .overview-player-box h1 {
+        font-family: "BebasNeueRegular";
+        font-size: 2rem; }
+      #section-overview .overview-players .overview-player-box .player-box-icon-wrapper {
+        padding: 0.5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; }
+        #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em; }
+          #section-overview .overview-players .overview-player-box .player-box-icon-wrapper > div > span {
+            padding-left: 0.25rem;
+            font-family: "ArchivoNarrow", sans-serif; }
+
+.loadDeck {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-family: "BebasNeueRegular"; }
+  .loadDeck h1 {
+    font-size: 2rem; }
+  .loadDeck > p {
+    padding-bottom: 1em; }
+    .loadDeck > p > a {
+      color: inherit;
+      text-decoration: none; }
+  .loadDeck form {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .loadDeck form input {
+      font-family: inherit;
+      width: 90%;
+      border: 0;
+      border-bottom: 3px solid #9b9b9b;
+      outline: 0;
+      font-size: 1.3rem;
+      color: #e7cc98;
+      padding: 7px 0;
+      background: transparent;
+      font-weight: 700;
+      transition: border-color 0.2s ease-in-out; }
+    .loadDeck form input:focus {
+      border-bottom: 3px solid #e7cc98; }
+    .loadDeck form .button {
+      padding: 0 0 0 1em;
+      color: #9b9b9b;
+      transition: color 0.25s ease-in, font-size 0.25s ease-in; }
+    .loadDeck form .button:hover {
+      cursor: pointer;
+      color: #e7cc98;
+      font-size: 1.5em; }
+
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: -1em;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Black w/ opacity */ }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #4a2a50;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 3px solid #e7cc98;
+  border-radius: 1rem;
+  width: 87%;
+  /* Could be more or less, depending on screen size */
+  box-shadow: 1rem 1rem 1rem #000; }
+  .modal-content .modal-mid {
+    width: 70%;
+    margin: auto; }
+    .modal-content .modal-mid svg {
+      margin: 0 1px; }
+  .modal-content .modal-bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 1em; }
+    .modal-content .modal-bot > a {
+      cursor: pointer;
+      user-select: none;
+      padding: 0.75em 1em;
+      background-color: #e7cc98;
+      border-radius: 0.5em;
+      transition: all 0.25s ease-in-out;
+      font-family: "BebasNeueRegular";
+      font-size: 1.5rem; }
+    .modal-content .modal-bot > a:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.45); }
+    .modal-content .modal-bot > a:active {
+      transform: translate(0px, 0px);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0);
+      color: #fff; }
+
+.dropdown {
+  position: relative;
+  display: contents;
+  text-align: center; }
+  .dropdown .dropdown-content {
+    color: #4a2a50;
+    font-family: "ArchivoNarrow", sans-serif;
+    font-size: 0.8rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 250px;
+    height: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    border-radius: 1em 1em 0 0;
+    z-index: 1;
+    overflow: scroll; }
+
+.dropdown:hover .dropdown-content {
+  display: block; }
+
+@media (min-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr 1fr; }
+  .board-button-wrapper {
+    display: flex;
+    flex-direction: row; }
+  .video-wrapper {
+    background-size: 130%; }
+  #cardPool #deckInfo .deckInfo-boxes {
+    grid-template-columns: 1fr 2fr 1fr; } }
+
+@media (max-width: 600px) {
+  #home-boxes {
+    grid-template-columns: 1fr; }
+  .board-button-wrapper {
+    display: flex;
+    flex-direction: column; }
+    .board-button-wrapper .recButton-wrapper {
+      margin-bottom: 0.5em !important; }
+  .video-wrapper {
+    background-size: 130%; }
+  #cardPool #deckInfo .deckInfo-boxes {
+    grid-template-columns: 1fr; } }

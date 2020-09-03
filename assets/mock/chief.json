@@ -1,0 +1,272 @@
+{
+  "created_on": "Sun, 16 Aug 2020 15:05:54 GMT",
+  "creator": "msw7c",
+  "deck_data": {
+    "appearance": {
+      "borderColour": "#E0EFF0",
+      "highlightColour": "#008000",
+      "isPNP": false,
+      "patternName": "Topography"
+    },
+    "cards": [
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://cdn.mos.cms.futurecdn.net/Z2sc2bjLxhBWPkPrPiqPMT-1200-80.jpg",
+        "immediateText": "Cancel all effects on your opponent\u2019s card.",
+        "quantity": 3,
+        "title": "Feint",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead.",
+        "basicText": null,
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/b/b2/TFoR_Animated_-_John_Mark_IV.png",
+        "immediateText": null,
+        "quantity": 3,
+        "title": "Regroup",
+        "type": "versatile",
+        "value": 1
+      },
+      {
+        "afterText": "If you won the combat, deal 1 damage to the opposing fighter and move them up to 2 spaces.",
+        "basicText": "This card may only be used against an adjacent fighter.",
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://vignette.wikia.nocookie.net/halo/images/f/fa/Reach_5709786_Medium.jpg/revision/latest?cb=20110510203042",
+        "immediateText": null,
+        "quantity": 2,
+        "title": "Melee",
+        "type": "versatile",
+        "value": 4
+      },
+      {
+        "afterText": "Once per turn, you may attack an opposing fighter with another PISTOL card without counting it as another action. The opponent may defend.",
+        "basicText": null,
+        "boost": 1,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://i.pinimg.com/564x/d9/ec/aa/d9ecaa58f0bec5c83e135f310f0d765b.jpg",
+        "immediateText": "If the opposing fighter is 3 or more spaces away, this card's value is 4 instead.",
+        "quantity": 3,
+        "title": "Magnum (pistol)",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "Once per turn, you may attack an opposing fighter with another PISTOL card without counting it as another action. The opponent may defend.",
+        "basicText": null,
+        "boost": 1,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://i.pinimg.com/564x/5d/c5/04/5dc504879a45316b032f3c4daa203778.jpg",
+        "immediateText": "If the opposing fighter is adjacent, this card's value is 4 instead.",
+        "quantity": 3,
+        "title": "Submachinegun (pistol)",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "Draw 2 cards. Move John 117 up to 2 spaces.",
+        "basicText": null,
+        "boost": 3,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/f/f8/HSS-John.png",
+        "immediateText": null,
+        "quantity": 2,
+        "title": "Assault rifle",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://i.pinimg.com/originals/4f/31/30/4f313057931d742541b8e9eb4616d70b.jpg",
+        "immediateText": "If the opposing fighter is adjacent, this card's value is 6 instead.",
+        "quantity": 1,
+        "title": "Shotgun",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/c/c5/BR55HB_SR2.jpg",
+        "immediateText": "If the opposing fighter is 3 or more spaces away, this card's value is 6 instead.",
+        "quantity": 1,
+        "title": "Battle Rifle",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 4,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/f/f9/H2AMarkVI.jpg",
+        "immediateText": "If the opposing fighter is 4 or more spaces away, this card's value is 7 instead.",
+        "quantity": 1,
+        "title": "Sniper Rifle (power)",
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "afterText": "Deal 2 damage to all fighters adjacent to the opposing fighter.",
+        "basicText": null,
+        "boost": 4,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/c/c7/H2A_-_Make_More_Noise.jpg",
+        "immediateText": null,
+        "quantity": 1,
+        "title": "Rocket Launcher (Power)",
+        "type": "attack",
+        "value": 6
+      },
+      {
+        "afterText": null,
+        "basicText": "Must be played as your first action. Requires a hand of at least 2 cards.",
+        "boost": 4,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dKgVlsWveo4LxeTaIaJBGB1NzG_GJ8xFSlNtn97Gg9afzyFr&usqp=CAU",
+        "immediateText": "Lose 1 action. Discard 1 card. This card's value is 8 instead.",
+        "quantity": 1,
+        "title": "Spartan Laser (POWER)",
+        "type": "attack",
+        "value": 0
+      },
+      {
+        "afterText": "If you won the combat, regain 1 previously discarded Shield token.",
+        "basicText": null,
+        "boost": 3,
+        "characterName": "JOHN 117",
+        "duringText": null,
+        "imageUrl": " https://www.halopedia.org/images/f/f8/H1_Library_assault.jpg",
+        "immediateText": null,
+        "quantity": 2,
+        "title": "RECHARGE",
+        "type": "defence",
+        "value": 3
+      },
+      {
+        "basicText": "Gain 1 Shield token. (This is in addition to any Shield tokens you may already have.)",
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "imageUrl": " https://www.halopedia.org/images/0/01/HCE_Overshield_Pickup.jpg",
+        "quantity": 1,
+        "title": "OVERSHIELD",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Choose any space in John 117's zone. Deal 2 damage to any fighter in that space and deal 1 damage to any fighters adjacent to that space.",
+        "boost": 2,
+        "characterName": "JOHN 117",
+        "imageUrl": " https://vignette.wikia.nocookie.net/halo/images/f/f8/Grenadetoss.jpg/revision/latest/scale-to-width-down/340?cb=20060726141441",
+        "quantity": 1,
+        "title": "Frag Out!",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Move John 117 up to 6 spaces. You may move him through spaces containing opposing fighters. Then deal 2 damage to any one opposing fighter he moved through.",
+        "boost": 2,
+        "characterName": "CORTANA",
+        "imageUrl": " https://1.bp.blogspot.com/-4nP2QOED-OM/UKq2N5cawlI/AAAAAAAAXH0/RlBaM0D7xpQ/s1600/halo+1+master+chief+driving+warthog+off+the+cliff.jpg",
+        "quantity": 1,
+        "title": "Somebody order a warthog?",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Search your discard pile for a POWER attack card. Add it to your hand.",
+        "boost": 2,
+        "characterName": "CORTANA",
+        "imageUrl": " https://www.halopedia.org/images/5/58/CortanaIndex-large.jpg",
+        "quantity": 1,
+        "title": "He Never Gets Me Anything...",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Look at the hands of all opposing players. Draw 1 card.",
+        "boost": 2,
+        "characterName": "CORTANA",
+        "imageUrl": " https://www.halopedia.org/images/d/d2/H2A-John&Cortana.jpg",
+        "quantity": 1,
+        "title": "I've hacked into the battlenet",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Choose an opposing player. The chosen player discards 1 random card and loses 1 action during their next turn.",
+        "boost": 2,
+        "characterName": "CORTANA",
+        "imageUrl": " https://www.halopedia.org/images/6/6c/Cortanamain.jpg",
+        "quantity": 1,
+        "title": "Oh, I don't think so",
+        "type": "scheme",
+        "value": 1
+      },
+      {
+        "basicText": "Choose an opposing player. The chosen player discards a number of cards equal to Cortana's remaining health. Cortana is defeated.",
+        "boost": 2,
+        "characterName": "CORTANA",
+        "imageUrl": " https://www.halopedia.org/images/f/fb/H2A_-_Cortana.png",
+        "quantity": 1,
+        "title": "Don't make a girl a promise...",
+        "type": "scheme",
+        "value": 1
+      }
+    ],
+    "hero": {
+      "hp": 16,
+      "isRanged": true,
+      "move": 2,
+      "name": "John 117 (Master Chief)",
+      "specialAbility": "John 117 starts the game with 3 Shield tokens. You may discard 1 Shield token before combat for +2 defense. Cortana does not appear on the board. She takes 1 damage each time John 117 loses a combat when he is the defender."
+    },
+    "name": "",
+    "sidekick": {
+      "hp": 5,
+      "isRanged": false,
+      "name": "Cortana",
+      "quantity": 1,
+      "quote": "I work best alone"
+    }
+  },
+  "family_id": "L1dw",
+  "name": "John 117 (Master Chief)",
+  "note": "Partial credit for this fan deck goes to BGG user @Tiglath_Pilesar_III, whose original ideas and willingness to collaborate led to two awesome Unmatched variants from the Halo video game universe. This is my favorite version of the many Master Chief decks created and debated on BGG.",
+  "published": true,
+  "updated_on": "Sun, 16 Aug 2020 15:06:04 GMT",
+  "version_id": "ZYJs_E",
+  "version_name": "Version 1.0",
+  "versions": [
+    {
+      "created_on": "Sun, 16 Aug 2020 15:05:54 GMT",
+      "id": "ZYJs_E",
+      "name": "John 117 (Master Chief)",
+      "published": true,
+      "updated_on": "Sun, 16 Aug 2020 15:06:04 GMT",
+      "version_name": "Version 1.0"
+    }
+  ]
+}

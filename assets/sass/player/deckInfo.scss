@@ -1,0 +1,107 @@
+#cardPool {
+  background-color: $color-tan;
+  color: $color-purple;
+  min-height: 100vh;
+
+  padding: 1em;
+
+  & #deckInfo {
+    & .deckInfo-header h1 {
+      font-family: $font-header;
+      font-size: 2rem;
+      padding-bottom: 0.25em;
+    }
+    & .info-hero,
+    .info-sidekick,
+    .deckInfo-box {
+      & h1 {
+        font-family: $font-header;
+      }
+    }
+
+    & .info-special {
+      font-family: $font-reg;
+      font-size: 0.9em;
+      justify-content: center;
+      & > p {
+        align-self: center;
+      }
+    }
+    & .deckInfo-author {
+      & > p {
+        padding-top: 0.5em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+      }
+      & .author-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        & a {
+          cursor: pointer;
+          background-color: $color-purple;
+          border-radius: 0.25rem;
+          color: $color-tan;
+          padding: 0.5em;
+          text-decoration: none;
+          font-size: 0.95rem;
+          margin-right: -0.5em;
+          margin-top: -0.5em;
+          font-family: $font-header;
+          transition: filter 0.25s ease-in-out;
+        }
+        & a:hover {
+          filter: saturate(2);
+        }
+      }
+    }
+    & .deckInfo-boxes {
+      display: grid;
+      grid-gap: 0.5em;
+      grid-template-columns: 1fr 2fr 1fr;
+      min-height: 10vh;
+      & .deckInfo-box {
+        background-color: #fff;
+        border-radius: 0.25em;
+        padding: 0.5em;
+
+        & .info-icons {
+          cursor: grab;
+          user-select: none;
+          padding: 0.5em 0;
+          display: grid;
+          grid-gap: 10px;
+          grid-template-columns: repeat(auto-fill, minmax(3.58em, 1fr));
+
+          & .icon-wrap {
+            display: flex;
+            flex-direction: row;
+            font-family: $font-header;
+            align-items: center;
+            justify-content: center;
+            & i {
+              padding-right: 5px;
+            }
+            & .fa-heart {
+              color: $color-attack-red;
+            }
+            & .fa-shoe-prints {
+              color: $color-scheme-yellow;
+            }
+            & .fa-list-ol {
+              color: $color-defence-blue;
+            }
+          }
+        }
+      }
+      & .deckInfo-box-wrapper {
+        display: grid;
+        grid-gap: 0.5em;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

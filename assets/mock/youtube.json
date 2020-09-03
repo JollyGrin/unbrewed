@@ -1,0 +1,394 @@
+{
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "696_36_JhAtDlt0pQfgoC6N4L3A",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy4zMDg5MkQ5MEVDMEM1NTg2",
+      "snippet": {
+        "publishedAt": "2020-08-09T19:25:22Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unbrewed Variants: CUSTOM MAP! CAIRNE vs ZORRO",
+        "description": "Playing a match of Unmatched: Battle of Legends! \n\n🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nWe're playing online using the following tools:\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n⚠️ Unbrewed is not owned by or associated with Restoration Games, LLC ⚠️",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/y7pEOHEvmnY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/y7pEOHEvmnY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/y7pEOHEvmnY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 0,
+        "resourceId": { "kind": "youtube#video", "videoId": "y7pEOHEvmnY" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "knVWEXjsDfTEpyAuPXNuNfdC_vE",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy45ODRDNTg0QjA4NkFBNkQy",
+      "snippet": {
+        "publishedAt": "2020-07-27T21:26:10Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Playtesting: CAIRNE vs RAPTORS",
+        "description": "Playing a match of Unmatched: Battle of Legends! \n\n🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nWe're playing online using the following tools:\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n⚠️ Unbrewed is not owned by or associated with Restoration Games, LLC ⚠️",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/tW_-IKERxEs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/tW_-IKERxEs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/tW_-IKERxEs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/tW_-IKERxEs/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/tW_-IKERxEs/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 1,
+        "resourceId": { "kind": "youtube#video", "videoId": "tW_-IKERxEs" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "mApbgk61_ttG8Dvuut1Q0jKGVGY",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy5EMEEwRUY5M0RDRTU3NDJC",
+      "snippet": {
+        "publishedAt": "2020-07-16T22:39:15Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Playtesting: ALICE vs KIRBY",
+        "description": "🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nWe're playing online using the following tools:\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n⚠️ Unbrewed is not owned by or associated with Restoration Games, LLC ⚠️",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/q56ct4IWKtc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/q56ct4IWKtc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/q56ct4IWKtc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/q56ct4IWKtc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/q56ct4IWKtc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 2,
+        "resourceId": { "kind": "youtube#video", "videoId": "q56ct4IWKtc" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "ixhSLm0PdIzLq-GD5rPodXAYt5k",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy40NzZCMERDMjVEN0RFRThB",
+      "snippet": {
+        "publishedAt": "2020-07-16T22:35:30Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Variants: MASTER CHIEF vs ARBITER",
+        "description": "Playing a match of Unmatched: Battle of Legends! \n\n🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nWe're playing online using the following tools:\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n⚠️ Unbrewed is not owned by or associated with Restoration Games, LLC ⚠️",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/_x0zjiOHPbg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/_x0zjiOHPbg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/_x0zjiOHPbg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/_x0zjiOHPbg/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/_x0zjiOHPbg/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 3,
+        "resourceId": { "kind": "youtube#video", "videoId": "_x0zjiOHPbg" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "rATQRW9K2fixXHv3fI4wsCkYvnY",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy5GNjNDRDREMDQxOThCMDQ2",
+      "snippet": {
+        "publishedAt": "2020-07-16T22:07:50Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Playtesting: THRALL vs ROBIN HOOD",
+        "description": "🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nWe're playing online using the following tools:\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n⚠️ Unbrewed is not owned by or associated with Restoration Games, LLC ⚠️",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/O-_UUc7Vns0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/O-_UUc7Vns0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/O-_UUc7Vns0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/O-_UUc7Vns0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/O-_UUc7Vns0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 4,
+        "resourceId": { "kind": "youtube#video", "videoId": "O-_UUc7Vns0" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "9UIQlI3Vd85cEO1VbjOFCYHJQP0",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy45NDk1REZENzhEMzU5MDQz",
+      "snippet": {
+        "publishedAt": "2020-06-11T11:32:41Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Variants: CAIRNE vs BATMAN",
+        "description": "Playing a match of Unmatched: Battle of Legends! We're playing online using the following tools:\n\nCAIRNE: (not posted yet)\nBATMAN: https://boardgamegeek.com/thread/2407155/fan-deck-batman-and-robin\n\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n!!!\nUnbrewed is not owned by or associated with Restoration Games, LLC\n!!!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/uHbJ99QrzLM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/uHbJ99QrzLM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/uHbJ99QrzLM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 5,
+        "resourceId": { "kind": "youtube#video", "videoId": "uHbJ99QrzLM" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "O8WEPOpVc4suBOJ915WQS3YLbiQ",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy5DQUNERDQ2NkIzRUQxNTY1",
+      "snippet": {
+        "publishedAt": "2020-06-01T09:00:34Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Variants: MINOTAUR vs KIRBY",
+        "description": "Playtesting some Unmatched Variants to explore their mechanics!\n\n- Minotaur: https://boardgamegeek.com/thread/2289467/minotaur-and-labyrinth\n- Kirby: https://boardgamegeek.com/thread/2425453/fan-deck-kirby\n\n🎮️ Join us on Discord: https://discord.gg/bQgBpAp\n\nTools Used: \n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n!!!\nUnbrewed is not owned by or associated with Restoration Games, LLC\n!!!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/g7odOHqNQnU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/g7odOHqNQnU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/g7odOHqNQnU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 6,
+        "resourceId": { "kind": "youtube#video", "videoId": "g7odOHqNQnU" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "lU7LYApVZ48NUXOTn1qBGcu6Mu0",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy41MzJCQjBCNDIyRkJDN0VD",
+      "snippet": {
+        "publishedAt": "2020-05-29T19:30:16Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unbrewed Variants: Onyxia's Lair Playtesting",
+        "description": "This is a deviation from a normal Unmatched Variant. Onyxia's Lair is an attempt at creating a boss encounter, completed with a boss deck and map. This 1 v Many is attempting to use Unmatched mechanics to build a variant game mode.\n\nPlaying a match of Unmatched: Battle of Legends! We're playing online using the following tools:\n\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n!!!\nUnbrewed is not owned by or associated with Restoration Games, LLC\n!!!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/nw5UdgsBRG0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/nw5UdgsBRG0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/nw5UdgsBRG0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/nw5UdgsBRG0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/nw5UdgsBRG0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 7,
+        "resourceId": { "kind": "youtube#video", "videoId": "nw5UdgsBRG0" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "bz_4_RJ8U5qEfWtHCH4J0XflDpI",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy4xMkVGQjNCMUM1N0RFNEUx",
+      "snippet": {
+        "publishedAt": "2020-05-29T19:20:23Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unbrewed Variants: VOLDEMORT vs HARRY [ROUND 2]",
+        "description": "Playing a match of Unmatched: Battle of Legends! We're playing online using the following tools:\n\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n!!!\nUnbrewed is not owned by or associated with Restoration Games, LLC\n!!!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/oHaRwbVfvxU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/oHaRwbVfvxU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/oHaRwbVfvxU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/oHaRwbVfvxU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/oHaRwbVfvxU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 8,
+        "resourceId": { "kind": "youtube#video", "videoId": "oHaRwbVfvxU" }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "fNSQ1yRIb-Qlyx6A0GXQ7kmM7Ac",
+      "id": "UExqc2p3QWZKVGozYTJOTUR6T0VORk13T1lVenNGUW5fQy4wOTA3OTZBNzVEMTUzOTMy",
+      "snippet": {
+        "publishedAt": "2020-05-19T16:31:49Z",
+        "channelId": "UCdlHVafM0VxNJJrUUXXpneA",
+        "title": "Unmatched Variants: VOLDEMORT vs HARRY POTTER",
+        "description": "Playing a match of Unmatched: Battle of Legends! We're playing online using the following tools:\n\n- Figma: for sharing a gameboard and moving pieces around\n- Unbrewed.Online: the online deck simulator\n- Jon G's Deck Maker: making Unmatched variant decks & code https://jonathanguberman.github.io/unmatched_maker/\n\n!!!\nUnbrewed is not owned by or associated with Restoration Games, LLC\n!!!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CBX9fbj5Ehw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CBX9fbj5Ehw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CBX9fbj5Ehw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/CBX9fbj5Ehw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/CBX9fbj5Ehw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Unbrewed.Online",
+        "playlistId": "PLjsjwAfJTj3a2NMDzOENFMwOYUzsFQn_C",
+        "position": 9,
+        "resourceId": { "kind": "youtube#video", "videoId": "CBX9fbj5Ehw" }
+      }
+    }
+  ]
+}

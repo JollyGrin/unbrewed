@@ -1,0 +1,51 @@
+$defence-blue: #2c76ac;
+$attack-red: #dc3034;
+$versatile-violet: #6c4e8d;
+$scheme-yellow: #fcbd71;
+.attack {
+  fill: $attack-red;
+}
+.defence {
+  fill: $defence-blue;
+}
+.versatile {
+  fill: $versatile-violet;
+}
+.scheme {
+  fill: $scheme-yellow;
+}
+
+.cardWrapper {
+  padding: 0 1.5px;
+  filter: saturate(1);
+  transition: filter 0.25s ease-in, transform 0.25s ease-in;
+
+  & .navWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    padding-bottom: 0.25em;
+    font-size: 1rem;
+    & a {
+      cursor: pointer;
+      opacity: 0.2;
+      transition: all 0.25s ease-in;
+      padding: 0.5em;
+      margin-bottom: -0.25em;
+    }
+    & a:hover {
+      opacity: 1;
+      background-color: #fff;
+      border-radius: 0.5em 0.5em 0 0;
+    }
+    & a:active {
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+      background-color: $versatile-violet;
+      color: #fff;
+    }
+  }
+}
+.cardWrapper:hover {
+  filter: saturate(2.5);
+  transform: scale(1.006);
+}

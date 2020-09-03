@@ -1,0 +1,248 @@
+{
+  "created_on": "Sun, 23 Aug 2020 03:53:22 GMT",
+  "creator": "error",
+  "deck_data": {
+    "appearance": {
+      "borderColour": "#e63333",
+      "highlightColour": "#ed1d1d",
+      "isPNP": false,
+      "patternName": "Lips"
+    },
+    "cards": [
+      {
+        "afterText": "",
+        "basicText": "If Darth Maul has less health than your opponent, play this card and gain 4 health. He may look at the top 4 cards in his deck and take 2 cards into his hand. ",
+        "boost": 1,
+        "characterName": "DARTH MAUL",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/TNIMhGy.jpg",
+        "immediateText": "",
+        "quantity": 1,
+        "title": "kenobiiiiiiiiiiii!!!!!!!!!!!!!!!!!",
+        "type": "scheme",
+        "value": 2
+      },
+      {
+        "afterText": "",
+        "basicText": "When played, Savage and Maul gain 2 health and may take 1 card from their discard pile into their hand. ",
+        "boost": 3,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/QM2AHTq.jpg",
+        "immediateText": "",
+        "quantity": 1,
+        "title": "Son of dathomir",
+        "type": "scheme",
+        "value": 2
+      },
+      {
+        "afterText": "",
+        "basicText": "The opponent must reveal their hand. Maul may discard 1 card or discard 2 from their deck into the discard pile.",
+        "boost": 2,
+        "characterName": "DARTH MAUL",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/l6aSZN0.png",
+        "immediateText": "",
+        "quantity": 1,
+        "title": "Your mind will speak Or it will break",
+        "type": "scheme",
+        "value": 6
+      },
+      {
+        "afterText": "",
+        "basicText": "If Maul and Savage are in the same zone their attacks have +2 damage for this turn. ",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/7bC4TAz.jpg",
+        "immediateText": "",
+        "quantity": 2,
+        "title": "the dark side has never been stronger ",
+        "type": "scheme",
+        "value": 3
+      },
+      {
+        "afterText": "",
+        "basicText": "",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/hwNg23c.jpg",
+        "immediateText": "Cancel all abilities on your opponents card. ",
+        "quantity": 3,
+        "title": "feint",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "If combat is won, chose a card from your opponent's hand to discard. ",
+        "basicText": "",
+        "boost": 5,
+        "characterName": "DARTH MAUL",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/GB7I5wS.jpg",
+        "immediateText": "",
+        "quantity": 1,
+        "title": "only the strongest shall rule",
+        "type": "attack",
+        "value": 6
+      },
+      {
+        "afterText": "If combat is won, move 2 spaces. ",
+        "basicText": "",
+        "boost": 5,
+        "characterName": "DARTH MAUL",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/7dtglg0.jpg",
+        "immediateText": "",
+        "quantity": 1,
+        "title": "One last lesson ",
+        "type": "attack",
+        "value": 6
+      },
+      {
+        "afterText": "Maul may absorb up to 2 health from Savage's health. ",
+        "basicText": "",
+        "boost": 2,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/2uLdJd6.jpg",
+        "immediateText": "+1 attack if only Maul moves or if only Savage moves.",
+        "quantity": 2,
+        "title": "not as your brother, but as your master",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": "",
+        "basicText": "",
+        "boost": 2,
+        "characterName": "SAVAGE OPRESS",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/OopaGCX.png",
+        "immediateText": "If Maul is enraged, add the boost value to Savage's attack total.",
+        "quantity": 3,
+        "title": "I hate you!!!!",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": "",
+        "basicText": "",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/PCCIrH9.jpg",
+        "immediateText": "iIf Maul and Savage are adjacent to each other add +2 Defense/Attack to this card. ",
+        "quantity": 3,
+        "title": "Brothers",
+        "type": "versatile",
+        "value": 1
+      },
+      {
+        "afterText": "Take one card from your discard pile into your hand.",
+        "basicText": "",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "If Maul or Savage are out numbered in the zone this cards value is 5.",
+        "imageUrl": "https://i.imgur.com/KZqV8op.jpg",
+        "immediateText": "",
+        "quantity": 2,
+        "title": "Duel of the fates ",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "Move away 2 spaces.",
+        "basicText": "",
+        "boost": 2,
+        "characterName": "DARTH MAUL",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/2RoCr72.png",
+        "immediateText": "",
+        "quantity": 3,
+        "title": "at last we will reveAL OURSELVES ",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "",
+        "basicText": "",
+        "boost": 3,
+        "characterName": "ANY",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/nDEsxXV.jpg",
+        "immediateText": "If Savage is killed the boost value of this card is added to Mauls total attack. ",
+        "quantity": 2,
+        "title": "what fun..... what fun. formerly darth. now just maul.",
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "afterText": "If you won the combat you may deal +2 damage or you may add the boost value of this card to the health of Savage or Mau.l",
+        "basicText": "",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/lfdd2fY.jpg",
+        "immediateText": "",
+        "quantity": 3,
+        "title": "don't be so certain ",
+        "type": "defence",
+        "value": 3
+      },
+      {
+        "afterText": "",
+        "basicText": "",
+        "boost": 1,
+        "characterName": "Any",
+        "duringText": "",
+        "imageUrl": "https://i.imgur.com/a1dsmJq.jpg",
+        "immediateText": "If the opponent doesn't have allies in the combat zone this card's value increases to 5. ",
+        "quantity": 2,
+        "title": "fear is my ally ",
+        "type": "versatile",
+        "value": 2
+      }
+    ],
+    "hero": {
+      "hp": 99,
+      "isRanged": true,
+      "move": 99,
+      "name": "error",
+      "specialAbility": "error"
+    },
+    "sidekick": {
+      "hp": 99,
+      "isRanged": false,
+      "name": "error",
+      "quantity": 99,
+      "quote": "I work best alone"
+    }
+  },
+  "family_id": "xxxx",
+  "name": "error",
+  "note": "there was an issue, try again",
+  "published": true,
+  "updated_on": "Sun, 23 Aug 2020 22:42:20 GMT",
+  "version_id": "o2Bh4r",
+  "version_name": "Initial version",
+  "versions": [
+    {
+      "created_on": "Sun, 23 Aug 2020 03:53:22 GMT",
+      "id": "o2Bh4r",
+      "name": "error",
+      "published": true,
+      "updated_on": "Sun, 23 Aug 2020 22:42:20 GMT",
+      "version_name": "Initial version"
+    },
+    {
+      "created_on": "Sat, 22 Aug 2020 21:37:49 GMT",
+      "id": "_JZar4",
+      "name": "Darth Maul ",
+      "published": true,
+      "updated_on": "Sun, 23 Aug 2020 03:50:18 GMT",
+      "version_name": "Initial version"
+    }
+  ]
+}

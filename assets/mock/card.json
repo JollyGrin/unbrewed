@@ -1,0 +1,13 @@
+{
+  "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead.",
+  "basicText": null,
+  "boost": 2,
+  "characterName": "KIRBY",
+  "duringText": null,
+  "imageUrl": null,
+  "immediateText": null,
+  "quantity": 3,
+  "title": "Regroup",
+  "type": "versatile",
+  "value": 1
+}

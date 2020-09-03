@@ -1,0 +1,59 @@
+#home-box-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > #home-boxes {
+    display: grid;
+    grid-gap: 2em;
+    width: 80%;
+
+    & > .home-box {
+      padding: 1em;
+      color: $color-purple;
+      background-color: $color-tan;
+      border-radius: 0.5em;
+      width: 100%;
+      & h3 {
+        font-family: $font-header;
+        font-size: 2rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  & form {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & input {
+      font-family: inherit;
+      width: 90%;
+      border: 0;
+      border-bottom: 3px solid $color-gray;
+      outline: 0;
+      font-size: 1.3rem;
+      color: $color-purple;
+      padding: 7px 0;
+      background: transparent;
+      font-weight: 700;
+      transition: border-color 0.2s ease-in-out;
+    }
+
+    input:focus {
+      border-bottom: 3px solid $color-purple;
+    }
+
+    & .button {
+      padding: 0 0 0 1em;
+      color: $color-gray;
+      transition: color 0.25s ease-in, font-size 0.25s ease-in;
+    }
+    & .button:hover {
+      cursor: pointer;
+      color: $color-purple;
+      font-size: 1.5em;
+    }
+  }
+}
