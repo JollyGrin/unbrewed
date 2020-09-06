@@ -56,6 +56,13 @@ export default class DeckInfo extends Component {
         ''
       );
     },
+    noSidekickCheck: () => {
+      if (this.props.pool.sidekick && this.props.pool.sidekick.quantity === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     sidekickName: () => {
       return this.props.pool.sidekick
         ? this.props.pool.sidekick.name
@@ -109,15 +116,21 @@ export default class DeckInfo extends Component {
 
               {/* sidekick box */}
               <div className='deckInfo-box info-sidekick'>
-                <h1>{this.renderDom.sidekickName()}</h1>
-                <div className='info-icons'>
-                  <div className='icon-wrap'>
-                    {this.renderDom.isRanged('sidekick')}
+                {!this.renderDom.noSidekickCheck() ? (
+                  <div>
+                    <h1>{this.renderDom.sidekickName()}</h1>
+                    <div className='info-icons'>
+                      <div className='icon-wrap'>
+                        {this.renderDom.isRanged('sidekick')}
+                      </div>
+                      <div className='icon-wrap'>
+                        {this.renderDom.isHp('sidekick')}
+                      </div>
+                    </div>
                   </div>
-                  <div className='icon-wrap'>
-                    {this.renderDom.isHp('sidekick')}
-                  </div>
-                </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
 
