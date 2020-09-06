@@ -11,20 +11,29 @@ export default class OverviewPool extends Component {
   }
 
   renderPlayers = () => {
-    if (this.props && this.props.state && this.props.state.gameState) {
+    if (
+      this.props &&
+      this.props.state &&
+      this.props.state.gameState &&
+      this.props.state.gameState.players
+    ) {
       const playersArray = Object.entries(this.props.state.gameState.players);
+
       if (playersArray.length === 0) {
         return;
       }
+
       return playersArray.map((player, index) => (
-        <div key={index}>
+        <div key={index + Math.random()}>
           {player[1].commit && player[1].commit.main ? (
             this.conditionalRender.cardDisplay(
               player[1].commit.main,
               player[1].commit.reveal
             )
           ) : (
-            <PlayerBox player={player[0]} deck={player[1]} />
+            <div key={index + Math.random()}>
+              <PlayerBox player={player[0]} deck={player[1]} />
+            </div>
           )}
         </div>
       ));

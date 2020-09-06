@@ -30,6 +30,10 @@ export default class ModalComponent extends Component {
 
       const playersArray = Object.entries(players);
 
+      if (playersArray.length === 0) {
+        return;
+      }
+
       return playersArray.map((player, index) => {
         if (player[1].commit && player[1].commit.main) {
           return this.conditionalRender.cardDisplay(
