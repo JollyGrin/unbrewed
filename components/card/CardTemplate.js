@@ -154,8 +154,9 @@ export default class CardTemplate extends Component {
       };
     },
     wrapBasicText: () => {
-      if (!(this.cardProp.basicText && this.cardProp.basicText.trim()))
+      if (!(this.cardProp.basicText && this.cardProp.basicText.trim())) {
         return [];
+      }
       const lines = this.cardProp.basicText
         .trim()
         .split(/\r?\n/)
