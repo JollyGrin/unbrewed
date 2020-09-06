@@ -279,8 +279,7 @@ body {
   background-color: #4a2a50;
   color: #e7cc98;
   font-family: "Crimson Text";
-  font-size: 1.25rem;
-  letter-spacing: 0.5px; }
+  font-size: 1.25rem; }
 
 *:focus {
   outline: 0;
