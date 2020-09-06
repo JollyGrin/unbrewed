@@ -17,10 +17,6 @@
   height: 40vh;
   justify-content: center;
 
-  & > img {
-    width: 50vw;
-  }
-
   & > span {
     padding-top: 1em;
     font-family: $font-serif;
@@ -30,5 +26,19 @@
     & strong {
       font-weight: 700;
     }
+  }
+}
+
+// DESKTOP
+@media (min-width: 600px) {
+  #hero > img {
+    width: 375px;
+  }
+}
+
+// MOBILE
+@media (max-width: 600px) {
+  #hero > img {
+    width: 60vw;
   }
 }

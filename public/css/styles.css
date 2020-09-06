@@ -94,6 +94,11 @@
       color: #4a2a50;
       font-size: 1.5em; }
 
+@media (min-width: 900px) {
+  #home-box-wrapper {
+    width: 70%;
+    margin: auto; } }
+
 #nav {
   padding: 1em;
   display: flex;
@@ -110,8 +115,6 @@
   align-items: center;
   height: 40vh;
   justify-content: center; }
-  #hero > img {
-    width: 50vw; }
   #hero > span {
     padding-top: 1em;
     font-family: "Crimson Text";
@@ -119,6 +122,14 @@
     text-align: center; }
     #hero > span strong {
       font-weight: 700; }
+
+@media (min-width: 600px) {
+  #hero > img {
+    width: 375px; } }
+
+@media (max-width: 600px) {
+  #hero > img {
+    width: 60vw; } }
 
 #boardRec {
   display: flex;
