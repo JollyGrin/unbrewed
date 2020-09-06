@@ -58,6 +58,7 @@ export default class OverviewPool extends Component {
 
   connectWS = (e) => {
     e.preventDefault();
+    console.log('ws: connectWs', e, this.props.wsClient);
     const { lobby, player } = this.props.urlParams;
     this.connection = true;
     this.props.wsClient.connect(lobby, player, this.props.processState);

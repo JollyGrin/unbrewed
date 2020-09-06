@@ -52,7 +52,10 @@ export default class PlayerBox extends Component {
       }
     },
     displayDiscard: () => {
-      if (this.props.playerPool.discard) {
+      if (
+        this.props.playerPool.discard ||
+        this.props.playerPool.discard.length === 0
+      ) {
         return (
           <div>
             <ul>
@@ -107,9 +110,9 @@ export default class PlayerBox extends Component {
               </span>
               <hr />
               <ul>
-                {this.props.deck.discard.map((card) => (
-                  <li>{card.title}</li>
-                ))}
+                {this.props.deck.discard && this.props.deck.discard.length > 0
+                  ? this.props.deck.discard.map((card) => <li>{card.title}</li>)
+                  : '...'}
               </ul>
             </div>
           </div>

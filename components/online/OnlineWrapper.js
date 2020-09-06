@@ -27,6 +27,7 @@ export default class OnlineWrapper extends Component {
   };
 
   wsClientSendData = (stateData) => {
+    console.log('ws: sendData', stateData);
     wsClient.sendData(stateData);
   };
 
