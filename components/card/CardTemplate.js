@@ -215,8 +215,9 @@ export default class CardTemplate extends Component {
       return lines.flat();
     },
     wrapAfterText: () => {
-      if (!(this.cardProp.afterText && this.cardProp.afterText.trim()))
+      if (!(this.cardProp.afterText && this.cardProp.afterText.trim())) {
         return [];
+      }
       const indent = this.actions.getTextWidth(
         'AFTER COMBAT: ',
         this.actions.sectionHeadingStyle().font
