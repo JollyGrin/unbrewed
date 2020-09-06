@@ -1,6 +1,34 @@
 import React, { Component, Fragment } from 'react';
+import Link from 'next/link';
 
 export default class HomeBoxes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: `xxxx`,
+      player: `default`,
+      lobby: `default`,
+    };
+  }
+
+  updateState = (e, field) => {
+    e.preventDefault();
+    const { value } = e.target;
+    switch (field) {
+      case 'id':
+        this.setState({ id: value });
+        return;
+      case 'player':
+        this.setState({ player: value });
+        return;
+      case 'lobby':
+        this.setState({ lobby: value });
+        return;
+      default:
+        return;
+    }
+  };
+
   render() {
     return (
       <Fragment>
@@ -19,10 +47,13 @@ export default class HomeBoxes extends Component {
                   <input
                     className='offline-input'
                     placeholder='unmatched.cards deck ID'
+                    onChange={(e) => this.updateState(e, 'id')}
                   ></input>
-                  <a className='button'>
-                    <i className='fas fa-play'></i>
-                  </a>
+                  <Link href={`/offline/${this.state.id}`}>
+                    <a className='button'>
+                      <i className='fas fa-play'></i>
+                    </a>
+                  </Link>
                 </form>
               </div>
             </div>
@@ -35,11 +66,23 @@ export default class HomeBoxes extends Component {
               </p>
               <div className='online-form'>
                 <form>
-                  <input className='online-input' placeholder='Lobby' />
-                  <input className='online-input' placeholder='Player' />
-                  <a className='button'>
-                    <i className='fas fa-play'></i>
-                  </a>
+                  <input
+                    className='online-input'
+                    placeholder='Lobby'
+                    onChange={(e) => this.updateState(e, 'lobby')}
+                  />
+                  <input
+                    className='online-input'
+                    placeholder='Player'
+                    onChange={(e) => this.updateState(e, 'player')}
+                  />
+                  <Link
+                    href={`/online/${this.state.lobby}/${this.state.player}`}
+                  >
+                    <a className='button'>
+                      <i className='fas fa-play'></i>
+                    </a>
+                  </Link>
                 </form>
               </div>
             </div>
