@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start - $PORT",
+    "heroku-postbuild": "npm run build",
+    "start": "next start -p $PORT",
     "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss public/css/styles.css",
     "css:watch": "npm run css:build -- --watch",
     "norun": "cp canvas_lib64/*so.1 node_modules/canvas/build/Release/ && next build"
