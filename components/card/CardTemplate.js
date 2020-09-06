@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import cardMock from '../../assets/mock/card.json';
 import IconSvg from './IconSvg';
+import dynamic from 'next/dynamic';
 const { createCanvas } = require('canvas');
+// const createCanvas = dynamic(require('canvas'), {
+//   ssr: false,
+// });
 
 export default class CardTemplate extends Component {
   constructor(props) {
