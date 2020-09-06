@@ -38,7 +38,21 @@ export default class PlayerBox extends Component {
         );
       }
     },
+    noSidekickCheck: () => {
+      if (
+        this.props.pool &&
+        this.props.pool.sidekick &&
+        this.props.pool.sidekick.quantity === 0
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     displaySidekick: () => {
+      if (!this.conditionalRender.noSidekickCheck()) {
+        return '';
+      }
       if (this.props.deck.sidekick) {
         const { name, hp, isRanged, move, quantity } = this.props.deck.sidekick;
         return (
