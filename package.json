@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build -p $PORT",
     "heroku-postbuild": "npm run build",
     "start": "next start -p $PORT",
     "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss public/css/styles.css",
@@ -27,6 +27,7 @@
     "react-dom": "^16.13.1",
     "react-polygon": "^0.2.0",
     "react-slick": "^0.25.2",
+    "serve": "^11.3.2",
     "socket.io-client": "^2.3.0"
   }
 }
