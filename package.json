@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "now-build": "cp canvas_lib64/*so.1 node_modules/canvas/build/Release/ && next build",
-    "build": "now-build && next build",
-    "start": "next start",
+    "build": "next build",
+    "start": "next start - $PORT",
     "css:build": "node-sass --omit-source-map-url assets/sass/styles.scss public/css/styles.css",
     "css:watch": "npm run css:build -- --watch"
   },
