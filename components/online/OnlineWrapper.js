@@ -34,21 +34,22 @@ export default class OnlineWrapper extends Component {
   render() {
     return (
       <div>
-        <OverviewPool
-          state={this.state}
-          processState={this.processState}
-          wsClient={wsClient}
-          urlParams={this.props.urlParams}
-        />
-
         {this.props.data ? (
-          <DeckPool
-            player={this.props.urlParams.player}
-            state={this.state}
-            processState={this.processState}
-            pool={this.props.data}
-            wsClientSendData={this.wsClientSendData}
-          />
+          <div>
+            <OverviewPool
+              state={this.state}
+              processState={this.processState}
+              wsClient={wsClient}
+              urlParams={this.props.urlParams}
+            />
+            <DeckPool
+              player={this.props.urlParams.player}
+              state={this.state}
+              processState={this.processState}
+              pool={this.props.data}
+              wsClientSendData={this.wsClientSendData}
+            />
+          </div>
         ) : (
           <GetDeck urlParams={this.props.urlParams} />
         )}

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default class GetDeck extends Component {
   constructor(props) {
@@ -17,6 +16,12 @@ export default class GetDeck extends Component {
   };
 
   render() {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
+    };
+
     return (
       <Fragment>
         <div className='loadDeck'>
@@ -31,6 +36,7 @@ export default class GetDeck extends Component {
                 className='input'
                 placeholder='unmatched.cards deck ID'
                 onChange={(e) => this.updateUrl(e)}
+                onKeyPress={handleKeyPress}
               />
 
               <Link href={`${this.state.baseUrl}?deck=${this.state.id}`}>
@@ -41,6 +47,11 @@ export default class GetDeck extends Component {
             </form>
           </div>
         </div>
+        <style jsx>{`
+          .loadDeck {
+            padding-top: 5rem;
+          }
+        `}</style>
       </Fragment>
     );
   }

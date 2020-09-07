@@ -30,6 +30,11 @@ export default class HomeBoxes extends Component {
   };
 
   render() {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
+    };
     return (
       <Fragment>
         <div id='home-box-wrapper'>
@@ -48,6 +53,7 @@ export default class HomeBoxes extends Component {
                     className='offline-input'
                     placeholder='unmatched.cards deck ID'
                     onChange={(e) => this.updateState(e, 'id')}
+                    onKeyPress={handleKeyPress}
                   ></input>
                   <Link href={`/offline/${this.state.id}`}>
                     <a className='button'>
@@ -70,11 +76,13 @@ export default class HomeBoxes extends Component {
                     className='online-input'
                     placeholder='Lobby'
                     onChange={(e) => this.updateState(e, 'lobby')}
+                    onKeyPress={handleKeyPress}
                   />
                   <input
                     className='online-input'
                     placeholder='Player'
                     onChange={(e) => this.updateState(e, 'player')}
+                    onKeyPress={handleKeyPress}
                   />
                   <Link
                     href={`/online/${this.state.lobby}/${this.state.player}`}

@@ -82,7 +82,7 @@ export default class DeckInfo extends Component {
     link: () => {
       return this.props.pool.deckid ? (
         <Link href={`https://unmatched.cards/decks/${this.props.pool.deckid}`}>
-          <a>
+          <a target='_blank'>
             <i className='fas fa-external-link-alt' />
           </a>
         </Link>

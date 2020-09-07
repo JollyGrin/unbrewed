@@ -296,12 +296,26 @@ body {
   outline: 0;
   outline: none; }
 
+#stickyToggleWrapper {
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  opacity: 0.5;
+  transition: all 0.25s ease-in-out; }
+
+#stickyToggleWrapper:hover {
+  transform: scale(1.2);
+  opacity: 0.8; }
+
 #reload-deck {
+  cursor: pointer;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   opacity: 0.5;
-  transition: all 0.25s ease-in-out; }
+  transition: all 0.25s ease-in-out;
+  z-index: 1; }
 
 #reload-deck:hover {
   transform: scale(1.2) rotate(-20deg);

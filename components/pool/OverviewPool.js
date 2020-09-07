@@ -8,6 +8,9 @@ export default class OverviewPool extends Component {
   constructor(props) {
     super(props);
     this.connection = false;
+    this.state = {
+      sticky: false,
+    };
   }
 
   renderPlayers = () => {
@@ -41,6 +44,20 @@ export default class OverviewPool extends Component {
   };
 
   conditionalRender = {
+    toggleSticky: (e) => {
+      e.preventDefault();
+      this.state.sticky
+        ? (this.state.sticky = false)
+        : (this.state.sticky = true);
+      this.setState({ sticky: this.state.sticky });
+    },
+    returnStickyClass: () => {
+      return this.state.sticky ? (
+        <i className='fas fa-toggle-on' />
+      ) : (
+        <i className='fas fa-toggle-off' />
+      );
+    },
     faceDownCard: () => (
       <div key={Math.random()} className='facedownCard'>
         <span>(facedown)</span>
@@ -110,9 +127,29 @@ export default class OverviewPool extends Component {
     const Slider = dynamic(import('react-slick'), {
       ssr: false,
     });
+
+    const styles = {
+      active: {
+        position: 'sticky',
+        top: 0,
+        backgroundColor: '#4a2a50',
+        zIndex: 1,
+      },
+      inactive: {},
+    };
     return (
       <Fragment>
-        <section id='section-overview'>
+        <section
+          id='section-overview'
+          style={this.state.sticky ? styles.active : styles.inactive}
+        >
+          <div
+            id='stickyToggleWrapper'
+            title='toggle sticky player stats'
+            onClick={(e) => this.conditionalRender.toggleSticky(e)}
+          >
+            {this.conditionalRender.returnStickyClass()}
+          </div>
           <div className='overview-header'>
             <h1>
               {this.props.urlParams.lobby} <span>//</span>{' '}
@@ -134,6 +171,14 @@ export default class OverviewPool extends Component {
             )}
           </div>
         </section>
+        <style jsx>{`
+          #section-overview.active {
+            position: sticky;
+            top: 0;
+            background-color: #4a2a50;
+            z-index: 1;
+          }
+        `}</style>
       </Fragment>
     );
   }
