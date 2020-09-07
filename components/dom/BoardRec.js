@@ -17,9 +17,15 @@ export default class BoardRec extends Component {
             <BoardRecButton
               icon={'fab fa-google-drive'}
               text={'Google Slides'}
-              url={'#'}
+              url={
+                'https://docs.google.com/presentation/d/10iplLbfjiAI4cZQEML8-m_CrdEAg9EMAd3UflCyXuL4/edit?usp=sharing'
+              }
             />
-            <BoardRecButton icon={'fab fa-figma'} text={'Figma'} url={'#'} />
+            <BoardRecButton
+              icon={'fab fa-figma'}
+              text={'Figma'}
+              url={'https://file.io/9Dd7gACKttu0'}
+            />
           </div>
         </section>
       </Fragment>
