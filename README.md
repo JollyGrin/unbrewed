@@ -4,6 +4,11 @@ Playtest your homebrewed unmatched heroes.
 
 This tool was created out of desperation by a fan who doesn't have a printer to playtest cards with roommates. Thus needed a way to load homebrew decks on a device and simulate drawing, discarding, and revealing.
 
+# Credits
+
+- emyrk for the [websocket server](https://github.com/Emyrk/unmatched-online)
+- JonG for the [card template](https://github.com/jonathanguberman/unmatched_maker/) & https://unmatched.cards
+
 ![](https://i.imgur.com/rMTrYOp.gif)
 
 # Demo
@@ -18,12 +23,9 @@ Playtest your deck at [Unbrewed.xyz](https://unbrewed.xyz)
 
 # Host Online
 
-1. install & make an account with Zeit Now
-2. `now --prod`
-
-# Credits
-
-- The JSON structure uses [Jon G's Deck Maker](https://jonathanguberman.github.io/unmatched_maker/)
+1. delete `now.json`
+2. install & make an account with Vercel
+3. `vercel`
 
 This tool is not in any way affiliated with Restoration Games or Mondo Games. The official cards and game rules are a trademark of Restoration Games, LLC.
 
