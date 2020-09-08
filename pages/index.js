@@ -10,7 +10,7 @@ import { getVideos } from '../assets/js/lib/youtube';
 
 export default function Index({ videos, preview }) {
   return (
-    <Layout title={'Unbrewed: BoL deck simulator'}>
+    <Layout title={'Unbrewed: play unmatched variants!'}>
       <Navbar />
       <Hero />
       <HomeBoxes />

@@ -14,6 +14,12 @@ export default class Navbar extends Component {
             <a href="https://discord.gg/bQgBpAp">
             <span><i className="fab fa-discord"/></span>
             </a>
+            <a href="https://www.youtube.com/channel/UCdlHVafM0VxNJJrUUXXpneA">
+            <span><i className="fab fa-youtube"/></span>
+            </a>
+            <a href="https://github.com/JollyGrin/unbrewed">
+            <span><i className="fab fa-github"/></span>
+            </a>
           </div>
         </div>
         <style jsx>{`

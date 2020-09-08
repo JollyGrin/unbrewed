@@ -51,7 +51,7 @@ export default class HomeBoxes extends Component {
                 <form>
                   <input
                     className='offline-input'
-                    placeholder='unmatched.cards deck ID'
+                    placeholder='deck ID'
                     onChange={(e) => this.updateState(e, 'id')}
                     onKeyPress={handleKeyPress}
                   ></input>
