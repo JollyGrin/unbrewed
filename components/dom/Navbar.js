@@ -11,8 +11,9 @@ export default class Navbar extends Component {
             </a>
           </div>
           <div className='nav-right'>
-            {/* <span>Offline</span>
-            <span>Online</span> */}
+            <a href="https://discord.gg/bQgBpAp">
+            <span><i className="fab fa-discord"/></span>
+            </a>
           </div>
         </div>
         <style jsx>{`

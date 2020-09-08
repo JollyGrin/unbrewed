@@ -24,7 +24,7 @@ export default class BoardRec extends Component {
             <BoardRecButton
               icon={'fab fa-figma'}
               text={'Figma'}
-              url={'https://file.io/9Dd7gACKttu0'}
+              url={'https://www.figma.com/file/IwrLiGjna7bIDa9ZQiM2TW/Unbrewed-Board-Template-COPY-PASTE?node-id=76%3A92'}
             />
           </div>
         </section>
