@@ -30,3 +30,7 @@ Playtest your deck at [Unbrewed.xyz](https://unbrewed.xyz)
 This tool is not in any way affiliated with Restoration Games or Mondo Games. The official cards and game rules are a trademark of Restoration Games, LLC.
 
 Unbrewed does not use Unmatched art nor assets. This tool is explicitly for personal use and may not be used for commercial purposes.
+
+
+# Common Errors
+- lib issue https://github.com/Automattic/node-canvas/issues/1448#issuecomment-698757961
