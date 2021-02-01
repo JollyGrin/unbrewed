@@ -99,6 +99,17 @@ export default class DeckPool extends Component {
         alert('Your deck is empty');
       }
     },
+    discardRandom: () => {
+      if (isEmpty(this.props.state.gameState.gid)) {
+        return;
+      }
+      if (!this.state.pool.hand.length <= 0) {
+        this.state.pool.discardRandomCard();
+        this.processState();
+      } else {
+        alert('Your deck is empty');
+      }
+    },
     discardCard: (cardIndex) => {
       this.state.pool.discardCard(cardIndex);
       this.processState();

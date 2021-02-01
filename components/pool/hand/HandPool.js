@@ -11,6 +11,10 @@ export default class HandPool extends Component {
   drawCard = () => {
     this.props.deckActions.drawCard();
   };
+  
+  discardRandom = () => {
+    this.props.deckActions.discardRandom();
+  };
 
   renderHand = () => {
     if (this.props.pool && this.props.pool.hand) {
@@ -72,7 +76,10 @@ export default class HandPool extends Component {
               Hand ({this.props.pool.hand ? this.props.pool.hand.length : '...'}
               )
             </h1>
-            <a onClick={() => this.drawCard()}>Draw 1 Card</a>
+            <div id="hand-actions">
+              <a onClick={() => this.discardRandom()}>Draw 1 Random Card</a>
+              <a onClick={() => this.drawCard()}>Draw 1 Card</a>
+            </div>
           </div>
           <div className='carousel-wrapper'>
             <Slider {...settings}>{this.renderHand()}</Slider>

@@ -80,6 +80,14 @@ export default class Pool {
     this.discard.push(this.hand[cardIndex]);
     this.hand.splice(cardIndex, 1);
   };
+  
+  discardRandomCard = function(cardIndex) {
+    const handSize = this.hand.length - 1
+    const randomNumber = Math.floor(Math.random() * handSize);
+
+    this.discard.push(this.hand[randomNumber]);
+    this.hand.splice(cardIndex, 1);
+  };
 
   drawDiscard = function(cardIndex) {
     this.hand.push(this.discard[cardIndex]);

@@ -149,6 +149,10 @@ body {
       letter-spacing: 0px;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
     }
+
+    & #hand-actions > a {
+      margin: 0 10px;
+    }
   }
   & .carousel-wrapper {
     min-height: 300px;

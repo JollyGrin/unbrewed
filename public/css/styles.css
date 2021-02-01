@@ -393,6 +393,8 @@ body {
       filter: saturate(2);
       letter-spacing: 0px;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35); }
+    .carousel-section .carousel-header #hand-actions > a {
+      margin: 0 10px; }
   .carousel-section .carousel-wrapper {
     min-height: 300px; }
     .carousel-section .carousel-wrapper li {
