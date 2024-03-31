@@ -1,3 +1,5 @@
+# DEPRECATED: Unbrewed has been remade from scratch and it's new repository can be found here: https://github.com/JollyGrin/unbrewed-p2p
+
 # Unbrewed
 
 Playtest your homebrewed unmatched heroes.
